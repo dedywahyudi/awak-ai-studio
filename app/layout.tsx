@@ -6,7 +6,6 @@ import { site } from '@/lib/site';
 import { localBusinessJsonLd } from '@/lib/seo';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { WhatsAppFloat } from '@/components/layout/WhatsAppFloat';
 import { JsonLd } from '@/components/ui/JsonLd';
 
 // Self-hosted variable fonts: no third-party request, no layout shift.
@@ -69,7 +68,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main id="main">{children}</main>
         <Footer />
-        <WhatsAppFloat />
         <JsonLd data={localBusinessJsonLd()} />
         <Analytics />
       </body>

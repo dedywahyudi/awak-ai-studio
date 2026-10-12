@@ -35,7 +35,7 @@ ISR: revalidate = 3600
 ```
 app/                 routes, layout, sitemap, robots, OG image, server action
 components/ui        primitives (Button, Section, JsonLd, icons)
-components/layout    Navbar, Footer, WhatsAppFloat
+components/layout    Navbar, Footer
 components/sections  PricingCards, CustomBand, Faq, Steps, DemoPlayer, ChatPreview, Cards
 components/forms     LeadForm (client)
 lib/                 site, pricing, seo, schema (Zod), whatsapp, email, notify, posts, supabase/

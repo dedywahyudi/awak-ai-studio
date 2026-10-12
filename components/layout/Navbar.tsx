@@ -15,7 +15,16 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-[rgba(8,8,10,.78)] backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-container items-center justify-between gap-6 px-5 md:px-8">
-        <Link href="/" aria-label={`${site.name}, beranda`} className="relative block h-8 w-[100px] shrink-0">
+        <Link href="/" aria-label={`${site.name}, beranda`} className="flex shrink-0 items-center gap-2">
+          <Image
+            src="/images/logo-mark.png"
+            alt=""
+            width={32}
+            height={32}
+            priority
+            className="h-8 w-8 object-contain"
+          />
+          <span className="relative block h-8 w-[100px]">
           <Image
             src="/images/logo-wordmark.png"
             alt={site.name}
@@ -24,6 +33,7 @@ export function Navbar() {
             priority
             className="object-contain object-left"
           />
+          </span>
         </Link>
 
         <nav aria-label="Navigasi utama" className="hidden items-center gap-1 lg:flex">

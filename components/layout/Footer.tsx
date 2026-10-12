@@ -19,7 +19,15 @@ export function Footer() {
       <Container>
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
-            <div className="relative block h-9 w-[112px]">
+            <div className="flex items-center gap-2">
+              <Image
+                src="/images/logo-mark.png"
+                alt=""
+                width={36}
+                height={36}
+                className="h-9 w-9 object-contain"
+              />
+              <span className="relative block h-9 w-[112px]">
               <Image
                 src="/images/logo-wordmark.png"
                 alt={site.name}
@@ -27,6 +35,7 @@ export function Footer() {
                 sizes="112px"
                 className="object-contain object-left"
               />
+              </span>
             </div>
             <p className="font-display text-base font-bold text-strong">{site.tagline}</p>
             <p className="max-w-xs text-sm text-muted">
