@@ -1,11 +1,11 @@
 import type { LeadInput } from '@/lib/schema';
 
 /**
- * Pushes each new lead to an external automation (n8n, Make, Zapier...).
- * Use it to fan out to WhatsApp (Twilio / 360dialog / WA Cloud API), Slack, a CRM, etc.
- * without baking a WhatsApp provider into the website code.
+ * Pushes each new lead to n8n (or Make, Zapier...). The workflow in
+ * automation/workflows/01-lead-qualifier.json classifies the lead, drafts a first reply,
+ * and alerts you. `leadId` lets the workflow write its results back to the `leads` row.
  */
-export async function sendLeadWebhook(lead: LeadInput): Promise<boolean> {
+export async function sendLeadWebhook(lead: LeadInput, leadId?: string | null): Promise<boolean> {
   const url = process.env.LEAD_WEBHOOK_URL;
   if (!url) return false;
 
@@ -16,7 +16,12 @@ export async function sendLeadWebhook(lead: LeadInput): Promise<boolean> {
       'content-type': 'application/json',
       ...(secret ? { 'x-webhook-secret': secret } : {}),
     },
-    body: JSON.stringify({ event: 'lead.created', lead, createdAt: new Date().toISOString() }),
+    body: JSON.stringify({
+      event: 'lead.created',
+      leadId: leadId ?? null,
+      lead,
+      createdAt: new Date().toISOString(),
+    }),
     signal: AbortSignal.timeout(5000),
   });
   if (!res.ok) throw new Error(`Webhook responded ${res.status}`);

@@ -20,6 +20,13 @@ Read `README.md` and `docs/ARCHITECTURE.md` first.
 npm run lint && npm run typecheck && npm run build
 ```
 
+## Automation rules
+
+- Prices and services live only in `lib/pricing.ts`, `content/services.ts`, `content/faq.ts`. `/api/knowledge` reads them; never paste prices into prompts.
+- Change workflows by editing `automation/build.mjs` or `automation/prompts/*.md`, then run `npm run automation:build`. Do not hand-edit `automation/workflows/*.json`.
+- Automation must never publish, post, or message a lead on its own. Drafts only.
+- Automation routes (`/api/*`) must call `checkAutomationAuth`.
+
 ## SEO checklist for new pages
 
 Use `pageMeta()` from `lib/seo.ts` (unique title/description, canonical, Open Graph), add the route to `app/sitemap.ts`, add alt text to images.

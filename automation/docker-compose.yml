@@ -1,0 +1,40 @@
+# Self-hosted n8n behind Caddy (automatic HTTPS). Copy .env.example to .env first.
+# Run:  docker compose up -d
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest   # pin a version once you are happy, e.g. :1.x.y
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - N8N_HOST=${N8N_HOST}
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=https://${N8N_HOST}/
+      - GENERIC_TIMEZONE=Asia/Jakarta
+      - TZ=Asia/Jakarta
+      # Workflows read credentials with $env.X. Required for these workflows:
+      - N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+      # Keep disk small: drop successful execution logs after 7 days.
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_MAX_AGE=168
+    volumes:
+      - n8n_data:/home/node/.n8n
+    expose:
+      - '5678'
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    environment:
+      - N8N_HOST=${N8N_HOST}
+    depends_on:
+      - n8n
+
+volumes:
+  n8n_data:
+  caddy_data:

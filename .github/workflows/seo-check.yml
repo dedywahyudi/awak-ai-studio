@@ -1,0 +1,30 @@
+name: SEO check
+
+on:
+  schedule:
+    - cron: '0 1 * * 1' # Mondays 01:00 UTC (08:00 WIB)
+  workflow_dispatch:
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Crawl the live site
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: |
+          if [ -z "$SITE_URL" ]; then echo "Set the repository variable SITE_URL (Settings > Variables)"; exit 1; fi
+          node scripts/seo-check.mjs "$SITE_URL"
+      - name: Show report
+        if: always()
+        run: cat seo-report.md >> "$GITHUB_STEP_SUMMARY" || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: seo-report
+          path: seo-report.md

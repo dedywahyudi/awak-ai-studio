@@ -58,9 +58,10 @@ export async function submitLead(formData: FormData): Promise<LeadFormState> {
 
   // 1) Persist.
   let saved = false;
+  let leadId: string | null = null;
   const db = getServiceClient();
   if (db) {
-    const { error } = await db.from('leads').insert({
+    const { data, error } = await db.from('leads').insert({
       nama: lead.nama,
       nama_bisnis: lead.namaBisnis,
       kontak: lead.kontak,
@@ -69,13 +70,16 @@ export async function submitLead(formData: FormData): Promise<LeadFormState> {
       deskripsi: lead.deskripsi,
       source_page: lead.sourcePage,
       status: 'new',
-    });
+    }).select('id').single();
     if (error) console.error('[lead] save failed:', error.message);
-    else saved = true;
+    else {
+      saved = true;
+      leadId = data?.id ?? null;
+    }
   }
 
   // 2) Notify (in parallel, never throws).
-  const results = await Promise.allSettled([sendLeadEmail(lead), sendLeadWebhook(lead)]);
+  const results = await Promise.allSettled([sendLeadEmail(lead), sendLeadWebhook(lead, leadId)]);
   results.forEach((r) => {
     if (r.status === 'rejected') console.error('[lead] notify failed:', r.reason);
   });

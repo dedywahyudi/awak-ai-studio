@@ -1,0 +1,446 @@
+{
+  "name": "Awak 02 - Blog draft",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cron",
+              "expression": "0 8 * * 1"
+            }
+          ]
+        }
+      },
+      "id": "c72fbf4f-cfd1-59d6-83ac-258a2797d5be",
+      "name": "Weekly schedule (Mon 08:00)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/content_topics?status=eq.queued&order=created_at.asc&limit=1",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $env.SUPABASE_SERVICE_KEY }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.SUPABASE_SERVICE_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9681efc5-58f2-74b2-f4cb-456fabed08b1",
+      "name": "Next queued topic",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "blog-draft",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "649f5d43-1bc0-407e-62b1-6745060bca47",
+      "name": "Manual webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        220
+      ],
+      "webhookId": "da2b14cf-f164-d0a3-e62a-e28de887fab9"
+    },
+    {
+      "parameters": {
+        "jsCode": "const j = $input.first().json;\nlet t;\nif (j.body !== undefined && j.headers) {\n  if (!$env.AUTOMATION_SECRET || (j.headers['x-automation-secret'] !== $env.AUTOMATION_SECRET)) throw new Error('Bad or missing x-automation-secret');\n  const b = j.body || {};\n  if (!b.topic) throw new Error('topic is required in the body');\n  t = { topicId: null, topic: String(b.topic), keyword: b.keyword || '', notes: b.notes || '' };\n} else {\n  if (!j.topic) return [];\n  t = { topicId: j.id || null, topic: j.topic, keyword: j.keyword || '', notes: j.notes || '' };\n}\nreturn [{ json: t }];"
+      },
+      "id": "dbc2be7b-7618-b286-4de8-48d9fe2edaa9",
+      "name": "Normalize topic",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.SITE_URL }}/api/knowledge",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-automation-secret",
+              "value": "={{ $env.AUTOMATION_SECRET }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "b25bfd6d-b8d6-ff4d-e4bb-c51ee96f2081",
+      "name": "Get knowledge",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        780,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const PROMPT = \"Anda menulis atas nama Awak AI Studio, studio AI kecil di Medan yang membantu UMKM dan bisnis lokal.\\n\\nGaya:\\n- Bahasa Indonesia yang jelas dan hangat, seperti pekerja profesional yang bicara dengan sesama.\\n- Gunakan \\\"Anda\\\" untuk pembaca. Jangan \\\"kamu\\\", jangan \\\"Bapak/Ibu\\\" berlebihan.\\n- Kalimat pendek. Spesifik, bukan umum. Tidak ada kalimat yang bisa ditempel ke bisnis apa saja.\\n- Tanpa emoji, tanpa seruan berlebihan, tanpa jargon pemasaran (\\\"revolusioner\\\", \\\"terdepan\\\", \\\"solusi terbaik\\\").\\n- Jangan mengarang angka, statistik, nama klien, testimoni, atau hasil. Jika sebuah klaim tidak bisa diverifikasi, tulis \\\"[PERLU DIVERIFIKASI: ...]\\\" agar pemilik memeriksanya.\\n- Jangan menjanjikan peringkat Google, penjualan, atau hasil tertentu.\\n\\nTugas Anda: menulis satu draf artikel blog untuk situs Awak AI Studio. Draf akan ditinjau dan disunting pemilik sebelum terbit.\\n\\nAturan isi:\\n- 600 sampai 900 kata, Markdown. Mulai dari paragraf pembuka, tanpa judul H1 (judul disimpan terpisah). Gunakan H2 untuk bagian, daftar bila itemnya memang terpisah.\\n- Praktis untuk pemilik UMKM di Indonesia, khususnya konteks Medan bila relevan. Beri langkah yang bisa dikerjakan.\\n- Jangan mengarang statistik, nama klien, testimoni, atau kutipan. Klaim faktual yang tidak pasti ditandai \\\"[PERLU DIVERIFIKASI: ...]\\\".\\n- Jangan menyebut harga kecuali ada di KNOWLEDGE BASE, dan hanya sebagai \\\"mulai dari\\\".\\n- Penutup berisi ajakan ringan berkonsultasi, satu kalimat, tanpa tekanan.\\n\\nAturan metadata:\\n- \\\"category\\\" harus persis salah satu: \\\"AI untuk UMKM\\\", \\\"Studi Kasus\\\", \\\"Tips Digital\\\". Studi Kasus hanya bila topik memang studi kasus nyata; jika tidak ada fakta nyata, pilih kategori lain.\\n- \\\"slug\\\": huruf kecil, angka, dan tanda hubung saja (regex ^[a-z0-9]+(-[a-z0-9]+)*$), maksimal 70 karakter.\\n- \\\"title\\\": maksimal 70 karakter, sentence case.\\n- \\\"excerpt\\\": satu sampai dua kalimat, maksimal 180 karakter.\\n\\nKeluaran: HANYA JSON valid: {\\\"title\\\": \\\"...\\\", \\\"slug\\\": \\\"...\\\", \\\"excerpt\\\": \\\"...\\\", \\\"category\\\": \\\"...\\\", \\\"content\\\": \\\"markdown\\\"}\";\nconst t = $('Normalize topic').first().json;\nconst kb = $input.first().json.data;\nconst user = 'Topik: ' + t.topic + '\\nKata kunci utama: ' + (t.keyword || '-') + '\\nCatatan: ' + (t.notes || '-') + '\\n\\nTulis artikelnya.';\nreturn [{ json: { request: { model: ($env.ANTHROPIC_MODEL || 'claude-sonnet-5-5'), max_tokens: 4096, system: PROMPT + '\\n\\nKNOWLEDGE BASE:\\n' + kb, messages: [{ role: 'user', content: user }] } } }];"
+      },
+      "id": "d595bab7-abc9-bf19-a9c9-69942ebc5f5c",
+      "name": "Build request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "={{ $env.ANTHROPIC_API_KEY }}"
+            },
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.request) }}",
+        "options": {}
+      },
+      "id": "e344dd77-df8c-9303-92d6-39b4f369a411",
+      "name": "Claude: write draft",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1300,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function parseModelJson(res) {\n  const t = (res.content || []).filter(function (b) { return b.type === 'text'; }).map(function (b) { return b.text; }).join('');\n  const m = t.match(/\\{[\\s\\S]*\\}/);\n  if (!m) throw new Error('Model returned no JSON: ' + t.slice(0, 200));\n  return JSON.parse(m[0]);\n}\n\nconst o = parseModelJson($input.first().json);\nconst CATS = ['AI untuk UMKM', 'Studi Kasus', 'Tips Digital'];\nfunction slugify(s) {\n  return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70).replace(/-+$/, '');\n}\nconst title = String(o.title || '').trim().slice(0, 120);\nif (!title) throw new Error('Draft has no title');\nlet slug = String(o.slug || '').trim();\nif (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) slug = slugify(title);\nconst content = String(o.content || '').trim();\nif (content.length < 1500) throw new Error('Draft too short (' + content.length + ' chars)');\nconst category = CATS.indexOf(o.category) >= 0 ? o.category : 'AI untuk UMKM';\nconst flags = (content.match(/\\[PERLU DIVERIFIKASI/g) || []).length;\nreturn [{ json: { title: title, slug: slug, excerpt: String(o.excerpt || '').slice(0, 200), category: category, content: content, flags: flags } }];"
+      },
+      "id": "7aa95300-31bd-ddc0-47e2-6e8f1282e725",
+      "name": "Validate draft",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/posts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $env.SUPABASE_SERVICE_KEY }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.SUPABASE_SERVICE_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ title: $json.title, slug: $json.slug, excerpt: $json.excerpt, category: $json.category, content: $json.content, status: \"draft\" }) }}",
+        "options": {}
+      },
+      "id": "3a1f92d4-054a-0e1b-df6e-0a7f03875a56",
+      "name": "Save draft to Supabase",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1820,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const t = $('Normalize topic').first().json;\nconst p = $input.first().json;\nreturn t.topicId ? [{ json: { topicId: t.topicId, postId: p.id } }] : [];"
+      },
+      "id": "94cee142-d9f8-d878-5756-f2262706655e",
+      "name": "Topic from queue?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/content_topics?id=eq.{{ $json.topicId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{ $env.SUPABASE_SERVICE_KEY }}"
+            },
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.SUPABASE_SERVICE_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ status: \"used\", used_at: new Date().toISOString(), post_id: $json.postId }) }}",
+        "options": {}
+      },
+      "id": "9edf0ae2-e069-bb10-6a5f-14f473235177",
+      "name": "Mark topic used",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2340,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $('Validate draft').first().json;\nconst lines = [\n  'Draf artikel baru siap ditinjau. Belum terbit.',\n  '',\n  'Judul: ' + d.title,\n  'Kategori: ' + d.category,\n  'Slug: ' + d.slug,\n  d.flags ? 'Perhatian: ' + d.flags + ' klaim ditandai [PERLU DIVERIFIKASI]. Periksa dan hapus tandanya sebelum terbit.' : 'Tidak ada klaim yang ditandai, tetap periksa fakta.',\n  '',\n  'Untuk menerbitkan: Supabase > Table Editor > posts > cari slug di atas > ubah status menjadi published. Hapus baris untuk menolak.',\n  '',\n  '----- ISI -----',\n  d.content,\n];\nreturn [{ json: { subject: 'Draf blog: ' + d.title, text: lines.join('\\n') } }];"
+      },
+      "id": "8ddb6a80-e3c6-231f-832f-7a092e491749",
+      "name": "Build review email",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.resend.com/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $env.RESEND_API_KEY }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ from: $env.MAIL_FROM, to: [$env.OWNER_EMAIL], subject: $json.subject, text: $json.text }) }}",
+        "options": {}
+      },
+      "id": "331acad5-444b-32a9-24d9-153a1be846ca",
+      "name": "Email owner",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2340,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Weekly schedule (Mon 08:00)": {
+      "main": [
+        [
+          {
+            "node": "Next queued topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Next queued topic": {
+      "main": [
+        [
+          {
+            "node": "Normalize topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual webhook": {
+      "main": [
+        [
+          {
+            "node": "Normalize topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize topic": {
+      "main": [
+        [
+          {
+            "node": "Get knowledge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get knowledge": {
+      "main": [
+        [
+          {
+            "node": "Build request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build request": {
+      "main": [
+        [
+          {
+            "node": "Claude: write draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude: write draft": {
+      "main": [
+        [
+          {
+            "node": "Validate draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate draft": {
+      "main": [
+        [
+          {
+            "node": "Save draft to Supabase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save draft to Supabase": {
+      "main": [
+        [
+          {
+            "node": "Topic from queue?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Build review email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Topic from queue?": {
+      "main": [
+        [
+          {
+            "node": "Mark topic used",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build review email": {
+      "main": [
+        [
+          {
+            "node": "Email owner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
