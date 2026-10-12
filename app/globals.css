@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Awak AI Studio design tokens (dark is the default theme). */
+:root {
+  --black-1000: #000000;
+  --black-950: #07080c;
+  --black-900: #0c0e14;
+  --black-850: #12141c;
+  --black-800: #191c26;
+  --black-700: #242836;
+  --black-600: #323748;
+
+  --blue-700: #0342e6;
+  --blue-550: #1a6ff5;
+  --blue-500: #0560f3;
+  --blue-450: #5aa2ff;
+  --blue-400: #1390fb;
+  --blue-300: #2ab2fc;
+  --blue-200: #47cffb;
+
+  --text-strong: #ffffff;
+  --text-body: #c8c9d0;
+  --text-muted: #9496a1;
+  --text-subtle: #6e707b;
+  --text-link: var(--blue-450);
+  --text-highlight: var(--blue-300);
+  --text-eyebrow: var(--blue-200);
+
+  --surface-page: var(--black-950);
+  --surface-section: var(--black-900);
+  --surface-card: var(--black-850);
+  --surface-raised: var(--black-800);
+  --surface-input: var(--black-900);
+  --surface-featured: #06152f;
+
+  --border-default: var(--black-700);
+  --border-strong: var(--black-600);
+  --border-featured: var(--blue-500);
+
+  --accent: var(--blue-500);
+  --accent-hover: var(--blue-550);
+  --accent-press: var(--blue-700);
+  --accent-soft: rgba(5, 96, 243, 0.16);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--surface-page);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(19, 144, 251, 0.45);
+  border-radius: 6px;
+}
+
+/* In-page anchors clear the sticky navbar. */
+[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Blog / long-form text. */
+.prose-awak h2 {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text-strong);
+  margin: 2.25rem 0 0.75rem;
+}
+.prose-awak h3 {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-strong);
+  margin: 1.75rem 0 0.5rem;
+}
+.prose-awak p {
+  margin: 1rem 0;
+}
+.prose-awak ul,
+.prose-awak ol {
+  margin: 1rem 0;
+  padding-left: 1.25rem;
+}
+.prose-awak ul {
+  list-style: disc;
+}
+.prose-awak ol {
+  list-style: decimal;
+}
+.prose-awak li {
+  margin: 0.4rem 0;
+}
+.prose-awak strong {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+.prose-awak a {
+  color: var(--text-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-awak a:hover {
+  color: #fff;
+}

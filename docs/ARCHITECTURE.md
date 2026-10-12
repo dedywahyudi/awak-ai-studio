@@ -1,0 +1,101 @@
+# Architecture
+
+## Principles
+
+1. **One source of truth per fact.** Prices in `lib/pricing.ts`, brand/contact in `lib/site.ts`, content in `content/`. Pages render; they do not own data.
+2. **Works with nothing configured.** Every integration (Supabase, Resend, webhook, WhatsApp number, demo video) is optional at build and run time and degrades gracefully. This keeps previews, CI, and local dev frictionless.
+3. **Server by default.** Pages are React Server Components. Client JS exists only where needed: the mobile menu and the lead form. First Load JS is ~96 kB.
+4. **Secrets stay server-side.** The service role key is read only in `lib/supabase/server.ts` and only used from a server action.
+5. **Human in the loop for content.** No auto-publish. Drafts are invisible to the public by database policy, not by app code.
+
+## Request flows
+
+**Lead capture**
+
+```
+Form (client) -> submitLead server action
+   honeypot -> rate limit -> Zod validate
+   -> insert into Supabase `leads` (service role, RLS blocks everyone else)
+   -> Promise.allSettled([ Resend email, n8n webhook ])
+   -> success if saved OR notified
+```
+
+A failed email never loses a lead (it is already in the database), and a failed database write never loses a lead if the notification went out.
+
+**Blog**
+
+```
+/blog, /blog/[slug] -> lib/posts.ts -> Supabase (anon key, RLS: published only)
+                                    -> falls back to content/posts.ts
+ISR: revalidate = 3600
+```
+
+## Folder map
+
+```
+app/                 routes, layout, sitemap, robots, OG image, server action
+components/ui        primitives (Button, Section, JsonLd, icons)
+components/layout    Navbar, Footer, WhatsAppFloat
+components/sections  PricingCards, CustomBand, Faq, Steps, DemoPlayer, ChatPreview, Cards
+components/forms     LeadForm (client)
+lib/                 site, pricing, seo, schema (Zod), whatsapp, email, notify, posts, supabase/
+content/             posts (fallback), case studies, services
+supabase/migrations  SQL schema + RLS
+docs/                this file
+```
+
+## Decisions and trade-offs
+
+| Decision | Why | Cost / when to revisit |
+|---|---|---|
+| Next.js 14 (per brief) | Stable App Router, easy Vercel deploy | Upgrade to 15/16 when convenient; the code uses no deprecated APIs beyond `headers()` being sync |
+| Self-hosted fonts via `next/font/local` | No third-party request, no layout shift, builds offline | Latin subset only; add subsets if you localise |
+| Tailwind + CSS variable tokens | Matches the Awak design system; theming by swapping variables | `/opacity` modifiers do not work on variable colors: use arbitrary values |
+| Case studies as static TS | Few, hand-written, rarely change | Move to Supabase if you add many |
+| Blog in Supabase, Markdown | Matches brief; non-engineers can edit in the dashboard | Dashboard editing is crude: add a CMS (see roadmap) once you publish weekly |
+| WhatsApp via `wa.me` links + webhook to n8n | No WhatsApp provider lock-in, zero cost, works today | The brief names Twilio/360dialog: they plug in behind the n8n workflow, not in this codebase |
+| In-memory rate limit + honeypot | Good enough for launch, no extra service | Per-instance on serverless: add Turnstile or Upstash before running ads |
+| No CSP header | CSP breaks Next inline scripts without nonces | Add a nonce-based CSP once traffic justifies it |
+| Vercel Analytics | No cookie banner needed, zero setup | Switch to Plausible if you want custom events and public dashboards |
+
+## Security notes
+
+- RLS is enabled on `leads` (no policies) and `posts` (public read of published only).
+- Server action validates with Zod and caps field lengths (also enforced in SQL).
+- Email bodies are plain text: user input is never put into HTML.
+- Markdown renders without raw HTML, so a compromised post cannot inject script.
+- Security headers (HSTS, nosniff, frame, referrer, permissions) are set in `next.config.mjs`.
+- Personal data is collected, so keep `/kebijakan-privasi` current and honour deletion requests (delete the row in Supabase).
+
+## Testing (not included yet)
+
+Add when the first paying client arrives: Vitest for `lib/schema.ts` and `lib/pricing.ts`, and one Playwright test that submits the contact form against a test Supabase project. CI already runs lint, typecheck, and build.
+
+## Feature roadmap
+
+Ordered by impact on revenue, not by effort.
+
+**Before launch**
+- Real demo video, real WhatsApp number, privacy policy review, Google Business Profile, Search Console.
+- UTM capture: store `utm_source/medium/campaign` and referrer on each lead so you know which channel pays.
+
+**First month**
+- **Live demo chatbot on the site** (a chat widget answering about your own services). It is the strongest sales asset for an AI chat product. Build on Supabase pgvector + a model API, scoped to your own content.
+- Cloudflare Turnstile on the forms.
+- Booking embed (Cal.com) for the free consultation.
+- Content pipeline: n8n generates a draft → inserts `status='draft'` into `posts` → you review → publish. Matches the approval rule in the brief.
+- Testimonials and client logos once you have real ones.
+
+**Later**
+- `/admin` lead dashboard with Supabase Auth (status new/contacted/closed, notes, follow-up reminders). Supabase Studio is enough until you have ~20 leads a month.
+- Client portal (Supabase Auth is already planned in the brief): chatbot usage, unanswered questions report, content calendar approvals. This is also what justifies the monthly fee.
+- Payment links for retainers (Midtrans or Xendit).
+- English version for the AI-app-repair product aimed outside Medan: separate landing page, not part of the Medan site.
+- Programmatic local SEO pages (industry × district) once the first ones prove out.
+
+## Known gaps
+
+- Brand name, founder name and bio, email, social links, and demo video are placeholders in `lib/site.ts`.
+- `/kebijakan-privasi` is a template and needs legal review.
+- Case study results are intentionally empty until real data exists.
+- The AI Chat data-handling claims on `/harga` (FAQ) are written conservatively. Verify them against your actual provider terms and contract wording before launch.
