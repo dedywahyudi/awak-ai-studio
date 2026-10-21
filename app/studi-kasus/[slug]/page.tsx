@@ -26,7 +26,7 @@ export default function ProjectPage({ params }: { params: Params }) {
 
   return (
     <>
-      <article className="bg-page pb-16 pt-12 md:pb-24 md:pt-20">
+      <article className="bg-page pb-16 pt-12 md:pb-28 md:pt-20">
         <Container className="flex max-w-3xl flex-col gap-10">
           <div className="flex flex-col gap-4">
             <Link href="/studi-kasus" className="inline-flex items-center gap-1.5 text-sm text-link hover:text-white">

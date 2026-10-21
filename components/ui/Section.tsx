@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
-import { LaunchLogo } from '@/components/ui/launch-logo';
-import { StarfieldBackground } from '@/components/ui/starfield-background';
+import { LaunchLogo } from '@/components/ui/LaunchLogo';
+import { StarfieldBackground } from '@/components/ui/StarfieldBackground';
 
 export function Container({
   children,
@@ -76,10 +76,13 @@ export function PageHeader({
   eyebrow,
   title,
   description,
+  actions,
 }: {
   eyebrow: string;
   title: React.ReactNode;
   description?: React.ReactNode;
+  /** Buttons under the description. */
+  actions?: React.ReactNode;
 }) {
   return (
     <header className="relative -mt-16 overflow-hidden bg-page pb-20 pt-[7.5rem] md:pb-28 md:pt-40 lg:flex lg:min-h-[680px] lg:flex-col lg:justify-center">
@@ -91,6 +94,7 @@ export function PageHeader({
             {title}
           </h1>
           {description && <p className="max-w-2xl text-lg leading-relaxed text-body">{description}</p>}
+          {actions && <div className="mt-4 flex flex-col gap-3 sm:flex-row">{actions}</div>}
         </div>
         {/* Nothing else lives on the right of a page hero, so the logo fills it (desktop only). */}
         <LaunchLogo className="hidden justify-self-center lg:flex" />

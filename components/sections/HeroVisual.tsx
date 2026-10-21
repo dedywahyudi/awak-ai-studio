@@ -1,7 +1,7 @@
 'use client';
 
 import { Badge } from '@/components/ui/Badge';
-import { useActiveService } from '@/components/sections/active-service';
+import { useActiveService } from '@/components/sections/ActiveService';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Bell, Database, FileText, Globe, MessageCircle, Plug, Send, Smartphone, UserCheck, Workflow, type LucideIcon } from 'lucide-react';
 

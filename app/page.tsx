@@ -3,10 +3,7 @@ import Link from 'next/link';
 import { BarChart3, Clock, Code2, HeartPulse, MessageCircle, ShieldCheck, Wallet, Workflow, Zap } from 'lucide-react';
 import { site } from '@/lib/site';
 import { Button } from '@/components/ui/Button';
-import { Container, Eyebrow, Hl, Section } from '@/components/ui/Section';
-import { StarfieldBackground } from '@/components/ui/starfield-background';
-import { HeroServiceFlip, ServiceProvider } from '@/components/sections/active-service';
-import { HeroVisual } from '@/components/sections/HeroVisual';
+import { Container, Hl, PageHeader, Section } from '@/components/ui/Section';
 import { ClientLogos } from '@/components/sections/ClientLogos';
 import { PricingCards } from '@/components/sections/PricingCards';
 import { AuditBand } from '@/components/sections/AuditBand';
@@ -22,7 +19,7 @@ const trust = [
   {
     icon: Clock,
     title: '10+ tahun pengalaman',
-    body: 'Senior Product Engineer. Proyek untuk klien enterprise seperti IBM, GE, dan T-Mobile lewat Topcoder.',
+    body: 'Senior Product Engineer. Proyek untuk klien lokal dan enterprise di seluruh dunia, termasuk lewat Topcoder dan Distributed.',
   },
   {
     icon: ShieldCheck,
@@ -114,40 +111,29 @@ function UseCaseGroup({
 export default function HomePage() {
   return (
     <>
-      <section className="relative -mt-16 overflow-hidden bg-page pb-20 pt-[7.5rem] md:pb-28 md:pt-40 lg:flex lg:min-h-[680px] lg:flex-col lg:justify-center lg:pb-24">
-        <StarfieldBackground />
-        <Container className="relative z-10 grid items-center gap-12 lg:grid-cols-[1.25fr_1fr]">
-          <ServiceProvider>
-            <div className="flex flex-col gap-8">
-              <Eyebrow>{`${site.city} — Studio AI untuk bisnis`}</Eyebrow>
-              <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.06] tracking-[-0.03em] text-strong sm:text-5xl md:text-[56px]">
-                <span className="sr-only">AI Chat, Otomatisasi, dan Solusi Custom untuk Bisnis Anda.</span>
-                <span aria-hidden="true" className="flex flex-col items-start gap-3">
-                  <HeroServiceFlip />
-                  <span>untuk Bisnis Anda.</span>
-                </span>
-              </h1>
-              <p className="max-w-2xl text-lg leading-relaxed text-body md:text-xl">
-                Biarkan AI mengurus pekerjaan yang berulang, tim Anda fokus pada yang penting. Dibangun di atas data
-                dan alur kerja Anda, dengan manusia tetap memegang keputusan.
-              </p>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Button href="/audit-gratis" arrow>
-                  Minta Audit Gratis
-                </Button>
-                <Button variant="secondary" href="#layanan-harga">
-                  Lihat Harga
-                </Button>
-              </div>
-            </div>
-            <HeroVisual />
-          </ServiceProvider>
-        </Container>
-      </section>
+      <PageHeader
+        eyebrow={`${site.city} — Studio AI untuk bisnis`}
+        title={
+          <>
+            Tiga cara AI <Hl>bekerja untuk bisnis</Hl> Anda.
+          </>
+        }
+        description="AI Chat, Otomatisasi, dan Solusi Custom, dibangun di atas data dan alur kerja bisnis Anda sendiri, dengan manusia tetap memegang keputusan."
+        actions={
+          <>
+            <Button href="/audit-gratis" arrow>
+              Minta Audit Gratis
+            </Button>
+            <Button variant="secondary" href="#layanan-harga">
+              Lihat Harga
+            </Button>
+          </>
+        }
+      />
 
       <ClientLogos />
 
-      <section aria-label="Alasan memilih kami" className="border-y border-line bg-section py-10 md:py-12">
+      <section aria-label="Alasan memilih kami" className="border-y border-line bg-section py-12 md:py-16">
         <Container>
           <ul className="grid gap-8 md:grid-cols-3">
             {trust.map(({ icon: Icon, title, body }) => (

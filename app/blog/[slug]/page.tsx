@@ -37,7 +37,7 @@ export default async function PostPage({ params }: { params: Params }) {
   if (!post) notFound();
 
   return (
-    <article className="bg-page pb-20 pt-12 md:pb-28 md:pt-20">
+    <article className="bg-page pb-16 pt-12 md:pb-28 md:pt-20">
       <Container className="flex max-w-3xl flex-col gap-8">
         <div className="flex flex-col gap-4">
           <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm text-link hover:text-white">

@@ -1,7 +1,9 @@
 import { clients, type Client } from '@/content/profile';
+import { aiTools } from '@/content/ai-tools';
 import { techStack } from '@/content/tech-stack';
 import { Container } from '@/components/ui/Section';
 import { Marquee } from '@/components/sections/Marquee';
+import { IconChip } from '@/components/sections/IconChip';
 import { TechChip } from '@/components/sections/TechChip';
 
 export function ClientLogo({ client }: { client: Client }) {
@@ -16,7 +18,7 @@ export function ClientLogo({ client }: { client: Client }) {
         </>
       ) : client.src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={client.src} alt={client.name} height={28} className="h-7 w-auto" />
+        <img src={client.src} alt={client.name} decoding="async" className="h-auto max-h-9 w-auto max-w-[132px]" />
       ) : (
         <span className="font-display text-xl font-extrabold tracking-[-0.01em]">{client.name}</span>
       )}
@@ -24,28 +26,45 @@ export function ClientLogo({ client }: { client: Client }) {
   );
 }
 
-/** Proof band under the hero: one row of clients, one row of tech (opposite directions). Data: content/. */
+/** The three sliders (clients, AI and automation tools, tech stack), one slow row each, with the brand note. */
+export function LogoRows() {
+  return (
+    <div className="flex flex-col gap-5">
+      <p className="font-mono text-xs font-medium uppercase tracking-[0.1em] text-eyebrow">
+        Klien lokal dan seluruh dunia
+      </p>
+      <Marquee label="Klien dan proyek">
+        {clients.map((c) => (
+          <ClientLogo key={c.name} client={c} />
+        ))}
+      </Marquee>
+      <p className="mt-4 font-mono text-xs font-medium uppercase tracking-[0.1em] text-eyebrow">
+        AI dan otomatisasi yang kami pakai
+      </p>
+      <Marquee label="AI dan otomatisasi" repeat={2} reverse>
+        {aiTools.map((t) => (
+          <IconChip key={t.name} tool={t} />
+        ))}
+      </Marquee>
+      <p className="mt-4 font-mono text-xs font-medium uppercase tracking-[0.1em] text-eyebrow">
+        Teknologi yang kami pakai
+      </p>
+      <Marquee label="Tech stack">
+        {techStack.map((t) => (
+          <TechChip key={t.name} tech={t} />
+        ))}
+      </Marquee>
+      <p className="text-xs text-subtle">Nama merek adalah milik masing-masing pemiliknya.</p>
+    </div>
+  );
+}
+
+/** Proof band under the home hero. Data: content/. */
 export function ClientLogos() {
   return (
     <section aria-label="Klien dan proyek" className="bg-page pb-12 md:pb-16">
-      <Container className="flex flex-col gap-5">
-        <p className="font-mono text-xs font-medium uppercase tracking-[0.1em] text-eyebrow">
-          Klien dan proyek dari seluruh dunia
-        </p>
-        <Marquee label="Klien dan proyek" durationSeconds={50} repeat={3}>
-          {clients.map((c) => (
-            <ClientLogo key={c.name} client={c} />
-          ))}
-        </Marquee>
-        <p className="text-xs text-subtle">Nama merek adalah milik masing-masing pemiliknya.</p>
-        <p className="mt-4 font-mono text-xs font-medium uppercase tracking-[0.1em] text-eyebrow">
-          Teknologi yang kami pakai
-        </p>
-        <Marquee label="Tech stack" durationSeconds={55} reverse>
-          {techStack.map((t) => (
-            <TechChip key={t.name} tech={t} />
-          ))}
-        </Marquee>
+      <Container>
+        <LogoRows />
       </Container>
     </section>
   );

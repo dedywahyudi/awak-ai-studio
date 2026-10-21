@@ -26,7 +26,7 @@ export default function KontakPage({ searchParams }: { searchParams?: { kebutuha
         }
         description="Konsultasi pertama gratis. Cara tercepat adalah WhatsApp. Atau tinggalkan pesan di formulir ini."
       />
-      <section className="bg-page pb-12 pt-0 md:pb-20">
+      <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container className="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
           <div className="flex flex-col gap-6">
             <Button variant="whatsapp" href={waLink(waConsultMessage())} className="self-start">

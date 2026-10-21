@@ -12,7 +12,7 @@ export function ClosingCta({
   topic?: string;
 }) {
   return (
-    <section className="bg-page pb-20 pt-16 md:pb-28 md:pt-24">
+    <section className="bg-page py-16 md:py-28">
       <Container>
         <div className="flex flex-col items-start gap-8 rounded-pricing border border-line bg-section p-8 md:p-12">
           <div className="flex max-w-2xl flex-col gap-3">

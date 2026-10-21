@@ -14,15 +14,15 @@ export default function StudiKasusPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Pekerjaan kami"
+        eyebrow="Studi kasus"
         title={
           <>
-            Pekerjaan kami, <Hl>apa adanya</Hl>.
+            Proyek AI dan sistem yang <Hl>pernah kami bangun</Hl>.
           </>
         }
-        description="Proyek-proyek yang pernah kami bangun, ditampilkan tanpa nama klien atau produk. Studi kasus klien lengkap dengan hasilnya akan ditambahkan seiring proyek selesai."
+        description="Pilihan proyek yang pernah kami kerjakan, ditampilkan tanpa nama klien atau produk. Studi kasus lengkap beserta hasilnya akan kami tambahkan seiring proyek selesai."
       />
-      <section className="bg-page pb-16 pt-0 md:pb-24">
+      <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container>
           <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (

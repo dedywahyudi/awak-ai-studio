@@ -1,3 +1,4 @@
+import { aiTools } from '@/content/ai-tools';
 import {
   siApachekafka,
   siCircleci,
@@ -17,10 +18,14 @@ import {
   siWordpress,
 } from 'simple-icons';
 
+const openAiPath = aiTools.find((t) => t.name === 'ChatGPT')?.path;
+
 export interface TechItem {
   name: string;
-  /** SVG path from simple-icons (CC0). Omitted where no icon is available: name only. */
+  /** SVG path (24x24). From simple-icons (CC0), or the OpenAI mark shared with ai-tools.ts. */
   path?: string;
+  /** Fill the path with the even-odd rule (needed by the OpenAI mark). */
+  evenodd?: boolean;
 }
 
 /** Technologies from the founder's own projects and skills. */
@@ -31,7 +36,7 @@ export const techStack: TechItem[] = [
   { name: 'Python', path: siPython.path },
   { name: 'Django', path: siDjango.path },
   { name: 'PostgreSQL', path: siPostgresql.path },
-  { name: 'OpenAI' },
+  { name: 'OpenAI', path: openAiPath, evenodd: true },
   { name: 'Mapbox', path: siMapbox.path },
   { name: 'Apache Kafka', path: siApachekafka.path },
   { name: 'MobX', path: siMobx.path },

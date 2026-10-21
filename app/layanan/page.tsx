@@ -5,7 +5,8 @@ import { pricingFaq } from '@/content/faq';
 import { categories, getProduct, headlinePrice, priceNote } from '@/lib/pricing';
 import { waConsultMessage, waLink } from '@/lib/whatsapp';
 import { Button } from '@/components/ui/Button';
-import { Container, Hl, PageHeader, Section } from '@/components/ui/Section';
+import { Container, Section } from '@/components/ui/Section';
+import { ServicesHero } from '@/components/sections/ServicesHero';
 import { AuditBand } from '@/components/sections/AuditBand';
 import { Faq } from '@/components/sections/Faq';
 import { ClosingCta } from '@/components/sections/ClosingCta';
@@ -23,20 +24,12 @@ const icons = { 'message-circle': MessageCircle, workflow: Workflow, globe: Glob
 export default function LayananPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Layanan dan harga"
-        title={
-          <>
-            Tiga cara AI <Hl>bekerja untuk bisnis</Hl> Anda.
-          </>
-        }
-        description="Dari balas pelanggan sampai bikin laporan, dibangun di atas data dan alur kerja bisnis Anda sendiri. Harga awal tertulis jelas; angka final kami tulis setelah konsultasi."
-      />
+      <ServicesHero eyebrow="Layanan dan harga" secondaryHref="#layanan" secondaryLabel="Lihat Harga" />
 
-      <section className="bg-page pb-12 pt-0 md:pb-20">
+      <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container className="flex flex-col gap-5">
           <AuditBand />
-          <div className="grid gap-5 lg:grid-cols-3">
+          <div id="layanan" className="grid scroll-mt-24 gap-5 lg:grid-cols-3">
             {services.map((s) => {
               const Icon = icons[s.icon];
               const product = getProduct(s.id);

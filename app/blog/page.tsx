@@ -45,7 +45,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { kateg
         }
         description="Catatan praktis dari membangun AI Chat, otomatisasi, analisis data, dan platform berbasis AI. Bahasa sehari-hari, tanpa istilah yang bikin pusing."
       />
-      <section className="bg-page pb-10 pt-0 md:pb-16">
+      <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container className="flex flex-col gap-8">
           <nav aria-label="Kategori blog" className="flex flex-wrap gap-2">
             {tab('/blog', 'Semua', !active)}

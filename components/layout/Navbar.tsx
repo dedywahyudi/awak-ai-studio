@@ -9,7 +9,7 @@ import { Menu, X } from 'lucide-react';
 import { nav, site } from '@/lib/site';
 import { waConsultMessage, waLink } from '@/lib/whatsapp';
 import { Button } from '@/components/ui/Button';
-import { NavTabs } from '@/components/ui/vercel-tabs';
+import { NavTabs } from '@/components/ui/NavTabs';
 
 /** Active when the current path is the item's path or a child of it. Query-string items never match. */
 const isActive = (pathname: string, href: string) =>

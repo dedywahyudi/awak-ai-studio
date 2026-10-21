@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from 'react';
 import { Globe, MessageCircle, Workflow } from 'lucide-react';
-import { FlipWords } from '@/components/ui/flip-words';
+import { FlipWords } from '@/components/ui/FlipWords';
 
 /** Which of the three services the hero headline is showing: 0 AI Chat, 1 Otomatisasi, 2 Solusi Custom. */
 const ActiveServiceContext = createContext<number>(0);

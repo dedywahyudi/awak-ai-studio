@@ -21,3 +21,6 @@ seo-report.md
 
 # editor
 .idea/
+
+# source art for client logos (the converted logos live in public/images/clients/)
+public/clients/

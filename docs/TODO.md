@@ -10,9 +10,10 @@ is either a placeholder or a gap found in the first-time-visitor review.
       the wording match across `/tentang`, the footer, and `lib/site.ts`.
 - [ ] **`/keamanan` page.** What customer data is sent where, retention, human review, UU PDP. Larger buyers ask for
       this first. Needs your real data-handling facts (see the FAQ answers in `content/faq.ts` as a starting point).
-- [ ] **Client names, countries, logos.** Only IBM, GE, T-Mobile, Bulletproof.co.uk, TargetDefense.com are known.
-      Add more in `content/profile.ts` (`clients`). Logos: drop files in `public/images/clients/` and set `src`.
-      Only GE has a logo today; the rest show as text. You need permission to show client logos.
+- [ ] **Client logos.** The clients are listed in `content/profile.ts` (`clients`), 40 in total. Logos come from your
+      uploaded `public/clients/` files, converted to light grey in `public/images/clients/`. All clients have a logo. Comcast, Chevron, Canon and Zurich are from Wikimedia Commons (SVG, public domain, trademarked). You need permission to show client logos, and
+      the list (including Pemprovsu, Korlantas, Kemenpar) is yours to confirm. `public/clients/clients.psd` is
+      4 MB: do not commit it.
 - [ ] **Results for projects and case studies.** Cards on `/studi-kasus` have no outcomes. Add real numbers only
       (`content/profile.ts`). Never invent metrics.
 - [ ] **AI details of the budgeting system.** The card is titled "Sistem anggaran berbasis AI" but describes no AI

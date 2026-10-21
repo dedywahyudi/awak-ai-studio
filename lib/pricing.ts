@@ -115,7 +115,6 @@ export const products: Product[] = [
 ];
 
 /** The two products shown as cards. Custom is shown as a separate contact band. */
-export const cardProducts = products.filter((p) => p.id !== 'custom');
 export const customProduct = products.find((p) => p.id === 'custom') as Product;
 
 export const getProduct = (id: ProductId) => products.find((p) => p.id === id) as Product;
