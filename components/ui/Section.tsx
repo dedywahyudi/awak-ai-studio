@@ -1,4 +1,6 @@
 import { cn } from '@/lib/utils';
+import { LaunchLogo } from '@/components/ui/launch-logo';
+import { StarfieldBackground } from '@/components/ui/starfield-background';
 
 export function Container({
   children,
@@ -32,6 +34,8 @@ interface SectionProps {
   tone?: 'page' | 'section';
   children?: React.ReactNode;
   className?: string;
+  /** First section under a hero: no top padding, the hero's bottom padding provides the space. */
+  flushTop?: boolean;
 }
 
 export function Section({
@@ -42,11 +46,12 @@ export function Section({
   tone = 'page',
   children,
   className,
+  flushTop = false,
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={cn('py-16 md:py-28', tone === 'section' ? 'bg-section' : 'bg-page', className)}
+      className={cn(flushTop ? 'pb-16 md:pb-28' : 'py-16 md:py-28', tone === 'section' ? 'bg-section' : 'bg-page', className)}
     >
       <Container>
         {(eyebrow || title || description) && (
@@ -77,13 +82,18 @@ export function PageHeader({
   description?: React.ReactNode;
 }) {
   return (
-    <header className="bg-page pb-4 pt-14 md:pt-24">
-      <Container className="flex max-w-container flex-col gap-4">
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-strong md:text-[56px]">
-          {title}
-        </h1>
-        {description && <p className="max-w-2xl text-lg leading-relaxed text-body">{description}</p>}
+    <header className="relative -mt-16 overflow-hidden bg-page pb-20 pt-[7.5rem] md:pb-28 md:pt-40 lg:flex lg:min-h-[680px] lg:flex-col lg:justify-center">
+      <StarfieldBackground />
+      <Container className="relative z-10 grid max-w-container items-center gap-12 lg:grid-cols-[1.3fr_1fr]">
+        <div className="flex flex-col gap-4">
+          <Eyebrow>{eyebrow}</Eyebrow>
+          <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-strong md:text-[56px]">
+            {title}
+          </h1>
+          {description && <p className="max-w-2xl text-lg leading-relaxed text-body">{description}</p>}
+        </div>
+        {/* Nothing else lives on the right of a page hero, so the logo fills it (desktop only). */}
+        <LaunchLogo className="hidden justify-self-center lg:flex" />
       </Container>
     </header>
   );

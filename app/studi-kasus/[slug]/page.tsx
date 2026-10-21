@@ -1,27 +1,28 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
-import { caseStudies, getCaseStudy } from '@/content/case-studies';
+import { ArrowLeft, Check } from 'lucide-react';
+import { getProject, projects } from '@/content/profile';
 import { pageMeta } from '@/lib/seo';
+import { Badge } from '@/components/ui/Badge';
 import { Container, Eyebrow, Hl } from '@/components/ui/Section';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 
 type Params = { slug: string };
 
 export function generateStaticParams(): Params[] {
-  return caseStudies.map((c) => ({ slug: c.slug }));
+  return projects.map((p) => ({ slug: p.slug }));
 }
 
 export function generateMetadata({ params }: { params: Params }): Metadata {
-  const study = getCaseStudy(params.slug);
-  if (!study) return {};
-  return pageMeta({ title: study.title, description: study.summary, path: `/studi-kasus/${study.slug}` });
+  const project = getProject(params.slug);
+  if (!project) return {};
+  return pageMeta({ title: project.title, description: project.intro, path: `/studi-kasus/${project.slug}` });
 }
 
-export default function CaseStudyPage({ params }: { params: Params }) {
-  const study = getCaseStudy(params.slug);
-  if (!study) notFound();
+export default function ProjectPage({ params }: { params: Params }) {
+  const project = getProject(params.slug);
+  if (!project) notFound();
 
   return (
     <>
@@ -31,43 +32,22 @@ export default function CaseStudyPage({ params }: { params: Params }) {
             <Link href="/studi-kasus" className="inline-flex items-center gap-1.5 text-sm text-link hover:text-white">
               <ArrowLeft size={16} aria-hidden="true" /> Semua studi kasus
             </Link>
-            <Eyebrow>{study.category}</Eyebrow>
+            <Eyebrow>{project.period}</Eyebrow>
             <h1 className="font-display text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-strong md:text-5xl">
-              {study.title}
+              {project.title}
             </h1>
-            <p className="text-lg leading-relaxed text-body">{study.summary}</p>
+            <p className="text-lg leading-relaxed text-body">{project.intro}</p>
           </div>
 
-          <section className="flex flex-col gap-3">
+          <section className="flex flex-col gap-4">
             <h2 className="font-display text-2xl font-bold text-strong">
-              <Hl>Tantangan</Hl>
+              <Hl>Yang dikerjakan</Hl>
             </h2>
-            <p className="leading-relaxed text-body">{study.challenge}</p>
-          </section>
-
-          <section className="flex flex-col gap-5">
-            <h2 className="font-display text-2xl font-bold text-strong">
-              <Hl>Pendekatan</Hl>
-            </h2>
-            <ol className="flex flex-col gap-4">
-              {study.approach.map((a, i) => (
-                <li key={a.title} className="rounded-card border border-line bg-card p-5">
-                  <p className="font-mono text-xs text-eyebrow">{String(i + 1).padStart(2, '0')}</p>
-                  <h3 className="mt-1 font-display text-lg font-bold text-strong">{a.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{a.body}</p>
-                </li>
-              ))}
-            </ol>
-          </section>
-
-          <section className="flex flex-col gap-3">
-            <h2 className="font-display text-2xl font-bold text-strong">
-              <Hl>Teknologi</Hl>
-            </h2>
-            <ul className="flex flex-wrap gap-2">
-              {study.stack.map((s) => (
-                <li key={s} className="rounded-full border border-line-strong px-3 py-1 text-sm text-body">
-                  {s}
+            <ul className="flex flex-col gap-3">
+              {project.points.map((point) => (
+                <li key={point} className="flex items-start gap-2.5 leading-relaxed text-body">
+                  <Check size={18} strokeWidth={2.5} className="mt-1 shrink-0 text-link" aria-hidden="true" />
+                  {point}
                 </li>
               ))}
             </ul>
@@ -75,13 +55,26 @@ export default function CaseStudyPage({ params }: { params: Params }) {
 
           <section className="flex flex-col gap-3">
             <h2 className="font-display text-2xl font-bold text-strong">
-              <Hl>Hasil</Hl>
+              <Hl>Teknologi</Hl>
             </h2>
-            <p className="leading-relaxed text-body">{study.result}</p>
+            <ul className="flex flex-wrap gap-2">
+              {project.stack.map((s) => (
+                <li key={s}>
+                  <Badge tone="neutral">{s}</Badge>
+                </li>
+              ))}
+            </ul>
           </section>
+
+          <p className="text-sm text-muted">
+            Ditampilkan tanpa nama klien atau produk. Detail lebih lengkap bisa kami bahas langsung.
+          </p>
         </Container>
       </article>
-      <ClosingCta />
+      <ClosingCta
+        title="Punya kebutuhan serupa?"
+        description="Ceritakan konteksnya. Kami bantu menilai apa yang masuk akal dikerjakan."
+      />
     </>
   );
 }

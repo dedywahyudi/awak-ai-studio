@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import { articleJsonLd, pageMeta } from '@/lib/seo';
+import { categoryLabel } from '@/lib/types';
 import { formatDate } from '@/lib/utils';
 import { waConsultMessage, waLink } from '@/lib/whatsapp';
 import { Container, Eyebrow } from '@/components/ui/Section';
@@ -43,7 +44,7 @@ export default async function PostPage({ params }: { params: Params }) {
             <ArrowLeft size={16} aria-hidden="true" /> Semua tulisan
           </Link>
           <div className="flex items-center gap-3 text-sm">
-            <Eyebrow>{post.category}</Eyebrow>
+            <Eyebrow>{categoryLabel(post.category)}</Eyebrow>
             <time dateTime={post.publishedAt} className="text-subtle">
               {formatDate(post.publishedAt)}
             </time>
@@ -64,8 +65,8 @@ export default async function PostPage({ params }: { params: Params }) {
             <Button variant="whatsapp" href={waLink(waConsultMessage())}>
               Chat WhatsApp
             </Button>
-            <Button variant="secondary" href="/harga">
-              Lihat Harga <ArrowRight size={16} aria-hidden="true" />
+            <Button variant="secondary" href="/layanan">
+              Lihat Layanan dan Harga <ArrowRight size={16} aria-hidden="true" />
             </Button>
           </div>
         </aside>

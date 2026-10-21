@@ -36,7 +36,7 @@ ISR: revalidate = 3600
 app/                 routes, layout, sitemap, robots, OG image, server action
 components/ui        primitives (Button, Section, JsonLd, icons)
 components/layout    Navbar, Footer
-components/sections  PricingCards, CustomBand, Faq, Steps, DemoPlayer, ChatPreview, Cards
+components/sections  PricingCards, AuditBand, Faq, Steps, HeroVisual, Marquee, Cards
 components/forms     LeadForm (client)
 lib/                 site, pricing, seo, schema (Zod), whatsapp, email, notify, posts, supabase/
 content/             posts (fallback), case studies, services
@@ -110,4 +110,4 @@ Ordered by impact on revenue, not by effort.
 - Brand name, founder name and bio, email, social links, and demo video are placeholders in `lib/site.ts`.
 - `/kebijakan-privasi` is a template and needs legal review.
 - Case study results are intentionally empty until real data exists.
-- The AI Chat data-handling claims on `/harga` (FAQ) are written conservatively. Verify them against your actual provider terms and contract wording before launch.
+- The AI Chat data-handling claims on `/layanan` (FAQ) are written conservatively. Verify them against your actual provider terms and contract wording before launch.

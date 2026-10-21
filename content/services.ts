@@ -2,7 +2,7 @@ import type { ProductId } from '@/lib/pricing';
 
 export interface Service {
   id: ProductId;
-  icon: 'pen-line' | 'message-circle' | 'workflow' | 'globe';
+  icon: 'message-circle' | 'workflow' | 'globe';
   title: string;
   summary: string;
   forWho: string;
@@ -11,20 +11,6 @@ export interface Service {
 
 /** Longer descriptions for /layanan. Prices come from lib/pricing.ts, not from here. */
 export const services: Service[] = [
-  {
-    id: 'marketing-ai',
-    icon: 'pen-line',
-    title: 'Marketing AI',
-    summary:
-      'Blog dan konten media sosial dibuat rutin dengan bantuan AI, lalu direview manusia sebelum tayang.',
-    forWho: 'Bisnis yang ingin konsisten tampil tapi tidak punya waktu atau tim konten.',
-    bullets: [
-      'Panduan gaya bahasa agar konten terdengar seperti bisnis Anda',
-      'Kalender konten bulanan yang disepakati bersama',
-      'AI untuk draf dan caption, foto produk asli untuk visual',
-      'Artikel blog yang membantu bisnis Anda ditemukan di pencarian',
-    ],
-  },
   {
     id: 'ai-chat',
     icon: 'message-circle',
@@ -37,6 +23,7 @@ export const services: Service[] = [
       'Diteruskan ke tim Anda saat bot tidak yakin',
       'Laporan bulanan pertanyaan yang belum bisa dijawab',
       'Data tetap di database Anda dan tidak dipakai melatih model',
+      'Modul booking dan pengingat janji temu untuk klinik, salon, bengkel, dan kursus (opsional)',
     ],
   },
   {
@@ -47,9 +34,10 @@ export const services: Service[] = [
       'Pekerjaan administratif yang berulang berjalan sendiri: dari form, WhatsApp, dan spreadsheet ke sistem Anda.',
     forWho: 'Bisnis yang waktunya habis untuk salin-tempel data, bikin invoice, dan menyusun laporan.',
     bullets: [
-      'Lead baru otomatis masuk ke Sheets atau CRM',
-      'Penawaran, invoice, dan laporan dibuat otomatis',
-      'Notifikasi ke tim saat ada yang perlu ditindaklanjuti',
+      'Hingga 5 alur kerja, mulai dari satu paket awal yang paling mendesak',
+      'Follow-up Lead: lead yang tidak dibalas diingatkan otomatis ke tim dan calon klien',
+      'Penawaran Otomatis: penawaran dan invoice dibuat dari data, terkirim setelah Anda setujui',
+      'Pengingat dan Ulasan: pengingat janji temu atau pembayaran, lalu permintaan ulasan',
       'Dipantau dan diperbaiki bila alur gagal',
     ],
   },

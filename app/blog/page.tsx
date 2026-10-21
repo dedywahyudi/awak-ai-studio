@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { pageMeta } from '@/lib/seo';
 import { getPostsByCategory } from '@/lib/posts';
-import { postCategories } from '@/lib/types';
+import { categoryLabel, postCategories } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Container, Hl, PageHeader } from '@/components/ui/Section';
 import { PostCard } from '@/components/sections/Cards';
@@ -9,7 +9,7 @@ import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata = pageMeta({
   title: 'Blog',
-  description: 'Panduan praktis AI dan digital untuk UMKM: chatbot, konten, otomatisasi, dan tips tampil di pencarian.',
+  description: 'Catatan praktis dari proyek AI nyata: AI Chat, otomatisasi, analisis data, dan platform berbasis AI untuk bisnis.',
   path: '/blog',
 });
 
@@ -40,16 +40,16 @@ export default async function BlogPage({ searchParams }: { searchParams: { kateg
         eyebrow="Blog"
         title={
           <>
-            Panduan AI yang <Hl>masuk akal</Hl> untuk UMKM.
+            Panduan AI dari <Hl>proyek nyata</Hl>.
           </>
         }
-        description="Tulisan praktis, bahasa sehari-hari, tanpa istilah yang bikin pusing."
+        description="Catatan praktis dari membangun AI Chat, otomatisasi, analisis data, dan platform berbasis AI. Bahasa sehari-hari, tanpa istilah yang bikin pusing."
       />
-      <section className="bg-page py-10 md:py-16">
+      <section className="bg-page pb-10 pt-0 md:pb-16">
         <Container className="flex flex-col gap-8">
           <nav aria-label="Kategori blog" className="flex flex-wrap gap-2">
             {tab('/blog', 'Semua', !active)}
-            {postCategories.map((c) => tab(`/blog?kategori=${encodeURIComponent(c)}`, c, c === active))}
+            {postCategories.map((c) => tab(`/blog?kategori=${encodeURIComponent(c)}`, categoryLabel(c), c === active))}
           </nav>
           {posts.length === 0 ? (
             <p className="text-body">Belum ada tulisan di kategori ini.</p>
@@ -62,7 +62,10 @@ export default async function BlogPage({ searchParams }: { searchParams: { kateg
           )}
         </Container>
       </section>
-      <ClosingCta />
+      <ClosingCta
+        title="Punya pertanyaan soal AI di bisnis Anda?"
+        description="Ceritakan konteksnya. Kami bantu menjawab, tanpa kewajiban."
+      />
     </>
   );
 }

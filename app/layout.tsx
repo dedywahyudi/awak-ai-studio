@@ -31,7 +31,7 @@ const mono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}: AI untuk UMKM di ${site.city}`,
+    default: `${site.name}: AI untuk bisnis semua skala`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: site.name,
     locale: site.locale,
-    title: `${site.name}: AI untuk UMKM di ${site.city}`,
+    title: `${site.name}: AI untuk bisnis semua skala`,
     description: site.description,
     url: '/',
   },

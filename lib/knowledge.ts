@@ -1,5 +1,5 @@
 import { site } from '@/lib/site';
-import { products } from '@/lib/pricing';
+import { auditProduct, bookingModule, categories, otomatisasiPackages, products } from '@/lib/pricing';
 import { shortIdr } from '@/lib/utils';
 import { services } from '@/content/services';
 import { pricingFaq } from '@/content/faq';
@@ -29,14 +29,33 @@ export function buildKnowledgeBase(): string {
     out.push(`### ${p.name}: ${price}`);
     out.push(service?.summary ?? p.tagline);
     if (service) out.push(`Cocok untuk: ${service.forWho}`);
+    const cat = categories.find((c) => c.id === p.categoryId);
+    if (cat) out.push(`Kategori: ${cat.name} (${cat.job})`);
     out.push(...p.features.map((f) => `- ${f}`));
+    if (p.id === 'otomatisasi') {
+      out.push('Paket awal (satu alur kerja per paket, termasuk dalam biaya setup):');
+      out.push(...otomatisasiPackages.filter((k) => k.status === 'live').map((k) => `- ${k.name}: ${k.job}`));
+    }
     out.push('');
   }
 
+  out.push(`### ${auditProduct.name}: gratis, tanpa kewajiban (penawaran awal)`);
+  out.push(auditProduct.tagline);
+  out.push(...auditProduct.features.map((f) => `- ${f}`));
+  out.push('- Setelah tes, estimasi biaya perbaikan ditulis sebelum klien membayar apa pun');
+  out.push('');
+  out.push(`### Modul tambahan AI Chat: ${bookingModule.name}, ${shortIdr(bookingModule.from)} sampai ${shortIdr(bookingModule.to)} per bulan`);
+  out.push('Pemesanan janji temu lewat WhatsApp dan pengingat otomatis. Cocok untuk klinik, salon, bengkel, kursus.');
+  out.push('');
+
   out.push('## Aturan harga');
   out.push('- Semua harga adalah titik awal. Angka final ditulis setelah konsultasi, sebelum klien membayar.');
-  out.push('- Semua layanan punya biaya bulanan. Marketing AI memakai kontrak minimal 3 bulan.');
+  out.push('- Semua layanan berbayar punya biaya bulanan setelah setup selesai.');
   out.push('- Biaya WhatsApp Business API dibayar langsung oleh klien ke penyedia.');
+  out.push('');
+
+  out.push('## Syarat WhatsApp Business API');
+  out.push('Umumnya dibutuhkan NIB, NPWP, nomor +62 yang belum terdaftar di WhatsApp, halaman bisnis, dan website; akta pendirian untuk PT. Syarat bisa berbeda per penyedia, jadi minta calon klien memastikannya bersama kami.');
   out.push('');
 
   out.push('## FAQ');

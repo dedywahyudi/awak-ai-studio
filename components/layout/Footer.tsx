@@ -15,7 +15,7 @@ export function Footer() {
   const socials = Object.entries(site.social).filter(([, url]) => url);
 
   return (
-    <footer className="border-t border-line bg-black pb-24 pt-14 md:pb-14">
+    <footer className="border-t border-line bg-black pb-14 pt-14">
       <Container>
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
@@ -38,9 +38,6 @@ export function Footer() {
               </span>
             </div>
             <p className="font-display text-base font-bold text-strong">{site.tagline}</p>
-            <p className="max-w-xs text-sm text-muted">
-              Tim lokal di {site.city}. Setiap klien ditangani langsung oleh engineer senior.
-            </p>
           </div>
 
           <FooterColumn title="Layanan" links={footerLinks.layanan} />

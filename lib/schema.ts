@@ -29,6 +29,7 @@ export const leadSchema = z.object({
     .min(10, 'Ceritakan kebutuhan Anda minimal 10 karakter')
     .max(2000, 'Maksimal 2000 karakter'),
   sourcePage: z.string().trim().max(200).default('/'),
+  alamat: z.string().trim().max(200, 'Alamat terlalu panjang').optional().default(''),
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;

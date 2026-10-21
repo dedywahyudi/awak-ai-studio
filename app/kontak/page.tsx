@@ -5,6 +5,7 @@ import { waConsultMessage, waLink } from '@/lib/whatsapp';
 import { Button } from '@/components/ui/Button';
 import { Container, Hl, PageHeader } from '@/components/ui/Section';
 import { LeadForm } from '@/components/forms/LeadForm';
+import { needFromQuery } from '@/lib/lead-options';
 
 export const metadata = pageMeta({
   title: 'Kontak',
@@ -12,7 +13,8 @@ export const metadata = pageMeta({
   path: '/kontak',
 });
 
-export default function KontakPage() {
+export default function KontakPage({ searchParams }: { searchParams?: { kebutuhan?: string } }) {
+  const defaultNeed = needFromQuery[searchParams?.kebutuhan ?? ''] ?? '';
   return (
     <>
       <PageHeader
@@ -24,7 +26,7 @@ export default function KontakPage() {
         }
         description="Konsultasi pertama gratis. Cara tercepat adalah WhatsApp. Atau tinggalkan pesan di formulir ini."
       />
-      <section className="bg-page py-12 md:py-20">
+      <section className="bg-page pb-12 pt-0 md:pb-20">
         <Container className="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
           <div className="flex flex-col gap-6">
             <Button variant="whatsapp" href={waLink(waConsultMessage())} className="self-start">
@@ -46,7 +48,7 @@ export default function KontakPage() {
             </ul>
           </div>
           <div className="rounded-pricing border border-line bg-card p-6 md:p-8">
-            <LeadForm />
+            <LeadForm defaultNeed={defaultNeed} />
           </div>
         </Container>
       </section>

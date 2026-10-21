@@ -15,7 +15,7 @@ type Variant = 'general' | 'custom';
 const fieldBase =
   'w-full rounded-[10px] border border-line-strong bg-field px-4 py-3 text-base text-strong placeholder:text-subtle focus:border-accent-ring focus:outline-none focus:ring-[3px] focus:ring-[rgba(19,144,251,.45)]';
 
-export function LeadForm({ variant = 'general' }: { variant?: Variant }) {
+export function LeadForm({ variant = 'general', defaultNeed = '' }: { variant?: Variant; defaultNeed?: string }) {
   const pathname = usePathname();
   const uid = useId();
   const [state, setState] = useState<LeadFormState | null>(null);
@@ -112,7 +112,7 @@ export function LeadForm({ variant = 'general' }: { variant?: Variant }) {
 
       <div className={cn('grid gap-5', custom && 'sm:grid-cols-2')}>
         {field('jenisKebutuhan', custom ? 'Jenis proyek' : 'Yang Anda butuhkan', (id, bad) => (
-          <select {...a11y(id, bad)} required defaultValue="" className={cn(fieldBase, bad && 'border-danger')}>
+          <select {...a11y(id, bad)} required defaultValue={needOptions.some((o) => o === defaultNeed) ? defaultNeed : ''} className={cn(fieldBase, bad && 'border-danger')}>
             <option value="" disabled>
               Pilih salah satu
             </option>
@@ -141,12 +141,27 @@ export function LeadForm({ variant = 'general' }: { variant?: Variant }) {
           )}
       </div>
 
+      {field(
+        'alamat',
+        'Alamat',
+        (id, bad) => (
+          <input
+            {...a11y(id, bad)}
+            type="text"
+            autoComplete="street-address"
+            placeholder="Alamat bisnis Anda (jalan, kota)"
+            className={cn(fieldBase, bad && 'border-danger')}
+          />
+        ),
+        false,
+      )}
+
       {field('deskripsi', 'Ceritakan kebutuhan Anda', (id, bad) => (
         <textarea
           {...a11y(id, bad)}
           rows={5}
           required
-          placeholder="Contoh: toko kue, banyak pertanyaan harga lewat WhatsApp, ingin dibalas otomatis."
+          placeholder="Contoh: klinik gigi, banyak pertanyaan harga lewat WhatsApp, ingin dibalas otomatis. Untuk Audit Gratis, ceritakan alur kerja dan masalah yang paling menyita waktu."
           className={cn(fieldBase, 'resize-y', bad && 'border-danger')}
         />
       ))}

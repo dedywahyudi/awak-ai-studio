@@ -7,87 +7,99 @@ import type { Post } from '@/lib/types';
  */
 export const localPosts: Post[] = [
   {
-    title: 'Chatbot WhatsApp untuk UMKM: apa yang bisa dan tidak bisa dijawab',
-    slug: 'chatbot-whatsapp-untuk-umkm',
+    title: 'Menambahkan OpenAI ke platform yang sudah berjalan: apa yang perlu disiapkan',
+    slug: 'menambahkan-openai-ke-platform-berjalan',
     category: 'AI untuk UMKM',
-    publishedAt: '2026-10-01T09:00:00+07:00',
+    publishedAt: '2026-10-12T09:00:00+07:00',
     coverImage: null,
     excerpt:
-      'Chatbot bagus untuk pertanyaan berulang. Ini daftar yang cocok diserahkan ke bot, dan yang sebaiknya tetap dijawab manusia.',
-    content: `Pemilik usaha sering membayangkan chatbot sebagai pengganti seluruh tim admin. Kenyataannya, chatbot paling berguna untuk **pertanyaan yang itu-itu saja**.
+      'Dari pengalaman memimpin platform tantangan coding berbasis AI: satu kasus pakai dulu, panggilan AI di server, dan manusia yang meninjau.',
+    content: `Salah satu proyek yang kami pimpin adalah platform tantangan coding berbasis AI, dibangun dengan React dan Django, dengan integrasi OpenAI. Berikut hal yang kami pegang saat menambahkan AI ke platform yang sudah berjalan.
 
-## Cocok diserahkan ke chatbot
+## Mulai dari satu kasus pakai
 
-- Harga produk dan daftar menu
-- Jam buka dan lokasi
-- Cek ketersediaan stok yang datanya sudah rapi
-- Cara pesan, cara bayar, dan estimasi pengiriman
-- Pertanyaan di luar jam kerja
+Jangan menaruh AI di semua fitur sekaligus. Pilih satu masalah yang jelas, misalnya membantu membuat atau menjelaskan soal, lalu ukur apakah pengguna benar-benar terbantu. Fitur kedua baru dikerjakan setelah yang pertama terbukti berguna.
 
-## Sebaiknya tetap manusia
+## Jalankan panggilan AI di server
 
-- Komplain dan situasi yang butuh empati
-- Negosiasi harga atau pesanan khusus
-- Pertanyaan yang jawabannya belum tertulis di mana pun
+Kunci API tidak boleh berada di browser. Letakkan panggilan ke model di backend, batasi siapa yang boleh memanggil, dan catat pemakaiannya. Dengan begitu biaya bisa dipantau dan penyalahgunaan bisa dibatasi.
 
-## Kuncinya ada di data
+## Siapkan jalur cadangan
 
-Chatbot hanya sebaik data yang Anda berikan. Daftar harga yang berantakan akan menghasilkan jawaban yang berantakan. Karena itu, sebagian besar pekerjaan kami di awal adalah merapikan data bisnis Anda, bukan memasang bot.
+API model bisa lambat atau gagal. Putuskan lebih dulu apa yang dilihat pengguna saat itu terjadi: pesan yang jelas, hasil sebelumnya, atau jalur manual. Fitur AI yang gagal tanpa penjelasan lebih merusak kepercayaan daripada tidak punya fitur AI.
 
-Chatbot yang baik juga tahu kapan harus berhenti. Saat ia tidak yakin, pertanyaan diteruskan ke tim Anda lengkap dengan riwayat percakapan.`,
+## Tetap ada manusia yang meninjau
+
+Keluaran model perlu diperiksa sebelum dipakai atas nama platform Anda. Tentukan siapa yang meninjau, dan pada tahap mana. AI mempercepat pekerjaan, tetapi tanggung jawab tetap pada manusia.
+
+## Jangan lupakan performa dan SEO
+
+Fitur AI yang membuat halaman lambat akan mengurangi manfaatnya. Muat bagian AI secara terpisah, dan pastikan konten utama tetap cepat terbaca oleh pengguna dan mesin pencari.
+
+Sedang mempertimbangkan AI untuk produk digital Anda? Kami bisa membantu memetakan kasus pakai yang paling masuk akal lewat audit kebutuhan gratis.`,
   },
   {
-    title: '5 pertanyaan sebelum memakai AI di bisnis Anda',
-    slug: 'lima-pertanyaan-sebelum-memakai-ai',
-    category: 'Tips Digital',
-    publishedAt: '2026-10-05T09:00:00+07:00',
+    title: 'Dasbor analisis sentimen: apa yang membuatnya benar-benar dipakai tim',
+    slug: 'dasbor-analisis-sentimen-media-sosial',
+    category: 'AI untuk UMKM',
+    publishedAt: '2026-10-15T09:00:00+07:00',
     coverImage: null,
     excerpt:
-      'Sebelum membayar alat atau agensi apa pun, jawab lima pertanyaan ini. Hasilnya menentukan AI mana yang layak dicoba.',
-    content: `AI bukan tujuan. Ia alat untuk menyelesaikan masalah tertentu. Sebelum mengeluarkan uang, jawab lima pertanyaan ini.
+      'Dari proyek aplikasi analisis sentimen media sosial: dasbor, laporan, dan peringatan, serta cara membuat tim mau membukanya setiap minggu.',
+    content: `Kami pernah memimpin pengembangan aplikasi web untuk menganalisis sentimen media sosial secara real-time, lengkap dengan dasbor, laporan, dan peringatan. Fitur pentingnya bukan grafik yang banyak, tetapi apakah tim benar-benar memakainya.
 
-## 1. Pekerjaan apa yang paling sering berulang?
+## Mulai dari keputusan, bukan dari data
 
-Balas pesan yang sama, input pesanan, bikin laporan. Pekerjaan berulang adalah kandidat terbaik.
+Tanyakan dulu: keputusan apa yang ingin dibantu? Misalnya, kapan harus membalas keluhan publik, atau kapan kampanye perlu diubah. Dasbor yang dirancang dari keputusan akan lebih singkat dan lebih berguna.
 
-## 2. Berapa jam per minggu yang habis untuk itu?
+## Peringatan lebih sering dipakai daripada dasbor
 
-Hitung kasar. Jika hanya satu jam per minggu, mungkin belum perlu otomatisasi.
+Tidak semua orang membuka dasbor setiap hari. Peringatan saat sentimen berubah tajam membuat tim bereaksi tepat waktu. Pastikan ambang peringatan bisa diatur supaya tidak terlalu sering berbunyi.
 
-## 3. Di mana datanya sekarang?
+## Laporan rutin menjaga kebiasaan
 
-Buku tulis, WhatsApp pribadi, atau spreadsheet? Data yang tersebar harus dirapikan dulu.
+Ringkasan mingguan yang dikirim otomatis membantu pimpinan melihat tren tanpa membuka aplikasi. Jaga agar laporannya pendek dan menjawab pertanyaan yang sama setiap kali.
 
-## 4. Siapa yang memeriksa hasilnya?
+## Sentimen adalah sinyal, bukan kebenaran
 
-AI bisa salah. Tentukan orang yang meninjau hasil, terutama untuk konten yang tayang atas nama bisnis Anda.
+Model bisa salah membaca sindiran, bahasa gaul, atau campuran bahasa. Sediakan cara melihat komentar aslinya di balik angka, dan biarkan manusia memutuskan langkah berikutnya.
 
-## 5. Bagaimana mengukur berhasil atau tidak?
+## Ukur dampaknya
 
-Contoh: jumlah pertanyaan pelanggan yang terjawab tanpa admin, atau waktu yang dihemat per minggu. Tanpa ukuran, sulit tahu apakah uang Anda kembali.`,
+Catat apakah waktu respons terhadap keluhan membaik setelah dasbor dipakai. Tanpa ukuran, sulit tahu apakah investasinya berhasil.
+
+Punya data yang menumpuk tanpa dipakai? Ceritakan lewat audit kebutuhan gratis kami.`,
   },
   {
-    title: 'Kenapa bisnis lokal di Medan perlu tampil di Google Maps dan pencarian',
-    slug: 'bisnis-lokal-medan-google-maps',
-    category: 'Tips Digital',
-    publishedAt: '2026-10-09T09:00:00+07:00',
+    title: 'Membangun aplikasi AI untuk data sensitif: pelajaran dari proyek bidang medis',
+    slug: 'aplikasi-ai-data-sensitif-bidang-medis',
+    category: 'AI untuk UMKM',
+    publishedAt: '2026-10-18T09:00:00+07:00',
     coverImage: null,
     excerpt:
-      'Banyak calon pelanggan mencari "dekat saya" sebelum memutuskan. Ini langkah dasar agar bisnis Anda mudah ditemukan.',
-    content: `Calon pelanggan sering mulai dari pencarian: nama jenis usaha plus lokasi. Jika bisnis Anda tidak muncul, Anda kalah sebelum percakapan dimulai.
+      'Dari aplikasi web AI yang menganalisis pola aliran darah dan memprediksi hasil pascaprosedur: AI sebagai pendukung keputusan, bukan pengganti ahli.',
+    content: `Kami pernah mengembangkan frontend dan backend sebuah aplikasi web AI yang menganalisis pola aliran darah dan memprediksi hasil pascaprosedur. Bekerja dengan data sensitif mengubah cara kami membangun.
 
-## Langkah dasar
+## AI mendukung, ahli memutuskan
 
-1. **Klaim profil Google Business.** Isi nama, alamat, jam buka, dan nomor WhatsApp yang sama persis dengan di website.
-2. **Pasang foto asli.** Foto tempat dan produk yang sebenarnya lebih dipercaya daripada foto stok.
-3. **Minta ulasan dari pelanggan nyata.** Balas setiap ulasan, termasuk yang kritis.
-4. **Buat website yang cepat di ponsel.** Sebagian besar pengunjung datang dari ponsel.
-5. **Tulis halaman layanan dengan kata yang dipakai pelanggan,** bukan istilah internal.
+Prediksi adalah masukan untuk ahli, bukan keputusan akhir. Rancang antarmuka agar jelas bahwa hasilnya perkiraan, dan beri ruang bagi ahli untuk menolak atau mengoreksinya.
 
-## Konsisten itu penting
+## Tampilkan dasar dari hasilnya
 
-Nama, alamat, dan nomor telepon yang berbeda-beda di tiap tempat membingungkan mesin pencari dan calon pelanggan. Samakan di mana pun bisnis Anda terdaftar.
+Angka tanpa penjelasan sulit dipercaya. Tampilkan data apa yang dipakai dan seberapa yakin sistem, supaya pengguna bisa menilai sendiri.
 
-Blog juga membantu: setiap artikel yang menjawab pertanyaan pelanggan adalah pintu masuk baru dari pencarian.`,
+## Batasi data yang dikumpulkan
+
+Simpan hanya data yang benar-benar dibutuhkan, dan batasi siapa yang bisa mengaksesnya. Di Indonesia, data pribadi tunduk pada UU Pelindungan Data Pribadi (UU 27/2022), jadi aturan ini perlu dipahami sejak awal.
+
+## Catat setiap hasil
+
+Simpan riwayat masukan, hasil, dan siapa yang meninjau. Catatan ini penting untuk menelusuri kesalahan dan memperbaiki sistem.
+
+## Validasi bersama pakar bidangnya
+
+Engineer tidak cukup untuk menilai apakah hasil masuk akal secara medis. Libatkan pakar sejak awal, bukan hanya di akhir.
+
+Prinsip yang sama berlaku di bidang lain yang datanya sensitif, seperti keuangan dan layanan publik. Ingin membahas kebutuhan Anda? Mulai dari audit kebutuhan gratis.`,
   },
 ];

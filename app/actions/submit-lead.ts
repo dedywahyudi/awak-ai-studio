@@ -54,7 +54,12 @@ export async function submitLead(formData: FormData): Promise<LeadFormState> {
     }
     return { ok: false, message: 'Periksa kembali isian Anda.', errors };
   }
-  const lead = parsed.data;
+  // No schema change: the address is carried as a prefix on the description, so it reaches the
+  // database, the email, the webhook and the lead-qualifier automation.
+  const lead = parsed.data.alamat
+    ? { ...parsed.data, deskripsi: `[Alamat: ${parsed.data.alamat}] ${parsed.data.deskripsi}`.slice(0, 2000) }
+    : parsed.data;
+  const okMessage = OK_MESSAGE;
 
   // 1) Persist.
   let saved = false;
@@ -86,12 +91,12 @@ export async function submitLead(formData: FormData): Promise<LeadFormState> {
   const notified = results.some((r) => r.status === 'fulfilled' && r.value === true);
 
   // 3) Confirm.
-  if (saved || notified) return { ok: true, message: OK_MESSAGE };
+  if (saved || notified) return { ok: true, message: okMessage };
 
   // Local development without any backend configured: log and pretend it worked.
   if (process.env.NODE_ENV !== 'production') {
     console.info('[lead] dev mode, nothing configured. Lead:', lead);
-    return { ok: true, message: `${OK_MESSAGE} (mode pengembangan: belum tersimpan)` };
+    return { ok: true, message: `${okMessage} (mode pengembangan: belum tersimpan)` };
   }
 
   console.error('[lead] not saved and not notified. Check Supabase / Resend env vars.');

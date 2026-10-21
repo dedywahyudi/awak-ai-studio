@@ -1,12 +1,12 @@
 import { pageMeta } from '@/lib/seo';
-import { caseStudies } from '@/content/case-studies';
+import { projects } from '@/content/profile';
 import { Container, Hl, PageHeader } from '@/components/ui/Section';
-import { CaseStudyCard } from '@/components/sections/Cards';
+import { ProjectCard } from '@/components/sections/Cards';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata = pageMeta({
   title: 'Studi Kasus',
-  description: 'Bagaimana kami membangun dan merawat sistem AI untuk bisnis nyata.',
+  description: 'Proyek AI dan sistem yang pernah kami bangun untuk bisnis dan organisasi, tanpa nama klien.',
   path: '/studi-kasus',
 });
 
@@ -14,22 +14,30 @@ export default function StudiKasusPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Studi kasus"
+        eyebrow="Pekerjaan kami"
         title={
           <>
-            Bukti kerja, <Hl>bukan janji</Hl>.
+            Pekerjaan kami, <Hl>apa adanya</Hl>.
           </>
         }
-        description="Kami mulai dengan membangun agensi kami sendiri. Studi kasus klien akan ditambahkan seiring proyek selesai."
+        description="Proyek-proyek yang pernah kami bangun, ditampilkan tanpa nama klien atau produk. Studi kasus klien lengkap dengan hasilnya akan ditambahkan seiring proyek selesai."
       />
-      <section className="bg-page py-12 md:py-20">
-        <Container className="grid gap-5 md:grid-cols-2">
-          {caseStudies.map((s) => (
-            <CaseStudyCard key={s.slug} study={s} />
-          ))}
+      <section className="bg-page pb-16 pt-0 md:pb-24">
+        <Container>
+          <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <li key={project.slug}>
+                <ProjectCard project={project} />
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
-      <ClosingCta />
+
+      <ClosingCta
+        title="Punya bisnis yang ingin dibantu?"
+        description="Ceritakan masalah yang ingin Anda selesaikan. Kami bantu memetakan solusinya."
+      />
     </>
   );
 }

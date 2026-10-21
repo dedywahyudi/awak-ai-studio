@@ -1,8 +1,16 @@
 import type { FaqItem } from '@/components/sections/Faq';
-import { discoveryRange } from '@/lib/pricing';
+import { auditProduct, discoveryRange } from '@/lib/pricing';
 
-/** Pricing FAQ. Rendered on /harga and also fed to the AI assistants via /api/knowledge. */
+/** Pricing FAQ. Rendered on /layanan and also fed to the AI assistants via /api/knowledge. */
 export const pricingFaq: FaqItem[] = [
+  {
+    q: 'Apa isi Audit Kebutuhan Gratis, dan apakah benar-benar gratis?',
+    a: `Ya, gratis dan tanpa kewajiban. Kami mengobrol tentang bisnis, alur kerja, dan masalah Anda, lalu mengirim ringkasan tertulis dalam ${auditProduct.turnaroundDays} hari kerja: apa yang Anda butuhkan dan layanan mana yang paling masuk akal. Bila Anda ingin lanjut, kami tulis estimasi biaya sebelum Anda membayar apa pun.`,
+  },
+  {
+    q: 'Apakah ada batas jumlah percakapan?',
+    a: 'Paket AI Chat sudah termasuk pemakaian wajar. Bila volume percakapan Anda jauh di atas itu, kami sampaikan di proposal dan menyepakati batas serta biaya tambahannya sebelum mulai. Tidak ada tagihan kejutan.',
+  },
   {
     q: 'Kenapa ada biaya bulanan?',
     a: 'Sistem AI perlu dipantau, diperbarui, dan diperbaiki saat ada yang berubah: harga baru, produk baru, atau alur yang gagal. Biaya bulanan membayar hosting, pemakaian model AI sampai batas wajar, pembaruan data, dan peninjauan rutin oleh engineer yang membangunnya.',
@@ -13,11 +21,15 @@ export const pricingFaq: FaqItem[] = [
   },
   {
     q: 'Apakah biaya WhatsApp Business API sudah termasuk?',
-    a: 'Belum. Biaya dari penyedia WhatsApp Business API dibayar langsung oleh Anda sesuai pemakaian, tanpa tambahan margin dari kami.',
+    a: 'Belum. Biaya dari penyedia WhatsApp Business API dibayar langsung oleh Anda sesuai pemakaian, tanpa tambahan margin dari kami. Menurut ketentuan Meta saat ini, balasan bebas dalam 24 jam setelah pelanggan menulis tidak dikenai biaya per pesan, sedangkan pesan template seperti pengingat janji temu dikenai biaya per pesan. Tarif ditentukan Meta dan bisa berubah; kami jelaskan perkiraannya di proposal.',
+  },
+  {
+    q: 'Apa syarat memakai WhatsApp Business API?',
+    a: 'Umumnya Anda perlu NIB, NPWP, nomor +62 yang belum terdaftar di WhatsApp, halaman bisnis, dan website. PT biasanya juga diminta akta pendirian. Syarat bisa berbeda per penyedia, jadi kami cek bersama Anda di awal. Bila belum memenuhi syarat, AI Chat bisa dipasang di website Anda lebih dulu.',
   },
   {
     q: 'Bagaimana dengan kontrak dan berhenti berlangganan?',
-    a: 'Marketing AI memakai kontrak minimal 3 bulan karena hasil konten baru terlihat setelah beberapa siklus. Layanan lain berjalan bulanan setelah setup selesai. Data dan akun tetap milik Anda bila Anda berhenti.',
+    a: 'Layanan berjalan bulanan setelah setup selesai. Data dan akun tetap milik Anda bila Anda berhenti.',
   },
   {
     q: 'Apa itu sesi discovery pada Solusi Custom?',

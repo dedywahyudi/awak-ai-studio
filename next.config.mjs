@@ -28,6 +28,15 @@ const nextConfig = {
       ? [{ protocol: 'https', hostname: supabaseHost, pathname: '/storage/v1/object/public/**' }]
       : [],
   },
+  async redirects() {
+    return [
+      { source: '/harga', destination: '/layanan', permanent: true },
+      { source: '/demo', destination: '/studi-kasus', permanent: true },
+      { source: '/studi-kasus/membangun-awak-ai-studio', destination: '/studi-kasus', permanent: true },
+      // Old audit link (the contact form with ?kebutuhan=audit) now has its own page.
+      { source: '/kontak', has: [{ type: 'query', key: 'kebutuhan', value: 'audit' }], destination: '/audit-gratis', permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }];
   },

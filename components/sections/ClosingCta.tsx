@@ -4,7 +4,7 @@ import { waConsultMessage, waLink } from '@/lib/whatsapp';
 
 export function ClosingCta({
   title = 'Mulai dengan satu percakapan.',
-  description = 'Ceritakan bisnis Anda. Kami bantu pilih layanan yang paling masuk akal dan tulis estimasinya sebelum Anda membayar apa pun.',
+  description = 'Ceritakan bisnis Anda. Kami bantu pilih layanan yang paling masuk akal.',
   topic,
 }: {
   title?: string;
@@ -12,9 +12,9 @@ export function ClosingCta({
   topic?: string;
 }) {
   return (
-    <section className="bg-page pb-20 md:pb-28">
+    <section className="bg-page pb-20 pt-16 md:pb-28 md:pt-24">
       <Container>
-        <div className="flex flex-col items-start gap-6 rounded-pricing border border-line-featured bg-featured p-8 md:flex-row md:items-center md:justify-between md:p-12">
+        <div className="flex flex-col items-start gap-8 rounded-pricing border border-line bg-section p-8 md:p-12">
           <div className="flex max-w-2xl flex-col gap-3">
             <h2 className="font-display text-3xl font-extrabold leading-tight tracking-[-0.03em] text-strong md:text-4xl">
               {title}

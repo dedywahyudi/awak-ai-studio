@@ -152,7 +152,7 @@ return [{ json: { request: { model: ${MODEL}, max_tokens: 1024, system: PROMPT +
     PARSE_JSON +
       String.raw`
 const out = parseModelJson($input.first().json);
-const CATS = ['Marketing AI', 'AI Chat', 'Otomatisasi', 'Solusi Custom', 'Belum jelas'];
+const CATS = ['Audit', 'AI Chat', 'Otomatisasi', 'Solusi Custom', 'Belum jelas'];
 const PRIO = ['tinggi', 'sedang', 'rendah'];
 const ai = {
   category: CATS.indexOf(out.category) >= 0 ? out.category : 'Belum jelas',

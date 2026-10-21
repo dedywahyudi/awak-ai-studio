@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { site } from '@/lib/site';
 
-export const alt = `${site.name}: AI untuk UMKM di ${site.city}`;
+export const alt = `${site.name}: AI untuk bisnis semua skala`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -21,8 +21,8 @@ export default function OpengraphImage() {
           color: '#FFFFFF',
         }}
       >
-        <div style={{ display: 'flex', fontSize: 28, color: '#47CFFB', letterSpacing: 4 }}>
-          {site.city.toUpperCase()} — AI UNTUK UMKM
+        <div style={{ display: 'flex', fontSize: 28, color: '#1390FB', letterSpacing: 4 }}>
+          {site.city.toUpperCase()} — AI UNTUK BISNIS
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <div style={{ display: 'flex', fontSize: 84, fontWeight: 800, lineHeight: 1.05, letterSpacing: -3 }}>

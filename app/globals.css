@@ -26,7 +26,7 @@
   --text-subtle: #6e707b;
   --text-link: var(--blue-450);
   --text-highlight: var(--blue-400);
-  --text-eyebrow: var(--blue-200);
+  --text-eyebrow: var(--blue-400);
 
   --surface-page: var(--black-950);
   --surface-section: var(--black-900);
@@ -130,4 +130,108 @@ body {
 }
 .prose-awak a:hover {
   color: #fff;
+}
+
+/* Logo slider: two identical groups scroll by half the track width, so the loop is seamless. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    mask-image: none;
+  }
+  .marquee-track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .marquee-track > [aria-hidden='true'] {
+    display: none;
+  }
+}
+
+/* Logo hover (after the countdown): engine ignites under the rocket cutout and the mark lifts; settles back on leave. */
+@keyframes flame-flicker {
+  0%, 100% { transform: translateX(-50%) scaleY(1); }
+  50% { transform: translateX(-50%) scaleY(0.82); }
+}
+.launch-body {
+  translate: 0 0;
+  transition: translate 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.launch-flame {
+  position: absolute;
+  left: 50%;
+  top: 79%;
+  width: 11%;
+  height: 22%;
+  transform: translateX(-50%);
+  transform-origin: top center;
+  border-radius: 50% 50% 50% 50% / 15% 15% 85% 85%;
+  background: var(--blue-300);
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+.launch-flame-core {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 48%;
+  height: 62%;
+  transform: translateX(-50%);
+  border-radius: 50% 50% 50% 50% / 15% 15% 85% 85%;
+  background: #fff;
+}
+.launch-logo[data-lifting='true'] .launch-body {
+  translate: 0 -12px;
+}
+.launch-logo[data-lifting='true'] .launch-flame {
+  opacity: 1;
+  animation: flame-flicker 0.14s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .launch-logo[data-lifting='true'] .launch-body {
+    translate: 0 0;
+  }
+  .launch-logo[data-lifting='true'] .launch-flame {
+    opacity: 0;
+    animation: none;
+  }
+}
+
+/* Flipping words: the old word folds away over its top edge, the next unfolds from below. */
+.flip-box {
+  perspective: 700px;
+}
+@keyframes flip-out {
+  to { transform: rotateX(-90deg); opacity: 0; }
+}
+@keyframes flip-in {
+  from { transform: rotateX(90deg); opacity: 0; }
+  to { transform: rotateX(0); opacity: 1; }
+}
+.flip-out {
+  animation: flip-out 0.26s ease-in forwards;
+  transform-origin: center;
+}
+.flip-in {
+  animation: flip-in 0.26s ease-out both;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip-out,
+  .flip-in {
+    animation: none;
+  }
 }

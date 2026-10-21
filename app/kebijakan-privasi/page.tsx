@@ -16,7 +16,7 @@ export default function PrivacyPage() {
   return (
     <>
       <PageHeader eyebrow="Legal" title="Kebijakan Privasi" description="Terakhir diperbarui: Oktober 2026." />
-      <section className="bg-page py-12 md:py-16">
+      <section className="bg-page pb-12 pt-0 md:pb-16">
         <Container className="max-w-3xl">
           <div className="prose-awak text-base leading-relaxed">
             <h2>Data yang kami kumpulkan</h2>

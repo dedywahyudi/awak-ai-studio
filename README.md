@@ -1,6 +1,6 @@
 # Awak AI Studio: website
 
-Company profile + lead-generation site for an AI-augmented digital agency in Medan, aimed at UMKM/SME owners. Bahasa Indonesia, mobile-first, WhatsApp-first conversion, blog for long-term SEO.
+Company profile + lead-generation site for an AI-augmented digital agency in Medan, aimed at businesses of every size, from small shops to large companies. Bahasa Indonesia, mobile-first, WhatsApp-first conversion, blog for long-term SEO.
 
 **Stack:** Next.js 14 (App Router) · TypeScript (strict) · Tailwind CSS · Supabase (Postgres) · Resend · Vercel
 
@@ -31,7 +31,7 @@ The site runs with **no env vars at all**: WhatsApp buttons fall back to `/konta
 3. **Email:** create a Resend account, verify your domain, set `RESEND_API_KEY`, `RESEND_FROM`, `LEAD_NOTIFY_EMAIL`.
 4. **WhatsApp notification of new leads (optional):** build an n8n workflow (Webhook trigger → WhatsApp node) and set `LEAD_WEBHOOK_URL` (+ `LEAD_WEBHOOK_SECRET`). The site sends each lead as JSON.
 5. **Domain + URL:** set `NEXT_PUBLIC_SITE_URL` to the production URL (drives sitemap, canonical URLs, Open Graph).
-6. **Fill the placeholders:** `lib/site.ts` (email, social links, founder), a demo video in `NEXT_PUBLIC_DEMO_VIDEO_URL`, real metrics in `content/case-studies.ts`.
+6. **Fill the placeholders:** `lib/site.ts` (email, social links, founder), real metrics in `content/profile.ts`.
 7. **Legal:** have `/kebijakan-privasi` reviewed (it is a template) against UU PDP.
 8. **SEO:** submit `/sitemap.xml` to Google Search Console and claim your Google Business Profile.
 
@@ -51,10 +51,10 @@ git push -u origin main
 
 | I want to change... | Edit |
 |---|---|
-| Prices, plans, card features | `lib/pricing.ts` (one file feeds home, /harga, /layanan, JSON-LD) |
+| Prices, plans, card features | `lib/pricing.ts` (one file feeds home, /layanan, JSON-LD) |
 | Brand name, tagline, contact, nav | `lib/site.ts` |
 | Service descriptions | `content/services.ts` |
-| Case studies | `content/case-studies.ts` |
+| Projects and case-study pages | `content/profile.ts` |
 | Blog posts | Supabase `posts` table (or `content/posts.ts` as fallback) |
 | Colors, radii, shadows | `app/globals.css` + `tailwind.config.ts` |
 | Form fields / validation | `lib/schema.ts`, `lib/lead-options.ts`, `components/forms/LeadForm.tsx` |

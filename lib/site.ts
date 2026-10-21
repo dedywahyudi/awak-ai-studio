@@ -7,7 +7,7 @@ export const site = {
   shortName: 'Awak',
   tagline: 'Bangun. Otomatisasi. Lepas Landas.',
   description:
-    'Agensi digital berbantuan AI di Medan. Chatbot WhatsApp, konten rutin, otomatisasi, dan web app custom untuk UMKM. Ditangani langsung engineer senior.',
+    'Studio AI di Medan. Asisten WhatsApp yang menjawab pelanggan 24 jam, otomatisasi kerja admin, dan solusi custom. Ditangani langsung engineer senior.',
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000').replace(/\/$/, ''),
   locale: 'id_ID',
   whatsappNumber: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '').replace(/\D/g, ''),
@@ -30,16 +30,15 @@ export const site = {
 
 export const nav = [
   { href: '/layanan', label: 'Layanan' },
-  { href: '/demo', label: 'Demo' },
   { href: '/studi-kasus', label: 'Studi Kasus' },
-  { href: '/harga', label: 'Harga' },
+  { href: '/audit-gratis', label: 'Audit Gratis' },
   { href: '/blog', label: 'Blog' },
   { href: '/tentang', label: 'Tentang' },
 ] as const;
 
 export const footerLinks = {
   layanan: [
-    { href: '/layanan#marketing-ai', label: 'Marketing AI' },
+    { href: '/audit-gratis', label: 'Audit Kebutuhan Gratis' },
     { href: '/layanan#ai-chat', label: 'AI Chat' },
     { href: '/layanan#otomatisasi', label: 'Otomatisasi' },
     { href: '/solusi-custom', label: 'Solusi Custom' },
