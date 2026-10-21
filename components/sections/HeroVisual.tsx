@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { ArrowRight, Bell, Database, FileText, Globe, MessageCircle, Plug, Send, Smartphone, UserCheck, Workflow, type LucideIcon } from 'lucide-react';
 
 const chatFlow = [
-  { icon: MessageCircle, label: 'Pelanggan bertanya' },
+  { icon: MessageCircle, label: 'Pertanyaan masuk' },
   { icon: Database, label: 'Dijawab dari data Anda' },
   { icon: UserCheck, label: 'Diteruskan ke tim bila perlu' },
 ];
@@ -20,7 +20,7 @@ const flow = [
 const customTypes = [
   { icon: Globe, label: 'Web app' },
   { icon: Smartphone, label: 'Aplikasi mobile' },
-  { icon: Plug, label: 'Integrasi sistem' },
+  { icon: Plug, label: 'Otomatisasi dan IoT' },
 ];
 
 /** Card surface; the card of the service the headline is showing gets the featured look. */

@@ -4,7 +4,7 @@ import { Container, PageHeader } from '@/components/ui/Section';
 
 export const metadata = pageMeta({
   title: 'Kebijakan Privasi',
-  description: `Bagaimana ${site.name} mengumpulkan, memakai, dan melindungi data yang Anda kirim lewat formulir.`,
+  description: `Bagaimana ${site.name} mengumpulkan, memakai, dan melindungi data yang Anda kirim lewat formulir, serta hak Anda atas data tersebut.`,
   path: '/kebijakan-privasi',
 });
 

@@ -8,8 +8,8 @@ import { LogoRows } from '@/components/sections/ClientLogos';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata = pageMeta({
-  title: 'Tentang Kami',
-  description: `Kenali ${site.name}: agensi digital berbantuan AI di ${site.city}, ditangani langsung oleh engineer senior.`,
+  title: 'Tentang',
+  description: `Kenali ${site.name}: agensi digital berbantuan AI di ${site.city}, ditangani langsung oleh engineer senior, untuk bisnis dari skala kecil sampai besar.`,
   path: '/tentang',
 });
 
@@ -20,7 +20,7 @@ export default function TentangPage() {
         <StarfieldBackground />
         <Container className="relative z-10 grid items-center gap-12 lg:grid-cols-[1.3fr_1fr]">
           <div className="flex flex-col gap-4">
-            <Eyebrow>Tentang kami</Eyebrow>
+            <Eyebrow>Tentang</Eyebrow>
             <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-strong md:text-[56px]">
               Klien lokal dan <Hl>seluruh dunia</Hl>.
             </h1>

@@ -7,22 +7,22 @@ import type { Post } from '@/lib/types';
  */
 export const localPosts: Post[] = [
   {
-    title: 'Menambahkan OpenAI ke platform yang sudah berjalan: apa yang perlu disiapkan',
-    slug: 'menambahkan-openai-ke-platform-berjalan',
+    title: 'Menambahkan AI ke sistem yang sudah berjalan: apa yang perlu disiapkan',
+    slug: 'menambahkan-ai-ke-sistem-berjalan',
     category: 'AI untuk UMKM',
     publishedAt: '2026-10-12T09:00:00+07:00',
     coverImage: null,
     excerpt:
-      'Dari pengalaman memimpin platform tantangan coding berbasis AI: satu kasus pakai dulu, panggilan AI di server, dan manusia yang meninjau.',
-    content: `Salah satu proyek yang kami pimpin adalah platform tantangan coding berbasis AI, dibangun dengan React dan Django, dengan integrasi OpenAI. Berikut hal yang kami pegang saat menambahkan AI ke platform yang sudah berjalan.
+      'Bisnis kecil sampai besar bisa menambahkan AI tanpa membangun ulang sistemnya: satu kasus pakai dulu, panggilan AI di server, jalur cadangan, dan manusia yang meninjau.',
+    content: `Anda tidak perlu membangun ulang sistem untuk memakai AI. Yang sering lebih berhasil adalah menambahkannya sedikit demi sedikit ke sistem yang sudah berjalan, entah itu toko online, aplikasi internal, atau platform pelanggan. Berikut hal yang kami pegang.
 
 ## Mulai dari satu kasus pakai
 
-Jangan menaruh AI di semua fitur sekaligus. Pilih satu masalah yang jelas, misalnya membantu membuat atau menjelaskan soal, lalu ukur apakah pengguna benar-benar terbantu. Fitur kedua baru dikerjakan setelah yang pertama terbukti berguna.
+Jangan menaruh AI di semua fitur sekaligus. Pilih satu masalah yang jelas, misalnya menjawab pertanyaan berulang atau merangkum laporan, lalu ukur apakah pengguna benar-benar terbantu. Fitur kedua baru dikerjakan setelah yang pertama terbukti berguna.
 
 ## Jalankan panggilan AI di server
 
-Kunci API tidak boleh berada di browser. Letakkan panggilan ke model di backend, batasi siapa yang boleh memanggil, dan catat pemakaiannya. Dengan begitu biaya bisa dipantau dan penyalahgunaan bisa dibatasi.
+Kunci API tidak boleh berada di browser atau aplikasi mobile. Letakkan panggilan ke model di backend, batasi siapa yang boleh memanggil, dan catat pemakaiannya. Dengan begitu biaya bisa dipantau dan penyalahgunaan bisa dibatasi.
 
 ## Siapkan jalur cadangan
 
@@ -30,23 +30,27 @@ API model bisa lambat atau gagal. Putuskan lebih dulu apa yang dilihat pengguna 
 
 ## Tetap ada manusia yang meninjau
 
-Keluaran model perlu diperiksa sebelum dipakai atas nama platform Anda. Tentukan siapa yang meninjau, dan pada tahap mana. AI mempercepat pekerjaan, tetapi tanggung jawab tetap pada manusia.
+Keluaran model perlu diperiksa sebelum dipakai atas nama bisnis Anda. Tentukan siapa yang meninjau, dan pada tahap mana. AI mempercepat pekerjaan, tetapi tanggung jawab tetap pada manusia.
 
-## Jangan lupakan performa dan SEO
+## Jaga performa
 
-Fitur AI yang membuat halaman lambat akan mengurangi manfaatnya. Muat bagian AI secara terpisah, dan pastikan konten utama tetap cepat terbaca oleh pengguna dan mesin pencari.
+Fitur AI yang membuat halaman atau aplikasi lambat akan mengurangi manfaatnya. Muat bagian AI secara terpisah, dan pastikan konten utama tetap cepat terbaca.
 
-Sedang mempertimbangkan AI untuk produk digital Anda? Kami bisa membantu memetakan kasus pakai yang paling masuk akal lewat audit kebutuhan gratis.`,
+Sedang mempertimbangkan AI untuk sistem Anda? Kami bisa membantu memetakan kasus pakai yang paling masuk akal lewat [audit gratis](/audit-gratis).`,
   },
   {
     title: 'Dasbor analisis sentimen: apa yang membuatnya benar-benar dipakai tim',
     slug: 'dasbor-analisis-sentimen-media-sosial',
-    category: 'AI untuk UMKM',
+    category: 'Studi Kasus',
     publishedAt: '2026-10-15T09:00:00+07:00',
     coverImage: null,
     excerpt:
-      'Dari proyek aplikasi analisis sentimen media sosial: dasbor, laporan, dan peringatan, serta cara membuat tim mau membukanya setiap minggu.',
-    content: `Kami pernah memimpin pengembangan aplikasi web untuk menganalisis sentimen media sosial secara real-time, lengkap dengan dasbor, laporan, dan peringatan. Fitur pentingnya bukan grafik yang banyak, tetapi apakah tim benar-benar memakainya.
+      'Dari proyek analisis sentimen yang menyatukan media sosial online dan offline: dasbor, laporan, dan peringatan, serta cara membuat tim mau membukanya setiap minggu.',
+    content: `Kami pernah memimpin pengembangan aplikasi web yang menyatukan berbagai media sosial, online maupun offline, dalam satu sistem sentimen, lengkap dengan dasbor, laporan, dan peringatan ([lihat studi kasusnya](/studi-kasus/analisis-sentimen-media-sosial)). Fitur pentingnya bukan grafik yang banyak, tetapi apakah tim benar-benar memakainya.
+
+## Satu sistem untuk semua kanal
+
+Percakapan yang tersebar di banyak kanal sulit dibandingkan. Dengan satu sistem sentimen, tim melihat gambaran yang sama dari semua sumber, bukan beberapa laporan yang berbeda ukurannya.
 
 ## Mulai dari keputusan, bukan dari data
 
@@ -68,17 +72,17 @@ Model bisa salah membaca sindiran, bahasa gaul, atau campuran bahasa. Sediakan c
 
 Catat apakah waktu respons terhadap keluhan membaik setelah dasbor dipakai. Tanpa ukuran, sulit tahu apakah investasinya berhasil.
 
-Punya data yang menumpuk tanpa dipakai? Ceritakan lewat audit kebutuhan gratis kami.`,
+Punya data yang menumpuk tanpa dipakai? Ceritakan lewat [audit gratis](/audit-gratis) kami.`,
   },
   {
     title: 'Membangun aplikasi AI untuk data sensitif: pelajaran dari proyek bidang medis',
     slug: 'aplikasi-ai-data-sensitif-bidang-medis',
-    category: 'AI untuk UMKM',
+    category: 'Studi Kasus',
     publishedAt: '2026-10-18T09:00:00+07:00',
     coverImage: null,
     excerpt:
       'Dari aplikasi web AI yang menganalisis pola aliran darah dan memprediksi hasil pascaprosedur: AI sebagai pendukung keputusan, bukan pengganti ahli.',
-    content: `Kami pernah mengembangkan frontend dan backend sebuah aplikasi web AI yang menganalisis pola aliran darah dan memprediksi hasil pascaprosedur. Bekerja dengan data sensitif mengubah cara kami membangun.
+    content: `Kami pernah mengembangkan frontend dan backend sebuah aplikasi web AI yang menganalisis pola aliran darah dan memprediksi hasil pascaprosedur ([lihat studi kasusnya](/studi-kasus/aplikasi-web-ai-bidang-medis)). Bekerja dengan data sensitif mengubah cara kami membangun.
 
 ## AI mendukung, ahli memutuskan
 
@@ -100,6 +104,29 @@ Simpan riwayat masukan, hasil, dan siapa yang meninjau. Catatan ini penting untu
 
 Engineer tidak cukup untuk menilai apakah hasil masuk akal secara medis. Libatkan pakar sejak awal, bukan hanya di akhir.
 
-Prinsip yang sama berlaku di bidang lain yang datanya sensitif, seperti keuangan dan layanan publik. Ingin membahas kebutuhan Anda? Mulai dari audit kebutuhan gratis.`,
+Prinsip yang sama berlaku di bidang lain yang datanya sensitif, seperti keuangan dan layanan publik. Ingin membahas kebutuhan Anda? Mulai dari [audit gratis](/audit-gratis).`,
+  },
+  {
+    title: 'Mulai dari mana otomatisasi bisnis? Pilih pekerjaan yang paling berulang',
+    slug: 'mulai-otomatisasi-dari-pekerjaan-berulang',
+    category: 'Tips Digital',
+    publishedAt: '2026-10-20T09:00:00+07:00',
+    coverImage: null,
+    excerpt: 'Cara memilih pekerjaan pertama yang layak diotomatisasi, untuk bisnis dari skala kecil sampai besar.',
+    content: `Otomatisasi paling terasa manfaatnya bila dimulai dari pekerjaan yang tepat. Tiga pertanyaan ini membantu memilihnya.
+
+## Apakah pekerjaannya berulang?
+
+Pekerjaan yang dilakukan dengan langkah yang sama berkali-kali, seperti menjawab pertanyaan yang sama atau memindahkan data antar sistem, adalah kandidat terbaik.
+
+## Apakah aturannya jelas?
+
+Bila Anda bisa menuliskan langkahnya, mesin bisa mengerjakannya. Bila keputusannya bergantung pada penilaian yang sulit dijelaskan, biarkan manusia yang memutuskan dan minta mesin menyiapkan bahannya.
+
+## Apa risikonya bila salah?
+
+Mulai dari pekerjaan yang kesalahannya mudah diperbaiki, dan tetap sediakan langkah peninjauan manusia sebelum hasilnya sampai ke pelanggan.
+
+Setelah satu pekerjaan berjalan baik, baru tambah yang berikutnya. Ingin dibantu memilih? Mulai dari [audit gratis](/audit-gratis).`,
   },
 ];

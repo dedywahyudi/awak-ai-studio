@@ -9,7 +9,7 @@ import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata = pageMeta({
   title: 'Blog',
-  description: 'Catatan praktis dari proyek AI nyata: AI Chat, otomatisasi, analisis data, dan platform berbasis AI untuk bisnis.',
+  description: 'Catatan praktis dari proyek AI nyata: AI Chat, otomatisasi, analisis data, dan sistem berbasis AI untuk bisnis dari skala kecil sampai besar.',
   path: '/blog',
 });
 
@@ -43,7 +43,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { kateg
             Panduan AI dari <Hl>proyek nyata</Hl>.
           </>
         }
-        description="Catatan praktis dari membangun AI Chat, otomatisasi, analisis data, dan platform berbasis AI. Bahasa sehari-hari, tanpa istilah yang bikin pusing."
+        description="Catatan praktis dari membangun AI Chat, otomatisasi, analisis data, dan sistem berbasis AI. Bahasa sehari-hari, tanpa istilah yang bikin pusing."
       />
       <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container className="flex flex-col gap-8">

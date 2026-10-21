@@ -9,7 +9,7 @@ import { needFromQuery } from '@/lib/lead-options';
 
 export const metadata = pageMeta({
   title: 'Kontak',
-  description: `Hubungi ${site.name} di ${site.city}. Konsultasi gratis lewat WhatsApp atau formulir.`,
+  description: `Hubungi ${site.name} di ${site.city}. Konsultasi gratis lewat WhatsApp atau formulir, kami bantu memetakan kebutuhan AI dan otomatisasi bisnis Anda.`,
   path: '/kontak',
 });
 

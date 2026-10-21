@@ -1,5 +1,5 @@
 import { Check, Star } from 'lucide-react';
-import { headlinePrice, priceNote, products, type Product } from '@/lib/pricing';
+import { headlinePrice, priceLabel, priceNote, products, type Product } from '@/lib/pricing';
 import { waConsultMessage, waLink } from '@/lib/whatsapp';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/Badge';
@@ -10,7 +10,8 @@ function PricingCard({ product }: { product: Product }) {
   return (
     <article
       className={cn(
-        'relative flex flex-col gap-6 rounded-pricing border p-7',
+        // On desktop the three cards share rows (subgrid), so title, features and price line up across cards.
+        'relative flex flex-col gap-6 rounded-pricing border p-7 lg:row-span-3 lg:grid lg:gap-y-6 lg:[grid-template-rows:subgrid]',
         featured
           ? 'border-line-featured bg-featured shadow-featured'
           : 'border-line bg-card shadow-sm',
@@ -41,7 +42,7 @@ function PricingCard({ product }: { product: Product }) {
 
       <div className="mt-auto flex flex-col gap-5 border-t border-line pt-5">
         <div className="flex flex-col gap-1">
-          <span className="text-xs font-semibold uppercase tracking-[0.08em] text-subtle">Mulai dari</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.08em] text-subtle">{priceLabel}</span>
           <div className="flex flex-col gap-1">
             <span className="font-display text-4xl font-extrabold leading-none tracking-[-0.03em] text-strong tabular-nums">
               {headlinePrice(product)}
@@ -52,7 +53,7 @@ function PricingCard({ product }: { product: Product }) {
 
         <Button
           variant={featured ? 'primary' : 'secondary'}
-          href={product.id === 'custom' ? '/solusi-custom' : waLink(waConsultMessage(product.name))}
+          href={waLink(waConsultMessage(product.name))}
           arrow
           fullWidth
         >
@@ -63,7 +64,7 @@ function PricingCard({ product }: { product: Product }) {
   );
 }
 
-/** All three products in one row on desktop; custom routes to /solusi-custom. */
+/** All three products in one row on desktop. */
 export function PricingCards() {
   return (
     <div className="grid gap-5 lg:grid-cols-3">

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { BarChart3, Clock, Code2, HeartPulse, MessageCircle, ShieldCheck, Wallet, Workflow, Zap } from 'lucide-react';
+import { BarChart3, Clock, HeartPulse, MessageCircle, ShieldCheck, Wallet, Workflow, Zap } from 'lucide-react';
 import { site } from '@/lib/site';
+import { priceDisclaimer } from '@/lib/pricing';
 import { Button } from '@/components/ui/Button';
 import { Container, Hl, PageHeader, Section } from '@/components/ui/Section';
 import { ClientLogos } from '@/components/sections/ClientLogos';
@@ -38,7 +39,7 @@ const forSmallBusiness = [
     icon: MessageCircle,
     kind: 'Layanan',
     title: 'Menjawab pelanggan',
-    body: 'Asisten di WhatsApp dan website menjawab dari data bisnis Anda, lalu meneruskan ke tim saat tidak yakin.',
+    body: 'Asisten AI menjawab dari data bisnis Anda di kanal mana pun, lalu meneruskan ke tim saat tidak yakin.',
   },
   {
     icon: Workflow,
@@ -61,12 +62,6 @@ const forEnterprise = [
     kind: 'Proyek',
     title: 'Analisis sentimen',
     body: 'Dasbor, laporan, dan peringatan untuk memantau reputasi online sebuah bisnis.',
-  },
-  {
-    icon: Code2,
-    kind: 'Proyek',
-    title: 'Platform berbasis AI',
-    body: 'Platform tantangan coding dengan integrasi OpenAI, dibangun di atas React dan Django.',
   },
   {
     icon: Wallet,
@@ -124,8 +119,8 @@ export default function HomePage() {
             <Button href="/audit-gratis" arrow>
               Minta Audit Gratis
             </Button>
-            <Button variant="secondary" href="#layanan-harga">
-              Lihat Harga
+            <Button variant="secondary" href="#layanan">
+              Lihat Layanan
             </Button>
           </>
         }
@@ -165,7 +160,7 @@ export default function HomePage() {
           <UseCaseGroup
             heading="Untuk perusahaan dan organisasi"
             items={forEnterprise}
-            columns="md:grid-cols-2 lg:grid-cols-4"
+            columns="md:grid-cols-3"
           />
         </div>
         <div className="mt-8">
@@ -176,9 +171,9 @@ export default function HomePage() {
       </Section>
 
       <Section
-        id="layanan-harga"
+        id="layanan"
         tone="section"
-        eyebrow="02 — Layanan dan harga"
+        eyebrow="02 — Layanan"
         title={
           <>
             Mulai dari tes gratis, <Hl>lanjut saat siap</Hl>.
@@ -190,7 +185,7 @@ export default function HomePage() {
           <AuditBand />
           <PricingCards />
           <p className="text-sm text-muted">
-            Harga di atas adalah titik awal; angka final kami tulis setelah konsultasi.{' '}
+            {priceDisclaimer}{' '}
             <Link href="/layanan" className="font-semibold text-link hover:text-white">
               Lihat detail layanan dan FAQ
             </Link>

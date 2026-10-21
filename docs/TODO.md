@@ -26,9 +26,40 @@ is either a placeholder or a gap found in the first-time-visitor review.
       (`lib/pricing.ts`, `auditProduct`). Confirm you can deliver that.
 - [ ] **FAQ claims** about data and WhatsApp fees: verify against your providers' terms before launch.
 
-- [ ] **IoT examples on `/solusi-custom`.** Only the Smart City platform and the geospatial command center are
+- [ ] **IoT examples on `/layanan` (Solusi Custom).** Only the Smart City platform and the geospatial command center are
       from your real projects. CCTV, sensors, smart meters, PLC, RFID and access control are listed as integration
       types. Remove any you would not take on, or add real details for the ones you have done (`iotExamples`).
+
+## Projects (new)
+
+- [ ] **Privacy of the screenshots** (`public/images/projects/`). Several show real client names and people:
+      "ERP Estrada Group", the Digital Tactical Plan login and police emblems, "PT Socfin Indonesia" with worker
+      names in the harvest app, "Enterprisers", and a real person on video in the personalization platform. The site
+      no longer says the projects are anonymous. Confirm you may show each one, or blur names and faces first.
+      Originals stay local in `public/projects/` (git-ignored, 30 MB).
+- [ ] **AI per project.** The "AI di proyek ini" block appears only where AI is clear from the screens: medical
+      imaging, sentiment, the personalization platform, the OpenAI integration. For ERP, Smart City, command
+      center, marketplace valuation and the harvest app, tell me if AI is used (for example camera analysis, anomaly
+      alerts, forecasting) and what model or method, and I will add it. Do not claim AI that is not there.
+- [ ] **Smart City features not visible in screenshots.** Vehicle movement prediction from plates, DPO face search
+      from CCTV and event crowd hotspots were added from your brief, with the AI block. Confirm the wording and
+      that you may publish them (face recognition on wanted persons is sensitive), and add a screenshot if you have one.
+- [ ] **Review the "AI yang dipakai" wording** (`aiUsed` in `content/projects.ts`, shown on each card and detail
+      page). Written from the screens and your briefs, not from the code: confirm the model or method per project
+      (medical: model type; personalization: which LLM; sentiment: model/API and languages; Smart City: own vs
+      third-party plate, face and crowd detection and the prediction method) and the "Tanpa AI" labels for command
+      center, ERP, marketplace and harvest app.
+- [ ] **Harvest app AI features** (janjang counting, truck plate detection, harvest forecast, monthly forecast map)
+      were added from your brief, not from the screenshots. Confirm the wording and method, and add a screenshot if you have one.
+- [ ] **Command center AI features** (crowded-road prediction on closure, alternate-route suggestion, ETA with traffic)
+      were added from your brief, not from the screenshots. Confirm the wording and method, and say whether the
+      "Tanpa AI" label removal is right.
+- [ ] **ERP AI features** (budget forecast, sales prediction, natural-language Q&A on ERP data, executive summaries)
+      were added from the recommended list, not from the screenshots. Confirm each is real, or remove it, and say
+      which method or model is used.
+- [ ] **Add what only you know**, per project, in `content/projects.ts`: your role, team size, duration, the problem
+      it solved, and real results (numbers only if true). Periods are missing for the ERP and marketplace projects.
+- [ ] Optional: a short client quote per project, if you have permission.
 
 ## Setup and config
 

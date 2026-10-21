@@ -10,8 +10,19 @@ interface PageMetaInput {
   type?: 'website' | 'article';
 }
 
+/** Search snippets cut off near 160 characters: clamp at a word boundary. */
+const clamp = (text: string, max = 158) => {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max - 1);
+  return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,:;.\s]+$/, '')}…`;
+};
+
+/** Default share image (app/opengraph-image.tsx). A page's own openGraph replaces the root one, so it is set here. */
+const shareImage = { url: '/opengraph-image', width: 1200, height: 630, alt: `${site.name}: AI untuk bisnis semua skala` };
+
 /** Unique title, description, canonical and Open Graph per page. */
-export function pageMeta({ title, description, path, type = 'website' }: PageMetaInput): Metadata {
+export function pageMeta({ title, description: rawDescription, path, type = 'website' }: PageMetaInput): Metadata {
+  const description = clamp(rawDescription);
   return {
     title,
     description,
@@ -23,8 +34,9 @@ export function pageMeta({ title, description, path, type = 'website' }: PageMet
       siteName: site.name,
       locale: site.locale,
       type,
+      images: [shareImage],
     },
-    twitter: { card: 'summary_large_image', title: `${title} | ${site.name}`, description },
+    twitter: { card: 'summary_large_image', title: `${title} | ${site.name}`, description, images: [shareImage.url] },
   };
 }
 

@@ -66,7 +66,7 @@ export default async function PostPage({ params }: { params: Params }) {
               Chat WhatsApp
             </Button>
             <Button variant="secondary" href="/layanan">
-              Lihat Layanan dan Harga <ArrowRight size={16} aria-hidden="true" />
+              Lihat Layanan <ArrowRight size={16} aria-hidden="true" />
             </Button>
           </div>
         </aside>

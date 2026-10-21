@@ -2,9 +2,16 @@ import { shortIdr } from '@/lib/utils';
 
 /**
  * Single source of truth for prices. Every page (home, /layanan,
- * /solusi-custom, JSON-LD) reads from here, so a price change is a one-line edit.
+ * JSON-LD) reads from here, so a price change is a one-line edit.
  * All amounts are IDR. `setup: null` = no setup fee.
  */
+/**
+ * Price display switch. false = "Harga sesuai permintaan": no amounts anywhere (cards, pages, FAQ, AI knowledge
+ * feed), but every service still says there is a monthly fee after setup. The amounts below stay as the
+ * internal reference. Set to true to show "mulai dari" prices again.
+ */
+export const showPrices = false;
+
 export type ProductId = 'ai-chat' | 'otomatisasi' | 'custom';
 export type CategoryId = 'layani-pelanggan' | 'operasional' | 'bangun';
 
@@ -64,18 +71,17 @@ export const products: Product[] = [
     id: 'ai-chat',
     categoryId: 'layani-pelanggan',
     name: 'AI Chat',
-    tagline: 'Asisten yang menjawab dari data bisnis Anda, 24 jam di WhatsApp dan website.',
+    tagline: 'Asisten yang menjawab dari data bisnis Anda, 24 jam, di kanal mana pun yang Anda pakai.',
     setup: 10_000_000,
     monthly: 2_000_000,
     features: [
-      'Menjawab harga, stok, dan jam buka dari data Anda',
-      'Aktif di WhatsApp dan website',
-      'Diteruskan ke tim Anda saat perlu',
-      'Data tetap di database Anda, tidak dipakai melatih model',
+      'Menjawab dari data Anda, online maupun offline',
+      'Dipasang di WhatsApp, website, aplikasi, atau kanal lain',
+      'Diteruskan ke tim Anda saat bot tidak yakin',
+      'Data tetap di database Anda, tidak melatih model',
       'Laporan pertanyaan yang belum terjawab tiap bulan',
-      `Modul booking dan pengingat (opsional, +${shortIdr(bookingModule.from)} sampai ${shortIdr(bookingModule.to)} / bulan)`,
     ],
-    ctaLabel: 'Chat WhatsApp',
+    ctaLabel: 'Hubungi Kami',
     featured: true,
     badge: 'Mulai dari sini',
   },
@@ -83,18 +89,17 @@ export const products: Product[] = [
     id: 'otomatisasi',
     categoryId: 'operasional',
     name: 'Otomatisasi',
-    tagline: 'Pekerjaan berulang jalan sendiri: dari form, WhatsApp, dan spreadsheet ke sistem Anda.',
+    tagline: 'Pekerjaan berulang jalan sendiri, dari kanal atau sistem apa pun: form, chat, email, spreadsheet, API, dan lainnya.',
     setup: 15_000_000,
     monthly: 2_500_000,
     features: [
-      'Hingga 5 alur kerja, dimulai dari satu paket: Follow-up Lead, Penawaran Otomatis, atau Pengingat dan Ulasan',
-      'Lead baru masuk ke Sheets atau CRM, tim Anda langsung diberi tahu',
-      'Penawaran dan invoice dibuat otomatis, disetujui Anda sebelum terkirim',
+      'Hingga 5 alur kerja, mulai dari satu paket awal',
+      'Terhubung ke WhatsApp, email, form, spreadsheet, CRM, dan API',
+      'Penawaran dan invoice dibuat otomatis, Anda setujui dulu',
       'Dipantau dan diperbaiki bila alur gagal',
-      'Pengingat janji temu atau pembayaran dan permintaan ulasan terkirim otomatis',
       'Akun dan data tetap milik Anda',
     ],
-    ctaLabel: 'Cek Alur Kerja Anda',
+    ctaLabel: 'Hubungi Kami',
   },
   {
     id: 'custom',
@@ -104,11 +109,11 @@ export const products: Product[] = [
     setup: 25_000_000,
     monthly: 3_000_000,
     features: [
-      'Diawali sesi discovery berbayar',
-      'Lingkup dan estimasi tertulis sebelum mulai',
-      'Pembayaran bertahap per milestone',
-      'Dikerjakan langsung oleh engineer senior',
-      'Maintenance bulanan setelah rilis',
+      'Web app, aplikasi mobile, atau keduanya, sesuai kebutuhan',
+      'Otomatisasi alur kerja dan integrasi IoT seperti CCTV dan sensor',
+      'Diawali sesi discovery berbayar untuk menetapkan lingkup',
+      'Pembayaran bertahap per milestone yang disepakati',
+      'Dikerjakan langsung engineer senior, dengan maintenance bulanan',
     ],
     ctaLabel: 'Hubungi Kami',
   },
@@ -119,14 +124,28 @@ export const customProduct = products.find((p) => p.id === 'custom') as Product;
 
 export const getProduct = (id: ProductId) => products.find((p) => p.id === id) as Product;
 
-/** Big number on a card: the first thing the buyer pays. */
-export const headlinePrice = (p: Product) => shortIdr(p.setup ?? p.monthly);
+/** Small label above the big price. */
+export const priceLabel = showPrices ? 'Mulai dari' : 'Harga';
 
-/** Small line under the big number. */
-export const priceNote = (p: Product) =>
-  p.setup === null
+/** Big line on a card: the first thing the buyer pays, or "Hubungi untuk penawaran". */
+export const headlinePrice = (p: Product) => (showPrices ? shortIdr(p.setup ?? p.monthly) : 'Hubungi untuk penawaran');
+
+/** Small line under the big price. Always says there is a monthly fee. */
+export const priceNote = (p: Product) => {
+  if (!showPrices) {
+    return p.setup === null
+      ? 'Biaya bulanan, tanpa biaya setup'
+      : `${p.id === 'custom' ? 'Biaya build' : 'Biaya setup'} sekali, lalu biaya bulanan`;
+  }
+  return p.setup === null
     ? '/ bulan, tanpa biaya setup'
     : `${p.id === 'custom' ? 'build' : 'setup'} + ${shortIdr(p.monthly)} / bulan`;
+};
+
+/** Sentence under the price section: how the number is reached. */
+export const priceDisclaimer = showPrices
+  ? 'Harga di atas adalah titik awal; angka final kami tulis setelah konsultasi.'
+  : 'Harga disesuaikan dengan kebutuhan dan dikirim tertulis setelah konsultasi, sebelum Anda membayar. Semua layanan berbayar punya biaya bulanan setelah setup selesai.';
 
 /** Used in the discovery FAQ. Edit if you change the discovery fee. */
 export const discoveryRange = 'Rp 2–5 jt';

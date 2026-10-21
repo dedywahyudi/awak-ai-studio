@@ -1,12 +1,12 @@
 import { pageMeta } from '@/lib/seo';
-import { projects } from '@/content/profile';
+import { projects } from '@/content/projects';
 import { Container, Hl, PageHeader } from '@/components/ui/Section';
 import { ProjectCard } from '@/components/sections/Cards';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata = pageMeta({
   title: 'Studi Kasus',
-  description: 'Proyek AI dan sistem yang pernah kami bangun untuk bisnis dan organisasi, tanpa nama klien.',
+  description: 'Proyek AI dan sistem yang pernah kami bangun untuk bisnis dan organisasi, lengkap dengan alur kerja, peran AI, dan tangkapan layar.',
   path: '/studi-kasus',
 });
 
@@ -20,7 +20,7 @@ export default function StudiKasusPage() {
             Proyek AI dan sistem yang <Hl>pernah kami bangun</Hl>.
           </>
         }
-        description="Pilihan proyek yang pernah kami kerjakan, ditampilkan tanpa nama klien atau produk. Studi kasus lengkap beserta hasilnya akan kami tambahkan seiring proyek selesai."
+        description="Pilihan proyek yang pernah kami kerjakan, lengkap dengan alur kerja, peran AI, dan tangkapan layarnya. Hasil terukur akan kami tambahkan seiring data tersedia."
       />
       <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container>

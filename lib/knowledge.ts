@@ -1,5 +1,5 @@
 import { site } from '@/lib/site';
-import { auditProduct, bookingModule, categories, otomatisasiPackages, products } from '@/lib/pricing';
+import { auditProduct, bookingModule, categories, otomatisasiPackages, products, showPrices } from '@/lib/pricing';
 import { shortIdr } from '@/lib/utils';
 import { services } from '@/content/services';
 import { pricingFaq } from '@/content/faq';
@@ -19,11 +19,14 @@ export function buildKnowledgeBase(): string {
   out.push(`Lokasi: ${site.city}, ${site.region}. Kontak WhatsApp: ${waLink()}`);
   out.push('');
 
-  out.push('## Layanan dan harga (mulai dari)');
+  out.push(showPrices ? '## Layanan dan harga (mulai dari)' : '## Layanan (harga sesuai permintaan)');
   for (const p of products) {
     const service = services.find((s) => s.id === p.id);
-    const price =
-      p.setup === null
+    const price = !showPrices
+      ? p.setup === null
+        ? 'harga sesuai permintaan, biaya bulanan tanpa biaya setup'
+        : `harga sesuai permintaan, ${p.id === 'custom' ? 'biaya build' : 'biaya setup'} sekali lalu biaya bulanan`
+      : p.setup === null
         ? `${shortIdr(p.monthly)} per bulan, tanpa biaya setup`
         : `${shortIdr(p.setup)} ${p.id === 'custom' ? 'build' : 'setup'} + ${shortIdr(p.monthly)} per bulan`;
     out.push(`### ${p.name}: ${price}`);
@@ -44,12 +47,20 @@ export function buildKnowledgeBase(): string {
   out.push(...auditProduct.features.map((f) => `- ${f}`));
   out.push('- Setelah tes, estimasi biaya perbaikan ditulis sebelum klien membayar apa pun');
   out.push('');
-  out.push(`### Modul tambahan AI Chat: ${bookingModule.name}, ${shortIdr(bookingModule.from)} sampai ${shortIdr(bookingModule.to)} per bulan`);
+  out.push(
+    showPrices
+      ? `### Modul tambahan AI Chat: ${bookingModule.name}, ${shortIdr(bookingModule.from)} sampai ${shortIdr(bookingModule.to)} per bulan`
+      : `### Modul tambahan AI Chat: ${bookingModule.name}, biaya bulanan tambahan (harga sesuai permintaan)`,
+  );
   out.push('Pemesanan janji temu lewat WhatsApp dan pengingat otomatis. Cocok untuk klinik, salon, bengkel, kursus.');
   out.push('');
 
   out.push('## Aturan harga');
-  out.push('- Semua harga adalah titik awal. Angka final ditulis setelah konsultasi, sebelum klien membayar.');
+  out.push(
+    showPrices
+      ? '- Semua harga adalah titik awal. Angka final ditulis setelah konsultasi, sebelum klien membayar.'
+      : '- Harga tidak dipublikasikan: semua harga sesuai permintaan. Jangan menyebut atau memperkirakan angka. Arahkan calon klien ke konsultasi atau Audit Gratis, tulis estimasi hanya oleh pemilik.',
+  );
   out.push('- Semua layanan berbayar punya biaya bulanan setelah setup selesai.');
   out.push('- Biaya WhatsApp Business API dibayar langsung oleh klien ke penyedia.');
   out.push('');

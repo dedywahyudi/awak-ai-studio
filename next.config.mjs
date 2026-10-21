@@ -33,6 +33,10 @@ const nextConfig = {
       { source: '/harga', destination: '/layanan', permanent: true },
       { source: '/demo', destination: '/studi-kasus', permanent: true },
       { source: '/studi-kasus/membangun-awak-ai-studio', destination: '/studi-kasus', permanent: true },
+      { source: '/studi-kasus/platform-tantangan-coding-ai', destination: '/studi-kasus', permanent: true },
+      { source: '/blog/menambahkan-openai-ke-platform-berjalan', destination: '/blog/menambahkan-ai-ke-sistem-berjalan', permanent: true },
+      { source: '/solusi-custom', destination: '/layanan#custom', permanent: true },
+      { source: '/studi-kasus/sistem-anggaran-ai', destination: '/studi-kasus', permanent: true },
       // Old audit link (the contact form with ?kebutuhan=audit) now has its own page.
       { source: '/kontak', has: [{ type: 'query', key: 'kebutuhan', value: 'audit' }], destination: '/audit-gratis', permanent: true },
     ];

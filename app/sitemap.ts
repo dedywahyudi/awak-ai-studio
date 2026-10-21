@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { site } from '@/lib/site';
-import { projects } from '@/content/profile';
+import { projects } from '@/content/projects';
 import { getAllPosts } from '@/lib/posts';
 
 export const revalidate = 3600;
@@ -9,7 +9,6 @@ const staticRoutes = [
   '',
   '/layanan',
   '/studi-kasus',
-  '/solusi-custom',
   '/tentang',
   '/blog',
   '/audit-gratis',
