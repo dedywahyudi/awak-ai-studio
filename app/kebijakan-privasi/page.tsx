@@ -43,7 +43,7 @@ export default function PrivacyPage() {
             <h2>Hak Anda</h2>
             <p>
               Sesuai UU Pelindungan Data Pribadi, Anda berhak mengakses, memperbaiki, dan meminta penghapusan
-              data Anda. Hubungi kami lewat halaman <a href="/kontak">Kontak</a>
+              data Anda. Hubungi kami lewat halaman <a href="/audit-gratis">Audit Gratis</a>
               {site.email ? ` atau ${site.email}` : ''}.
             </p>
           </div>

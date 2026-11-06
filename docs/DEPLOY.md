@@ -48,7 +48,7 @@ Two things to do on GitHub while Supabase is on hold:
    | Variable | Value |
    |---|---|
    | `NEXT_PUBLIC_SITE_URL` | the real domain, e.g. `https://awakai.studio`, no trailing slash |
-   | `NEXT_PUBLIC_WHATSAPP_NUMBER` | international format, no "+" (empty = buttons go to `/kontak`) |
+   | `NEXT_PUBLIC_WHATSAPP_NUMBER` | international format, no "+" (empty = buttons go to `/audit-gratis`) |
    | `NEXT_PUBLIC_CONTACT_EMAIL` | public email |
    | `NEXT_PUBLIC_SUPABASE_URL` | Project URL |
    | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | anon key |

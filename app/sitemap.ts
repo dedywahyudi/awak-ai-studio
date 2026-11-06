@@ -12,7 +12,6 @@ const staticRoutes = [
   '/tentang',
   '/blog',
   '/audit-gratis',
-  '/kontak',
   '/keamanan',
   '/kebijakan-privasi',
   '/syarat-ketentuan',

@@ -11,7 +11,7 @@ Step by step with exact settings: `docs/DEPLOY.md`.
 - [ ] **Vercel.** Import the GitHub repo, add the environment variables below, deploy. Pushes to `main` auto-deploy.
 - [ ] **Environment variables** (Vercel > Settings > Environment Variables; see `.env.example`):
   - [ ] `NEXT_PUBLIC_SITE_URL` = the real domain, no trailing slash (wrong value = wrong canonical URLs and sitemap)
-  - [ ] `NEXT_PUBLIC_WHATSAPP_NUMBER` (international format, no "+"). Empty = every WhatsApp button goes to `/kontak`.
+  - [ ] `NEXT_PUBLIC_WHATSAPP_NUMBER` (international format, no "+"). Empty = every WhatsApp button goes to `/audit-gratis`.
   - [ ] `NEXT_PUBLIC_CONTACT_EMAIL`
   - [ ] `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
   - [ ] `SUPABASE_SERVICE_ROLE_KEY` (server only, never `NEXT_PUBLIC_`)

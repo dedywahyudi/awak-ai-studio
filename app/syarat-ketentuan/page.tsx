@@ -84,7 +84,7 @@ export default function TermsPage() {
               </section>
             ))}
             <p>
-              Pertanyaan tentang syarat ini? <Link href="/kontak">Hubungi kami</Link>
+              Pertanyaan tentang syarat ini? <Link href="/audit-gratis">Hubungi kami</Link>
               {site.email ? ` atau ${site.email}` : ''}. Lihat juga <Link href="/kebijakan-privasi">Kebijakan Privasi</Link> dan{' '}
               <Link href="/keamanan">Keamanan</Link>.
             </p>

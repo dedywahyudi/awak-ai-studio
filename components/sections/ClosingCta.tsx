@@ -25,7 +25,7 @@ export function ClosingCta({
             <Button variant="whatsapp" href={waLink(waConsultMessage(topic))}>
               Chat WhatsApp
             </Button>
-            <Button variant="secondary" href="/kontak">
+            <Button variant="secondary" href="/audit-gratis">
               Isi Formulir
             </Button>
           </div>

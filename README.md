@@ -15,7 +15,7 @@ cp .env.example .env.local
 npm run dev        # http://localhost:3000
 ```
 
-The site runs with **no env vars at all**: WhatsApp buttons fall back to `/kontak`, the blog uses seed posts from `content/posts.ts`, and the lead form works in dev mode (logs to the console). Add credentials as you go.
+The site runs with **no env vars at all**: WhatsApp buttons fall back to `/audit-gratis`, the blog uses seed posts from `content/posts.ts`, and the lead form works in dev mode (logs to the console). Add credentials as you go.
 
 | Script | What it does |
 |---|---|

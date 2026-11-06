@@ -56,7 +56,7 @@ const sections = [
   {
     title: 'Pelaporan masalah keamanan',
     body: [
-      'Bila Anda menemukan celah atau melihat sesuatu yang mencurigakan, beri tahu kami lewat halaman Kontak. Kami membacanya dan menindaklanjuti.',
+      'Bila Anda menemukan celah atau melihat sesuatu yang mencurigakan, beri tahu kami lewat formulir di halaman Audit Gratis atau lewat WhatsApp. Kami membacanya dan menindaklanjuti.',
     ],
   },
 ];
@@ -83,7 +83,7 @@ export default function KeamananPage() {
             <p>
               Halaman ini adalah ringkasan, bukan kontrak. Detail penanganan data untuk proyek Anda ditulis dalam
               proposal dan kontrak. Lihat <Link href="/kebijakan-privasi">Kebijakan Privasi</Link>,{' '}
-              <Link href="/syarat-ketentuan">Syarat dan Ketentuan</Link>, atau <Link href="/kontak">hubungi kami</Link>
+              <Link href="/syarat-ketentuan">Syarat dan Ketentuan</Link>, atau <Link href="/audit-gratis">hubungi kami</Link>
               {site.email ? ` di ${site.email}` : ''}.
             </p>
           </div>

@@ -20,7 +20,7 @@ export const budgetOptions = [
   'Belum tahu',
 ] as const;
 
-/** ?kebutuhan= values on /kontak mapped to the option label they preselect. */
+/** ?kebutuhan= values on /audit-gratis mapped to the option label they preselect. */
 export const needFromQuery: Record<string, (typeof jenisKebutuhanGeneral)[number]> = {
   audit: 'Audit Kebutuhan Gratis',
   'ai-chat': 'AI Chat',

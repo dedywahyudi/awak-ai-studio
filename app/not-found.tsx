@@ -14,8 +14,8 @@ export default function NotFound() {
         </p>
         <div className="flex gap-3">
           <Button href="/">Ke Beranda</Button>
-          <Button variant="secondary" href="/kontak">
-            Hubungi Kami
+          <Button variant="secondary" href="/audit-gratis">
+            Minta Audit Gratis
           </Button>
         </div>
       </Container>

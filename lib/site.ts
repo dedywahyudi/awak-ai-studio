@@ -47,6 +47,5 @@ export const footerLinks = {
     { href: '/tentang', label: 'Tentang' },
     { href: '/studi-kasus', label: 'Studi Kasus' },
     { href: '/blog', label: 'Blog' },
-    { href: '/kontak', label: 'Kontak' },
   ],
 } as const;

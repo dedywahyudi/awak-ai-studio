@@ -38,7 +38,7 @@ const nextConfig = {
       { source: '/solusi-custom', destination: '/layanan#custom', permanent: true },
       { source: '/studi-kasus/sistem-anggaran-ai', destination: '/studi-kasus', permanent: true },
       // Old audit link (the contact form with ?kebutuhan=audit) now has its own page.
-      { source: '/kontak', has: [{ type: 'query', key: 'kebutuhan', value: 'audit' }], destination: '/audit-gratis', permanent: true },
+      { source: '/kontak', destination: '/audit-gratis', permanent: true },
     ];
   },
   async headers() {
