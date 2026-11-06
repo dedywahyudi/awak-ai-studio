@@ -13,7 +13,9 @@ const staticRoutes = [
   '/blog',
   '/audit-gratis',
   '/kontak',
+  '/keamanan',
   '/kebijakan-privasi',
+  '/syarat-ketentuan',
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

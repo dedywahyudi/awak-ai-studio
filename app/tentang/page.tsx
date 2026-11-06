@@ -16,9 +16,9 @@ export const metadata = pageMeta({
 export default function TentangPage() {
   return (
     <>
-      <header className="relative -mt-16 overflow-hidden bg-page pb-20 pt-[7.5rem] md:pb-28 md:pt-40 lg:flex lg:min-h-[680px] lg:flex-col lg:justify-center">
+      <header className="relative -mt-16 overflow-hidden bg-page pb-20 pt-[7.5rem] md:pb-28 md:pt-40 md:flex md:min-h-[680px] md:flex-col md:justify-center">
         <StarfieldBackground />
-        <Container className="relative z-10 grid items-center gap-12 lg:grid-cols-[1.3fr_1fr]">
+        <Container className="relative z-10 grid items-center gap-12 md:grid-cols-[1.3fr_1fr]">
           <div className="flex flex-col gap-4">
             <Eyebrow>Tentang</Eyebrow>
             <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-strong md:text-[56px]">
@@ -33,7 +33,7 @@ export default function TentangPage() {
       </header>
 
       <Section flushTop>
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr]">
           <div className="flex max-w-2xl flex-col gap-5 text-lg leading-relaxed text-body">
             <p>
               {site.name} berdiri karena satu pengamatan sederhana: banyak bisnis, dari usaha kecil sampai perusahaan besar, punya

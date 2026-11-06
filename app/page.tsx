@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const trust = [
   {
     icon: Clock,
-    title: '10+ tahun pengalaman',
+    title: '15+ tahun pengalaman',
     body: 'Senior Product Engineer. Proyek untuk klien lokal dan enterprise di seluruh dunia, termasuk lewat Topcoder dan Distributed.',
   },
   {

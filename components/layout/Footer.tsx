@@ -73,9 +73,17 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. Semua hak dilindungi.
           </p>
-          <Link href="/kebijakan-privasi" className="hover:text-white">
-            Kebijakan Privasi
-          </Link>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/keamanan" className="hover:text-white">
+              Keamanan
+            </Link>
+            <Link href="/kebijakan-privasi" className="hover:text-white">
+              Kebijakan Privasi
+            </Link>
+            <Link href="/syarat-ketentuan" className="hover:text-white">
+              Syarat dan Ketentuan
+            </Link>
+          </div>
         </div>
       </Container>
     </footer>

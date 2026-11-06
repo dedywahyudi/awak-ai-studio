@@ -60,7 +60,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <nav aria-label="Navigasi utama" className="hidden xl:block">
+        <nav aria-label="Navigasi utama" className="hidden lg:block">
           <NavTabs tabs={nav} />
         </nav>
 
@@ -75,7 +75,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex size-11 items-center justify-center rounded-lg text-strong hover:bg-[rgba(255,255,255,.06)] xl:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-lg text-strong hover:bg-[rgba(255,255,255,.06)] lg:hidden"
           >
             {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
           </button>
@@ -83,7 +83,7 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-line bg-page xl:hidden">
+        <div id="mobile-menu" className="border-t border-line bg-page lg:hidden">
           <nav aria-label="Navigasi seluler" className="mx-auto flex max-w-container flex-col gap-1 px-5 py-4">
             {nav.map((item) => (
               <Link

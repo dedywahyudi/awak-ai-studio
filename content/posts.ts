@@ -11,7 +11,7 @@ export const localPosts: Post[] = [
     slug: 'menambahkan-ai-ke-sistem-berjalan',
     category: 'AI untuk UMKM',
     publishedAt: '2026-10-12T09:00:00+07:00',
-    coverImage: null,
+    coverImage: '/images/blog/menambahkan-ai-ke-sistem-berjalan.jpg',
     excerpt:
       'Bisnis kecil sampai besar bisa menambahkan AI tanpa membangun ulang sistemnya: satu kasus pakai dulu, panggilan AI di server, jalur cadangan, dan manusia yang meninjau.',
     content: `Anda tidak perlu membangun ulang sistem untuk memakai AI. Yang sering lebih berhasil adalah menambahkannya sedikit demi sedikit ke sistem yang sudah berjalan, entah itu toko online, aplikasi internal, atau platform pelanggan. Berikut hal yang kami pegang.
@@ -43,7 +43,7 @@ Sedang mempertimbangkan AI untuk sistem Anda? Kami bisa membantu memetakan kasus
     slug: 'dasbor-analisis-sentimen-media-sosial',
     category: 'Studi Kasus',
     publishedAt: '2026-10-15T09:00:00+07:00',
-    coverImage: null,
+    coverImage: '/images/blog/dasbor-analisis-sentimen-media-sosial.jpg',
     excerpt:
       'Dari proyek analisis sentimen yang menyatukan media sosial online dan offline: dasbor, laporan, dan peringatan, serta cara membuat tim mau membukanya setiap minggu.',
     content: `Kami pernah memimpin pengembangan aplikasi web yang menyatukan berbagai media sosial, online maupun offline, dalam satu sistem sentimen, lengkap dengan dasbor, laporan, dan peringatan ([lihat studi kasusnya](/studi-kasus/analisis-sentimen-media-sosial)). Fitur pentingnya bukan grafik yang banyak, tetapi apakah tim benar-benar memakainya.
@@ -79,7 +79,7 @@ Punya data yang menumpuk tanpa dipakai? Ceritakan lewat [audit gratis](/audit-gr
     slug: 'aplikasi-ai-data-sensitif-bidang-medis',
     category: 'Studi Kasus',
     publishedAt: '2026-10-18T09:00:00+07:00',
-    coverImage: null,
+    coverImage: '/images/blog/aplikasi-ai-data-sensitif-bidang-medis.jpg',
     excerpt:
       'Dari aplikasi web AI yang menganalisis pola aliran darah dan memprediksi hasil pascaprosedur: AI sebagai pendukung keputusan, bukan pengganti ahli.',
     content: `Kami pernah mengembangkan frontend dan backend sebuah aplikasi web AI yang menganalisis pola aliran darah dan memprediksi hasil pascaprosedur ([lihat studi kasusnya](/studi-kasus/aplikasi-web-ai-bidang-medis)). Bekerja dengan data sensitif mengubah cara kami membangun.
@@ -111,7 +111,7 @@ Prinsip yang sama berlaku di bidang lain yang datanya sensitif, seperti keuangan
     slug: 'mulai-otomatisasi-dari-pekerjaan-berulang',
     category: 'Tips Digital',
     publishedAt: '2026-10-20T09:00:00+07:00',
-    coverImage: null,
+    coverImage: '/images/blog/mulai-otomatisasi-dari-pekerjaan-berulang.jpg',
     excerpt: 'Cara memilih pekerjaan pertama yang layak diotomatisasi, untuk bisnis dari skala kecil sampai besar.',
     content: `Otomatisasi paling terasa manfaatnya bila dimulai dari pekerjaan yang tepat. Tiga pertanyaan ini membantu memilihnya.
 

@@ -12,9 +12,12 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "seo": "node scripts/seo-check.mjs",
-    "automation:build": "node automation/build.mjs"
+    "automation:build": "node automation/build.mjs",
+    "social:draft": "node --no-warnings scripts/social-draft.mjs",
+    "seed:posts": "node --no-warnings scripts/seed-posts.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.45.0",
     "@vercel/analytics": "^1.3.1",
     "clsx": "^2.1.1",

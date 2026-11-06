@@ -5,7 +5,7 @@ import { siVodafone, siWipro } from 'simple-icons';
  * profile; add or edit entries here, not in the page. Keep names and numbers exactly as stated.
  */
 export const stats = [
-  { value: '10+', label: 'tahun pengalaman sebagai engineer' },
+  { value: '15+', label: 'tahun pengalaman sebagai engineer' },
   { value: '329+', label: 'proyek global untuk klien enterprise' },
   { value: '95%+', label: 'tingkat keberhasilan proyek' },
   { value: '82+', label: 'kemenangan kompetisi UI/UX dan frontend' },

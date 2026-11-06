@@ -54,7 +54,7 @@ export default async function BlogPage({ searchParams }: { searchParams: { kateg
           {posts.length === 0 ? (
             <p className="text-body">Belum ada tulisan di kategori ini.</p>
           ) : (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
               {posts.map((p) => (
                 <PostCard key={p.slug} post={p} />
               ))}

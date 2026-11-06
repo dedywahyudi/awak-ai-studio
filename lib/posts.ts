@@ -37,6 +37,7 @@ export async function getAllPosts(): Promise<Post[]> {
     .from('posts')
     .select('title, slug, content, excerpt, cover_image, category, published_at')
     .eq('status', 'published')
+    .lte('published_at', new Date().toISOString())
     .order('published_at', { ascending: false });
 
   if (error || !data) {

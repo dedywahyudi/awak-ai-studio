@@ -5,7 +5,7 @@ export interface Step {
 
 export function Steps({ steps }: { steps: Step[] }) {
   return (
-    <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <ol className="grid gap-5 sm:grid-cols-2 md:grid-cols-4">
       {steps.map((s, i) => (
         <li key={s.title} className="flex flex-col gap-3 rounded-card border border-line bg-card p-6">
           <span className="font-mono text-sm font-medium text-eyebrow">

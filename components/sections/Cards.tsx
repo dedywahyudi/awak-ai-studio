@@ -83,7 +83,7 @@ export function PostCard({ post }: { post: Post }) {
       className="group flex h-full flex-col overflow-hidden rounded-card border border-line bg-card transition duration-200 hover:-translate-y-0.5 hover:border-accent-ring"
     >
       {post.coverImage ? (
-        <div className="relative aspect-[16/9] w-full">
+        <div className="relative aspect-square w-full">
           <Image
             src={post.coverImage}
             alt=""

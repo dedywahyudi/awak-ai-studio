@@ -24,7 +24,7 @@ export default function StudiKasusPage() {
       />
       <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container>
-          <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-5 md:grid-cols-3">
             {projects.map((project) => (
               <li key={project.slug}>
                 <ProjectCard project={project} />

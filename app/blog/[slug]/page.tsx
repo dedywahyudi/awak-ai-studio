@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     description: post.excerpt,
     path: `/blog/${post.slug}`,
     type: 'article',
+    image: post.coverImage,
   });
 }
 
@@ -53,6 +55,20 @@ export default async function PostPage({ params }: { params: Params }) {
             {post.title}
           </h1>
         </div>
+
+        {post.coverImage && (
+          <figure className="mx-auto w-full max-w-xl overflow-hidden rounded-card border border-line bg-card">
+            <Image
+              src={post.coverImage}
+              alt={`Ilustrasi: ${post.title}`}
+              width={1080}
+              height={1080}
+              sizes="(min-width: 640px) 576px, 100vw"
+              priority
+              className="h-auto w-full"
+            />
+          </figure>
+        )}
 
         {/* react-markdown does not render raw HTML by default, so post content cannot inject markup. */}
         <div className="prose-awak text-lg leading-relaxed">

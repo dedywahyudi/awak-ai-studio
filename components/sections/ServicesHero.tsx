@@ -10,9 +10,9 @@ import { HeroVisual } from '@/components/sections/HeroVisual';
  */
 export function ServicesHero({ eyebrow, secondaryHref, secondaryLabel }: { eyebrow: string; secondaryHref: string; secondaryLabel: string }) {
   return (
-    <header className="relative -mt-16 overflow-hidden bg-page pb-20 pt-[7.5rem] md:pb-28 md:pt-40 lg:flex lg:min-h-[680px] lg:flex-col lg:justify-center">
+    <header className="relative -mt-16 overflow-hidden bg-page pb-20 pt-[7.5rem] md:pb-28 md:pt-40 md:flex md:min-h-[680px] md:flex-col md:justify-center">
       <StarfieldBackground />
-      <Container className="relative z-10 grid items-center gap-12 lg:grid-cols-[1.25fr_1fr]">
+      <Container className="relative z-10 grid items-center gap-12 md:grid-cols-[1.25fr_1fr]">
         <ServiceProvider>
           <div className="flex flex-col gap-8">
             <Eyebrow>{eyebrow}</Eyebrow>

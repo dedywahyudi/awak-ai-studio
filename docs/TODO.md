@@ -8,8 +8,10 @@ is either a placeholder or a gap found in the first-time-visitor review.
 - [ ] **Team wording.** The site says "Klien dan tim remote dari seluruh dunia" and "kru" (`app/tentang/page.tsx`), while the internal case study
       calls it a one-person agency. Decide the honest description (one engineer plus AI tools, or a team) and make
       the wording match across `/tentang`, the footer, and `lib/site.ts`.
-- [ ] **`/keamanan` page.** What customer data is sent where, retention, human review, UU PDP. Larger buyers ask for
-      this first. Needs your real data-handling facts (see the FAQ answers in `content/faq.ts` as a starting point).
+- [ ] **Review `/keamanan` and `/syarat-ketentuan`** (drafted from the site's own FAQ and pricing rules, no new facts).
+      Confirm each statement is true for you (data kept in the client's own database, API data not used for training,
+      what is sent to which AI provider), add retention periods and backups if you have them, and have a lawyer review
+      liability, intellectual property and governing law.
 - [ ] **Client logos.** The clients are listed in `content/profile.ts` (`clients`), 40 in total. Logos come from your
       uploaded `public/clients/` files, converted to light grey in `public/images/clients/`. All clients have a logo. Comcast, Chevron, Canon and Zurich are from Wikimedia Commons (SVG, public domain, trademarked). You need permission to show client logos, and
       the list (including Pemprovsu, Korlantas, Kemenpar) is yours to confirm. `public/clients/clients.psd` is
@@ -57,6 +59,14 @@ is either a placeholder or a gap found in the first-time-visitor review.
 - [ ] **ERP AI features** (budget forecast, sales prediction, natural-language Q&A on ERP data, executive summaries)
       were added from the recommended list, not from the screenshots. Confirm each is real, or remove it, and say
       which method or model is used.
+- [ ] **Scheduled publishing setup** (see `docs/SCHEDULING.md`): run migration `0003_scheduling.sql`, add the GitHub
+      secrets, connect Instagram (Business account, Meta app, long-lived token), then run the workflow once as a dry run.
+- [ ] **Admin pages** (`/admin`): create your Supabase Auth user, set `ADMIN_EMAILS` (and the three Supabase keys) in the
+      production environment, then sign in and schedule one test post. Not tested end to end yet (no Supabase here).
+- [ ] **Blog image fixes** (images are in `public/images/blog/`): in the medical image change "Akurat, Aman" to a claim
+      you can support (for example "Terukur") and remove the brain icon (design rule); in the sentiment image change
+      "The Real Dashboard" to Indonesian and confirm the offline sources shown; in the "Menambahkan AI" image translate
+      the English labels (Fallback, Human Review, AI Step). Confirm the angiogram is anonymised.
 - [ ] **Add what only you know**, per project, in `content/projects.ts`: your role, team size, duration, the problem
       it solved, and real results (numbers only if true). Periods are missing for the ERP and marketplace projects.
 - [ ] Optional: a short client quote per project, if you have permission.

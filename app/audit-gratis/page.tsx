@@ -26,7 +26,7 @@ export default function AuditGratisPage() {
         description={auditProduct.tagline}
       />
       <section className="bg-page pb-16 pt-0 md:pb-28">
-        <Container className="grid gap-10 lg:grid-cols-[1fr_1.3fr]">
+        <Container className="grid gap-10 md:grid-cols-[1fr_1.3fr]">
           <div className="flex flex-col gap-6">
             <ul className="flex flex-col gap-3">
               {auditProduct.features.map((f) => (

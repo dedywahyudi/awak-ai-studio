@@ -8,6 +8,8 @@ interface PageMetaInput {
   /** Path starting with "/", used for the canonical URL and og:url. */
   path: string;
   type?: 'website' | 'article';
+  /** Share image for this page (path or URL). Defaults to the site-wide image. */
+  image?: string | null;
 }
 
 /** Search snippets cut off near 160 characters: clamp at a word boundary. */
@@ -21,8 +23,9 @@ const clamp = (text: string, max = 158) => {
 const shareImage = { url: '/opengraph-image', width: 1200, height: 630, alt: `${site.name}: AI untuk bisnis semua skala` };
 
 /** Unique title, description, canonical and Open Graph per page. */
-export function pageMeta({ title, description: rawDescription, path, type = 'website' }: PageMetaInput): Metadata {
+export function pageMeta({ title, description: rawDescription, path, type = 'website', image }: PageMetaInput): Metadata {
   const description = clamp(rawDescription);
+  const share = image ? { url: image, width: 1080, height: 1080, alt: title } : shareImage;
   return {
     title,
     description,
@@ -34,9 +37,9 @@ export function pageMeta({ title, description: rawDescription, path, type = 'web
       siteName: site.name,
       locale: site.locale,
       type,
-      images: [shareImage],
+      images: [share],
     },
-    twitter: { card: 'summary_large_image', title: `${title} | ${site.name}`, description, images: [shareImage.url] },
+    twitter: { card: 'summary_large_image', title: `${title} | ${site.name}`, description, images: [share.url] },
   };
 }
 
@@ -87,6 +90,6 @@ export function articleJsonLd(post: Post) {
     mainEntityOfPage: abs(`/blog/${post.slug}`),
     author: { '@type': 'Organization', name: site.name },
     publisher: { '@type': 'Organization', name: site.name },
-    ...(post.coverImage ? { image: post.coverImage } : {}),
+    ...(post.coverImage ? { image: post.coverImage.startsWith('/') ? abs(post.coverImage) : post.coverImage } : {}),
   };
 }
