@@ -2,6 +2,31 @@
 
 The code is ready: `npm run lint && npm run typecheck && npm run build` pass, every integration is optional, and `vercel.json` pins the functions to Singapore (`sin1`, closest to Indonesia). Follow the steps in order.
 
+## Launching on Vercel first, Supabase later
+
+You can deploy with no Supabase at all. Skip sections 1, 3 and 4 and set only the Vercel variables that do not mention Supabase:
+
+- Needed: `NEXT_PUBLIC_SITE_URL` (the real domain, or the sitemap and canonical links point to localhost).
+- Recommended: `NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_CONTACT_EMAIL`, and `RESEND_API_KEY`, `RESEND_FROM`, `LEAD_NOTIFY_EMAIL`.
+- Leave out: every `SUPABASE` variable and `ADMIN_EMAILS`.
+
+What works and what does not:
+
+| Part | Without Supabase |
+|---|---|
+| All public pages | Work as usual (content lives in the code). |
+| Blog, blog posts, sitemap | Read from `content/posts.ts` (the built-in fallback), so the four posts and their covers show. To change a post, edit that file and redeploy. |
+| Contact and audit forms | Work **only if Resend is set**: leads go to `LEAD_NOTIFY_EMAIL`. With neither Supabase nor Resend, visitors see an error and the lead is lost. |
+| `/admin` | Shows "Admin belum aktif" and redirects to the login page. |
+| Scheduled publishing, `seed:posts` | Do not run. |
+
+Two things to do on GitHub while Supabase is on hold:
+
+- Disable the **Publish scheduled posts** workflow (Actions tab > the workflow > ... > Disable workflow). It runs every 15 minutes and fails without its secrets.
+- Leave CI (`ci.yml`) on: it builds without any secrets.
+
+**Adding Supabase later:** follow sections 1 to 4, add the Supabase and `ADMIN_EMAILS` variables in Vercel, redeploy, and run `npm run seed:posts` once. Once Supabase is configured the blog reads only from the database, so an empty table means an empty blog.
+
 ## 1. Supabase
 
 1. Create a project at supabase.com. **Region: Southeast Asia (Singapore)**, same as Vercel. Save the database password.

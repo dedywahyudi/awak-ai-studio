@@ -9,9 +9,12 @@ export async function sendLeadEmail(lead: LeadInput): Promise<boolean> {
   if (!apiKey || !from || !to) return false;
 
   const resend = new Resend(apiKey);
+  // When the visitor left an email, replying to the notification answers them directly.
+  const replyTo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.kontak) ? lead.kontak : undefined;
   const { error } = await resend.emails.send({
     from,
     to,
+    ...(replyTo ? { replyTo } : {}),
     subject: `Lead baru: ${lead.nama} (${lead.namaBisnis})`,
     text: [
       `Nama: ${lead.nama}`,
