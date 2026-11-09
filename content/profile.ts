@@ -56,7 +56,6 @@ export const clients: Client[] = [
   { name: 'Estrada', src: '/images/clients/estrada.png' },
   { name: 'Global Greens', src: '/images/clients/global-greens.png' },
   { name: 'Halo', src: '/images/clients/halo.png' },
-  { name: 'MSC', src: '/images/clients/msc.png' },
   { name: 'Nterprisers', src: '/images/clients/nterprisers.png' },
   { name: 'Planet Freedom', src: '/images/clients/planet-freedom.png' },
   { name: 'RMA Architects', src: '/images/clients/rma.png' },

@@ -57,7 +57,7 @@ export function PostForm({ post }: { post: AdminPost | null }) {
           <input name="title" defaultValue={post?.title} required className={field} />
         </Field>
         <Field label="Kategori" error={err('category')}>
-          <select name="category" defaultValue={post?.category ?? postCategories[0]} className={field}>
+          <select name="category" defaultValue={post?.category ?? postCategories[0]} className={cn(field, 'select-field')}>
             {postCategories.map((c) => (
               <option key={c} value={c}>
                 {categoryLabel(c)}

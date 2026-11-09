@@ -11,14 +11,14 @@ export function ClientLogo({ client }: { client: Client }) {
     <span className="inline-flex h-16 items-center gap-3 rounded-card border border-line bg-card px-8 text-body">
       {client.path ? (
         <>
-          <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true">
             <path d={client.path} />
           </svg>
           <span className="sr-only">{client.name}</span>
         </>
       ) : client.src ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={client.src} alt={client.name} decoding="async" className="h-auto max-h-9 w-auto max-w-[132px]" />
+        <img src={client.src} alt={client.name} decoding="async" className="h-8 w-auto max-w-[200px] object-contain" />
       ) : (
         <span className="font-display text-xl font-extrabold tracking-[-0.01em]">{client.name}</span>
       )}

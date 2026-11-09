@@ -112,7 +112,7 @@ export function LeadForm({ variant = 'general', defaultNeed = '' }: { variant?: 
 
       <div className={cn('grid gap-5', custom && 'sm:grid-cols-2')}>
         {field('jenisKebutuhan', custom ? 'Jenis proyek' : 'Yang Anda butuhkan', (id, bad) => (
-          <select {...a11y(id, bad)} required defaultValue={needOptions.some((o) => o === defaultNeed) ? defaultNeed : ''} className={cn(fieldBase, bad && 'border-danger')}>
+          <select {...a11y(id, bad)} required defaultValue={needOptions.some((o) => o === defaultNeed) ? defaultNeed : ''} className={cn(fieldBase, 'select-field', bad && 'border-danger')}>
             <option value="" disabled>
               Pilih salah satu
             </option>
@@ -128,7 +128,7 @@ export function LeadForm({ variant = 'general', defaultNeed = '' }: { variant?: 
             'budgetRange',
             'Perkiraan budget',
             (id, bad) => (
-              <select {...a11y(id, bad)} defaultValue="" className={cn(fieldBase, bad && 'border-danger')}>
+              <select {...a11y(id, bad)} defaultValue="" className={cn(fieldBase, 'select-field', bad && 'border-danger')}>
                 <option value="">Pilih salah satu</option>
                 {budgetOptions.map((o) => (
                   <option key={o} value={o}>

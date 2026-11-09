@@ -86,7 +86,6 @@ const projectList: Project[] = [
       { src: '/images/projects/aplikasi-web-ai-bidang-medis/02.jpg', alt: 'Lokalisasi titik masuk pembuluh darah', width: 1400, height: 995 },
       { src: '/images/projects/aplikasi-web-ai-bidang-medis/03.jpg', alt: 'Hasil analisis berupa probabilitas skor mTICI', width: 1400, height: 1426 },
       { src: '/images/projects/aplikasi-web-ai-bidang-medis/04.jpg', alt: 'Peta peak height', width: 1400, height: 1050 },
-      { src: '/images/projects/aplikasi-web-ai-bidang-medis/05.jpg', alt: 'Peta area di bawah kurva (AUC)', width: 1400, height: 1050 },
     ],
   },
   {
@@ -196,9 +195,6 @@ const projectList: Project[] = [
     ],
     stack: ['React', 'Mapbox', 'PostgreSQL', 'Prediksi lalu lintas'],
     gallery: [
-      { src: '/images/projects/dashboard-command-center/01.jpg', alt: 'Halaman masuk', width: 1400, height: 787 },
-      { src: '/images/projects/dashboard-command-center/02.jpg', alt: 'Daftar proyek rencana', width: 1400, height: 787 },
-      { src: '/images/projects/dashboard-command-center/03.jpg', alt: 'Peta simulasi di seluruh Indonesia', width: 1400, height: 787 },
       { src: '/images/projects/dashboard-command-center/04.jpg', alt: 'Perencanaan rute dan titik di peta', width: 1400, height: 787 },
       { src: '/images/projects/dashboard-command-center/05.jpg', alt: 'Rute dan elemen taktis di peta', width: 1400, height: 787 },
       { src: '/images/projects/dashboard-command-center/06.jpg', alt: 'Rincian penugasan di peta', width: 1400, height: 787 },
@@ -289,8 +285,6 @@ const projectList: Project[] = [
       { src: '/images/projects/platform-erp-enterprise/03.jpg', alt: 'Pipeline penjualan', width: 1400, height: 922 },
       { src: '/images/projects/platform-erp-enterprise/04.jpg', alt: 'Model proyek', width: 1400, height: 941 },
       { src: '/images/projects/platform-erp-enterprise/05.jpg', alt: 'Rantai pasok dan pengadaan', width: 1400, height: 936 },
-      { src: '/images/projects/platform-erp-enterprise/06.jpg', alt: 'Layanan purnajual dan SLA', width: 1400, height: 934 },
-      { src: '/images/projects/platform-erp-enterprise/07.jpg', alt: 'Dasbor SDM', width: 1400, height: 938 },
     ],
   },
   {
@@ -319,9 +313,6 @@ const projectList: Project[] = [
     ],
     stack: ['Marketplace', 'Valuasi', 'Aplikasi web'],
     gallery: [
-      { src: '/images/projects/marketplace-bisnis-skala-kecil/01.jpg', alt: 'Beranda marketplace', width: 1400, height: 1827 },
-      { src: '/images/projects/marketplace-bisnis-skala-kecil/02.jpg', alt: 'Hasil pencarian perusahaan', width: 1400, height: 1681 },
-      { src: '/images/projects/marketplace-bisnis-skala-kecil/03.jpg', alt: 'Pendaftaran dan verifikasi profil perusahaan', width: 1400, height: 995 },
       { src: '/images/projects/marketplace-bisnis-skala-kecil/04.jpg', alt: 'Profil perusahaan setelah masuk', width: 1400, height: 1993 },
       { src: '/images/projects/marketplace-bisnis-skala-kecil/05.jpg', alt: 'Formulir penilaian bisnis', width: 1400, height: 2457 },
       { src: '/images/projects/marketplace-bisnis-skala-kecil/06.jpg', alt: 'Riwayat valuasi dengan grafik radar', width: 1400, height: 1579 },
@@ -367,12 +358,8 @@ const projectList: Project[] = [
       { title: 'Peta prediksi per bulan', body: 'Prediksi panen ditampilkan di peta untuk setiap bulan, untuk membantu perencanaan.' },
     ],
     stack: ['Aplikasi mobile', 'Peta GPS', 'Computer vision', 'Prediksi', 'Multi-peran', 'Mode offline'],
-    coverIndex: 3,
     gallery: [
-      { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/01.jpg', alt: 'Masuk ke aplikasi', width: 360, height: 760 },
-      { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/02.jpg', alt: 'Menu dan sinkronisasi berhasil', width: 360, height: 760 },
       { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/03.jpg', alt: 'Absensi pekerja panen', width: 360, height: 1112 },
-      { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/04.jpg', alt: 'Memilih lokasi dengan pindai GPS', width: 360, height: 760 },
       { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/05.jpg', alt: 'Merekam hasil panen', width: 360, height: 1414 },
       { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/06.jpg', alt: 'Detail mutu ancak', width: 360, height: 760 },
       { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/07.jpg', alt: 'Konfirmasi dokumen potong buah', width: 360, height: 1099 },

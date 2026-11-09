@@ -1,30 +1,34 @@
-import { aiTools } from '@/content/ai-tools';
 import {
   siApachekafka,
   siCircleci,
+  siDocker,
   siDjango,
   siFramer,
+  siGithub,
   siMapbox,
   siMobx,
   siNextdotjs,
+  siNodedotjs,
   siPostgresql,
   siPython,
   siReact,
+  siResend,
   siSentry,
   siSonarqubeserver,
   siStoryblok,
   siStyledcomponents,
+  siSupabase,
+  siTailwindcss,
   siTypescript,
+  siVercel,
   siWordpress,
 } from 'simple-icons';
 
-const openAiPath = aiTools.find((t) => t.name === 'ChatGPT')?.path;
-
 export interface TechItem {
   name: string;
-  /** SVG path (24x24). From simple-icons (CC0), or the OpenAI mark shared with ai-tools.ts. */
+  /** SVG path (24x24), from simple-icons (CC0). */
   path?: string;
-  /** Fill the path with the even-odd rule (needed by the OpenAI mark). */
+  /** Fill the path with the even-odd rule, for icons that need it. */
   evenodd?: boolean;
 }
 
@@ -36,7 +40,6 @@ export const techStack: TechItem[] = [
   { name: 'Python', path: siPython.path },
   { name: 'Django', path: siDjango.path },
   { name: 'PostgreSQL', path: siPostgresql.path },
-  { name: 'OpenAI', path: openAiPath, evenodd: true },
   { name: 'Mapbox', path: siMapbox.path },
   { name: 'Apache Kafka', path: siApachekafka.path },
   { name: 'MobX', path: siMobx.path },
@@ -47,4 +50,11 @@ export const techStack: TechItem[] = [
   { name: 'CircleCI', path: siCircleci.path },
   { name: 'Sentry', path: siSentry.path },
   { name: 'SonarQube', path: siSonarqubeserver.path },
+  { name: 'Tailwind CSS', path: siTailwindcss.path },
+  { name: 'Node.js', path: siNodedotjs.path },
+  { name: 'Supabase', path: siSupabase.path },
+  { name: 'Vercel', path: siVercel.path },
+  { name: 'Resend', path: siResend.path },
+  { name: 'GitHub', path: siGithub.path },
+  { name: 'Docker', path: siDocker.path },
 ];
