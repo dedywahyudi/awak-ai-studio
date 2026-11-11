@@ -2,13 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, BarChart3, Camera, Clock, Globe, HeartPulse, MessageCircle, ShieldCheck, Sparkles, Workflow, Zap, type LucideIcon } from 'lucide-react';
 import { site } from '@/lib/site';
-import { priceDisclaimer } from '@/lib/pricing';
 import { getProject } from '@/content/projects';
 import { Button } from '@/components/ui/Button';
 import { Container, Hl, PageHeader, Section } from '@/components/ui/Section';
 import { ClientLogos } from '@/components/sections/ClientLogos';
-import { PricingCards } from '@/components/sections/PricingCards';
-import { AuditBand } from '@/components/sections/AuditBand';
+import { ServicesScroll } from '@/components/sections/ServicesScroll';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata: Metadata = {
@@ -158,6 +156,10 @@ export default function HomePage() {
 
       <ClientLogos />
 
+      <section id="layanan" aria-label="Layanan">
+        <ServicesScroll />
+      </section>
+
       <section aria-label="Alasan memilih kami" className="border-y border-line bg-section py-12 md:py-16">
         <Container>
           <ul className="grid gap-8 md:grid-cols-3">
@@ -177,7 +179,7 @@ export default function HomePage() {
       </section>
 
       <Section
-        eyebrow="01 — AI dalam praktik"
+        eyebrow="02 — AI dalam praktik"
         title={
           <>
             Dari bisnis kecil sampai <Hl>sistem enterprise</Hl>.
@@ -197,29 +199,6 @@ export default function HomePage() {
           <Button variant="secondary" href="/studi-kasus" arrow>
             Lihat Studi Kasus
           </Button>
-        </div>
-      </Section>
-
-      <Section
-        id="layanan"
-        tone="section"
-        eyebrow="02 — Layanan"
-        title={
-          <>
-            Mulai dari tes gratis, <Hl>lanjut saat siap</Hl>.
-          </>
-        }
-        description="Biaya bulanan menjaga sistem Anda tetap diperbarui dan dipantau oleh engineer yang membangunnya."
-      >
-        <div className="flex flex-col gap-5">
-          <AuditBand />
-          <PricingCards />
-          <p className="text-sm text-muted">
-            {priceDisclaimer}{' '}
-            <Link href="/layanan" className="font-semibold text-link hover:text-white">
-              Lihat detail layanan dan FAQ
-            </Link>
-          </p>
         </div>
       </Section>
 

@@ -11,4 +11,4 @@ export function waLink(message?: string): string {
 }
 
 export const waConsultMessage = (topic?: string) =>
-  `Halo ${site.shortName}, saya mau konsultasi${topic ? ` soal ${topic}` : ''}.`;
+  `Halo ${site.name}, saya mau konsultasi${topic ? ` soal ${topic}` : ''}.`;

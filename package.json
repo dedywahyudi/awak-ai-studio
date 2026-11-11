@@ -17,10 +17,12 @@
     "seed:posts": "node --no-warnings scripts/seed-posts.mjs"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.45.0",
     "@vercel/analytics": "^1.3.1",
     "clsx": "^2.1.1",
+    "gsap": "^3.15.1",
     "lucide-react": "^0.460.0",
     "next": "^14.2.0",
     "react": "^18.3.1",

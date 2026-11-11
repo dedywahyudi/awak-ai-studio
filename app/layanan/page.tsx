@@ -6,7 +6,7 @@ import { categories, getProduct, headlinePrice, priceLabel, priceNote } from '@/
 import { waConsultMessage, waLink } from '@/lib/whatsapp';
 import { Button } from '@/components/ui/Button';
 import { Container, Section } from '@/components/ui/Section';
-import { ServicesHero } from '@/components/sections/ServicesHero';
+import { ServicesScroll } from '@/components/sections/ServicesScroll';
 import { AuditBand } from '@/components/sections/AuditBand';
 import { Faq } from '@/components/sections/Faq';
 import { ClosingCta } from '@/components/sections/ClosingCta';
@@ -24,7 +24,7 @@ const icons = { 'message-circle': MessageCircle, workflow: Workflow, globe: Glob
 export default function LayananPage() {
   return (
     <>
-      <ServicesHero eyebrow="Layanan" secondaryHref="#layanan" secondaryLabel="Lihat Layanan" />
+      <ServicesScroll eyebrow="LAYANAN" seeAllHref="#layanan" headingLevel={1} />
 
       <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container className="flex flex-col gap-5">

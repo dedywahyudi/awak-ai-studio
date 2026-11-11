@@ -292,26 +292,29 @@ const projectList: Project[] = [
     title: 'Marketplace jual beli bisnis skala kecil',
     period: '2023',
     summary:
-      'Marketplace untuk mencari, menilai, dan memulai transaksi jual beli bisnis manufaktur skala kecil, dengan model valuasi.',
+      'Marketplace untuk mencari, menilai, dan memulai transaksi jual beli bisnis manufaktur skala kecil, dengan estimasi valuasi berbasis AI.',
     tags: ['Marketplace', 'Valuasi', 'Web app'],
     industry: 'Jual beli bisnis manufaktur',
-    aiUsed: { label: 'Tanpa AI', detail: 'Tanpa AI: penilaian bisnis berbasis rumus dan faktor yang jelas.', none: true },
+    aiUsed: { label: 'Estimasi valuasi', detail: 'AI menghitung estimasi valuasi perusahaan berdasarkan data publik perusahaan.' },
     platform: 'Aplikasi web',
     intro:
       'Marketplace yang mempertemukan pemilik dan calon pembeli bisnis manufaktur skala kecil, dilengkapi alat untuk menilai nilai bisnis.',
     points: [
       'Pencarian perusahaan dan halaman profil yang lengkap.',
       'Verifikasi identitas pemilik dengan kode yang dikirim ke email.',
-      'Penilaian bisnis berdasarkan beberapa faktor, dengan riwayat valuasi.',
+      'Estimasi valuasi perusahaan dari data publik, ditambah penilaian berdasarkan beberapa faktor dan riwayat valuasi.',
     ],
     process: [
       { icon: 'search', title: 'Cari perusahaan', body: 'Pembeli mencari bisnis berdasarkan nama atau lokasi.' },
-      { icon: 'building', title: 'Buka profil perusahaan', body: 'Profil menampilkan ringkasan, kontak, dan perkiraan nilai.' },
+      { icon: 'building', title: 'Buka profil perusahaan', body: 'Profil menampilkan ringkasan, kontak, dan estimasi valuasi dari AI.' },
       { icon: 'shield', title: 'Verifikasi kepemilikan', body: 'Pemilik membuktikan identitasnya lewat kode keamanan.' },
       { icon: 'chart', title: 'Nilai bisnis', body: 'Pemilik menjawab beberapa faktor untuk menghasilkan perkiraan nilai.' },
       { icon: 'history', title: 'Lihat riwayat valuasi', body: 'Hasil tiap penilaian tersimpan dan bisa diunduh.' },
     ],
-    stack: ['Marketplace', 'Valuasi', 'Aplikasi web'],
+    ai: [
+      { title: 'Estimasi valuasi perusahaan', body: 'AI menghitung estimasi valuasi perusahaan berdasarkan data publik perusahaan.' },
+    ],
+    stack: ['Marketplace', 'Valuasi', 'AI', 'Aplikasi web'],
     gallery: [
       { src: '/images/projects/marketplace-bisnis-skala-kecil/04.jpg', alt: 'Profil perusahaan setelah masuk', width: 1400, height: 1993 },
       { src: '/images/projects/marketplace-bisnis-skala-kecil/05.jpg', alt: 'Formulir penilaian bisnis', width: 1400, height: 2457 },
