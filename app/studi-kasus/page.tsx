@@ -1,7 +1,8 @@
 import { pageMeta } from '@/lib/seo';
+import { site } from '@/lib/site';
 import { projects } from '@/content/projects';
-import { Container, Hl, PageHeader } from '@/components/ui/Section';
-import { ProjectCard } from '@/components/sections/Cards';
+import { JsonLd } from '@/components/ui/JsonLd';
+import { HeroSlider, type HeroSlide } from '@/components/sections/HeroSlider';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata = pageMeta({
@@ -10,34 +11,56 @@ export const metadata = pageMeta({
   path: '/studi-kasus',
 });
 
+const slides: HeroSlide[] = projects.map((p) => {
+  const cover = p.gallery[p.coverIndex ?? 0];
+  const phone = p.gallery.length > 0 && p.gallery.every((s) => s.width <= 600 && s.height > s.width);
+  return {
+    id: p.slug,
+    href: `/studi-kasus/${p.slug}`,
+    eyebrow: p.period,
+    beta: p.beta,
+    title: p.title,
+    summary: p.summary,
+    meta: p.aiUsed.none ? p.aiUsed.label : `AI: ${p.aiUsed.label}`,
+    metaIcon: 'ai',
+    tags: p.tags,
+    kind: phone ? 'phone' : 'website',
+    image: cover,
+  };
+});
+
+const collectionJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Studi kasus',
+  url: `${site.url}/studi-kasus`,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: projects.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.title,
+      url: `${site.url}/studi-kasus/${p.slug}`,
+    })),
+  },
+};
+
 export default function StudiKasusPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="Studi kasus"
-        title={
-          <>
-            Proyek AI dan sistem yang <Hl>pernah kami bangun</Hl>.
-          </>
-        }
-        description="Pilihan proyek yang pernah kami kerjakan, lengkap dengan alur kerja, peran AI, dan tangkapan layarnya. Hasil terukur akan kami tambahkan seiring data tersedia."
+      <HeroSlider
+        slides={slides}
+        heading="Studi Kasus"
+        label="Studi kasus pilihan"
+        prevLabel="Studi kasus sebelumnya"
+        nextLabel="Studi kasus berikutnya"
       />
-      <section className="bg-page pb-16 pt-0 md:pb-28">
-        <Container>
-          <ul className="grid gap-5 md:grid-cols-3">
-            {projects.map((project) => (
-              <li key={project.slug}>
-                <ProjectCard project={project} />
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
 
       <ClosingCta
         title="Punya bisnis yang ingin dibantu?"
         description="Ceritakan masalah yang ingin Anda selesaikan. Kami bantu memetakan solusinya."
       />
+      <JsonLd data={collectionJsonLd} />
     </>
   );
 }

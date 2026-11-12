@@ -24,7 +24,7 @@ const icons = { 'message-circle': MessageCircle, workflow: Workflow, globe: Glob
 export default function LayananPage() {
   return (
     <>
-      <ServicesScroll eyebrow="LAYANAN" seeAllHref="#layanan" headingLevel={1} />
+      <ServicesScroll eyebrow="LAYANAN" seeAllHref="#layanan" headingLevel={1} stars />
 
       <section className="bg-page pb-16 pt-0 md:pb-28">
         <Container className="flex flex-col gap-5">

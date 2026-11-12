@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import { StarfieldBackground } from '@/components/ui/StarfieldBackground';
 import DimensionalWorkflowHero, { type ScrollExperienceContent } from '@/components/ui/dimensional-workflow-hero';
 
 /**
@@ -138,12 +139,19 @@ interface ServicesScrollProps {
   seeAllHref?: string;
   /** Use 1 when this is the page's main heading. */
   headingLevel?: 1 | 2;
+  /** Draw the starry sky behind the section. */
+  stars?: boolean;
 }
 
-export function ServicesScroll({ eyebrow = '01 — LAYANAN', seeAllHref = '/layanan', headingLevel = 2 }: ServicesScrollProps) {
+export function ServicesScroll({ eyebrow = '01 — LAYANAN', seeAllHref = '/layanan', headingLevel = 2, stars = false }: ServicesScrollProps) {
   return (
     <>
-      <DimensionalWorkflowHero content={buildContent(eyebrow, seeAllHref)} style={theme} headingLevel={headingLevel} />
+      <DimensionalWorkflowHero
+        content={buildContent(eyebrow, seeAllHref)}
+        style={theme}
+        headingLevel={headingLevel}
+        backdrop={stars ? <StarfieldBackground className="![mask-image:none]" /> : undefined}
+      />
       <div id="layanan-selesai" tabIndex={-1} className="h-px" />
     </>
   );

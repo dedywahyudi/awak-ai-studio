@@ -4,7 +4,9 @@ import { ArrowRight, BarChart3, Camera, Clock, Globe, HeartPulse, MessageCircle,
 import { site } from '@/lib/site';
 import { getProject } from '@/content/projects';
 import { Button } from '@/components/ui/Button';
-import { Container, Hl, PageHeader, Section } from '@/components/ui/Section';
+import { Container, Eyebrow, Hl, Section } from '@/components/ui/Section';
+import { LaunchLogo } from '@/components/ui/LaunchLogo';
+import { StarfieldBackground } from '@/components/ui/StarfieldBackground';
 import { ClientLogos } from '@/components/sections/ClientLogos';
 import { ServicesScroll } from '@/components/sections/ServicesScroll';
 import { ClosingCta } from '@/components/sections/ClosingCta';
@@ -134,48 +136,57 @@ function UseCaseGroup({ heading, items, columns }: { heading: string; items: Use
 export default function HomePage() {
   return (
     <>
-      <PageHeader
-        eyebrow={`${site.city} — Studio AI untuk bisnis`}
-        title={
-          <>
-            Tiga cara AI <Hl>bekerja untuk bisnis</Hl> Anda.
-          </>
-        }
-        description="AI Chat, Otomatisasi, dan Solusi Custom, dibangun di atas data dan alur kerja bisnis Anda sendiri, dengan manusia tetap memegang keputusan."
-        actions={
-          <>
-            <Button href="/audit-gratis" arrow>
-              Minta Audit Gratis
-            </Button>
-            <Button variant="secondary" href="#layanan">
-              Lihat Layanan
-            </Button>
-          </>
-        }
-      />
+      <header className="relative -mt-16 flex min-h-[100svh] flex-col overflow-hidden bg-page">
+        <StarfieldBackground />
+        <div className="relative z-10 flex flex-1 items-center pb-10 pt-28">
+          <Container className="grid items-center gap-10 md:grid-cols-[1.3fr_1fr] md:gap-12">
+            <div className="flex flex-col gap-4">
+              <Eyebrow>{`${site.city} — Studio AI untuk bisnis`}</Eyebrow>
+              <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-strong md:text-[56px]">
+                Tiga cara AI <Hl>bekerja untuk bisnis</Hl> Anda.
+              </h1>
+              <p className="max-w-2xl text-lg leading-relaxed text-body">
+                AI Chat, Otomatisasi, dan Solusi Custom, dibangun di atas data dan alur kerja bisnis Anda sendiri, dengan manusia
+                tetap memegang keputusan.
+              </p>
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button href="/audit-gratis" arrow className="whitespace-nowrap">
+                  Minta Audit Gratis
+                </Button>
+                <Button variant="secondary" href="#layanan" className="whitespace-nowrap">
+                  Lihat Layanan
+                </Button>
+              </div>
+            </div>
+            <LaunchLogo className="hidden justify-self-center md:flex" />
+          </Container>
+        </div>
+
+        {/* Why choose us, along the bottom of the first screen. */}
+        <div className="relative z-10 border-t border-line">
+          <Container>
+            <h2 className="sr-only">Alasan memilih kami</h2>
+            <ul className="grid gap-5 py-6 md:grid-cols-3 md:gap-8">
+              {trust.map(({ icon: Icon, title, body }) => (
+                <li key={title} className="flex gap-3">
+                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-link">
+                    <Icon size={20} aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-base font-bold text-strong">{title}</h3>
+                    <p className="mt-0.5 text-sm leading-snug text-muted">{body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </div>
+      </header>
 
       <ClientLogos />
 
       <section id="layanan" aria-label="Layanan">
-        <ServicesScroll />
-      </section>
-
-      <section aria-label="Alasan memilih kami" className="border-y border-line bg-section py-12 md:py-16">
-        <Container>
-          <ul className="grid gap-8 md:grid-cols-3">
-            {trust.map(({ icon: Icon, title, body }) => (
-              <li key={title} className="flex gap-4">
-                <span className="inline-flex size-12 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-link">
-                  <Icon size={24} aria-hidden="true" />
-                </span>
-                <div>
-                  <h2 className="font-display text-base font-bold text-strong">{title}</h2>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{body}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Container>
+        <ServicesScroll stars />
       </section>
 
       <Section

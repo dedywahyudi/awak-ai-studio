@@ -13,7 +13,7 @@ import type { ProjectImage } from '@/content/projects';
  * - phone: the screens side by side in phone frames, scrolling sideways on small screens.
  */
 /** Brand watermark: white logo mark and wordmark, centred over a screenshot. */
-function Watermark({ className, logoClass = 'h-[12%]' }: { className?: string; logoClass?: string }) {
+export function Watermark({ className, logoClass = 'h-[12%]' }: { className?: string; logoClass?: string }) {
   return (
     <span
       aria-hidden="true"

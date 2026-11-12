@@ -394,9 +394,11 @@ export type DimensionalWorkflowHeroProps = {
   motion?: ScrollExperienceMotion;
   /** Heading level announced for the intro title. Use 1 when the page has no other h1. Default 2. */
   headingLevel?: 1 | 2;
+  /** Optional background drawn above the ambient gradient and below the content, for example a starry sky. */
+  backdrop?: ReactNode;
 };
 
-export default function DimensionalWorkflowHero({ content, motion, accent, className = "", style, headingLevel = 2 }: DimensionalWorkflowHeroProps) {
+export default function DimensionalWorkflowHero({ content, motion, accent, className = "", style, headingLevel = 2, backdrop }: DimensionalWorkflowHeroProps) {
   const instanceId = `dimensional-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const chapters = content.chapters;
   const count = chapters.length;
@@ -811,6 +813,7 @@ export default function DimensionalWorkflowHero({ content, motion, accent, class
         <div className="viewport">
           <div className="scene">
           <div className="ambient" />
+          {backdrop}
           <div className="intro">
             <p className="eyebrow">
               <span />

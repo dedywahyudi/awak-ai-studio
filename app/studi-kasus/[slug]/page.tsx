@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ArrowRight, Check, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getProject, projects } from '@/content/projects';
 import { pageMeta } from '@/lib/seo';
 import { Badge } from '@/components/ui/Badge';
-import { Container, Eyebrow, Hl } from '@/components/ui/Section';
+import { Container, Eyebrow } from '@/components/ui/Section';
 import { ClosingCta } from '@/components/sections/ClosingCta';
-import { ProcessFlow } from '@/components/sections/ProcessFlow';
-import { ProjectShowcase } from '@/components/sections/ProjectShowcase';
+import { ProjectDetail } from '@/components/sections/ProjectDetail';
 
 type Params = { slug: string };
 
@@ -21,8 +20,6 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   if (!project) return {};
   return pageMeta({ title: project.title, description: project.intro, path: `/studi-kasus/${project.slug}` });
 }
-
-const sectionTitle = 'font-display text-xl font-bold text-strong md:text-2xl';
 
 export default function ProjectPage({ params }: { params: Params }) {
   const project = getProject(params.slug);
@@ -62,64 +59,7 @@ export default function ProjectPage({ params }: { params: Params }) {
             </dl>
           </header>
 
-          <ProjectShowcase gallery={project.gallery} />
-
-          <section aria-labelledby="alur" className="flex flex-col gap-4">
-            <h2 id="alur" className={sectionTitle}>
-              Alur <Hl>kerja</Hl>
-            </h2>
-            <ProcessFlow steps={project.process} />
-          </section>
-
-          {project.ai && (
-            <section aria-labelledby="ai" className="flex flex-col gap-4">
-              <h2 id="ai" className={sectionTitle}>
-                AI di <Hl>proyek ini</Hl>
-              </h2>
-              <ul className="grid gap-3 md:grid-cols-2">
-                {project.ai.map((a) => (
-                  <li key={a.title} className="flex flex-col gap-2 rounded-card border border-line-featured bg-featured p-4">
-                    <h3 className="flex items-center gap-2 font-display text-base font-bold text-strong">
-                      <Sparkles size={16} className="text-link" aria-hidden="true" />
-                      {a.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-body">{a.body}</p>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          <div className="grid gap-8 md:grid-cols-[1.5fr_1fr]">
-            <section aria-labelledby="fitur" className="flex flex-col gap-3">
-              <h2 id="fitur" className={sectionTitle}>
-                Fitur <Hl>utama</Hl>
-              </h2>
-              <ul className="flex flex-col gap-2">
-                {project.points.map((point) => (
-                  <li key={point} className="flex items-start gap-2 text-sm leading-relaxed text-body">
-                    <Check size={16} strokeWidth={2.5} className="mt-0.5 shrink-0 text-link" aria-hidden="true" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section aria-labelledby="teknologi" className="flex flex-col gap-3">
-              <h2 id="teknologi" className={sectionTitle}>
-                <Hl>Teknologi</Hl>
-              </h2>
-              <ul className="flex flex-wrap content-start gap-2">
-                {project.stack.map((s) => (
-                  <li key={s}>
-                    <Badge tone="neutral" size="sm">
-                      {s}
-                    </Badge>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </div>
+          <ProjectDetail project={project} />
 
           <Link
             href={`/studi-kasus/${next.slug}`}

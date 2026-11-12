@@ -172,8 +172,8 @@ export function LeadForm({ variant = 'general', defaultNeed = '' }: { variant?: 
         </p>
       )}
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Button type="submit" disabled={pending} arrow>
+      <div className="flex flex-col items-start gap-3">
+        <Button type="submit" disabled={pending} arrow className="shrink-0 whitespace-nowrap">
           {pending ? 'Mengirim…' : 'Kirim Pesan'}
         </Button>
         <p className="text-xs text-subtle">
