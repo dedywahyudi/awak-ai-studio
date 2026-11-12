@@ -4,6 +4,7 @@ import { ArrowRight, BarChart3, Camera, Clock, Globe, HeartPulse, MessageCircle,
 import { site } from '@/lib/site';
 import { getProject } from '@/content/projects';
 import { Button } from '@/components/ui/Button';
+import { Reveal } from '@/components/ui/Reveal';
 import { Container, Eyebrow, Hl, Section } from '@/components/ui/Section';
 import { LaunchLogo } from '@/components/ui/LaunchLogo';
 import { StarfieldBackground } from '@/components/ui/StarfieldBackground';
@@ -95,10 +96,12 @@ const forEnterprise: UseCase[] = showcaseProjects.flatMap(({ slug, icon }) => {
 function UseCaseGroup({ heading, items, columns }: { heading: string; items: UseCase[]; columns: string }) {
   return (
     <div className="flex flex-col gap-5">
-      <h3 className="font-display text-sm font-bold uppercase tracking-widest text-link">{heading}</h3>
+      <Reveal>
+        <h3 className="font-display text-sm font-bold uppercase tracking-widest text-link">{heading}</h3>
+      </Reveal>
       <ul className={`grid gap-5 ${columns}`}>
-        {items.map(({ icon: Icon, kind, title, body, href, meta }) => (
-          <li key={title} className="flex">
+        {items.map(({ icon: Icon, kind, title, body, href, meta }, index) => (
+          <Reveal as="li" key={title} delay={(index % 3) * 130} className="flex">
             <Link
               href={href}
               className="group flex w-full flex-col gap-4 rounded-card border border-line bg-card p-6 transition duration-200 hover:-translate-y-0.5 hover:border-accent-ring"
@@ -126,7 +129,7 @@ function UseCaseGroup({ heading, items, columns }: { heading: string; items: Use
                 </span>
               </span>
             </Link>
-          </li>
+          </Reveal>
         ))}
       </ul>
     </div>
