@@ -171,6 +171,14 @@ const siteTypography = `
 .af-experience .primary{min-height:44px;gap:12px!important;padding:0 20px!important;border-radius:10px;font-family:var(--font-hero-display,inherit);font-size:15px!important;font-weight:700;background:var(--accent-color,var(--color-primary));color:#fff}
 .af-experience .primary:hover{background:var(--accent-hover,var(--color-primary))}
 .af-experience .chapter-nav button{font-family:var(--font-hero-display,inherit);font-size:14px;font-weight:600}
+@media(max-width:540px){
+.af-experience[data-layout=phone]:not(.simple) .eyebrow{font-size:11px!important;margin-bottom:8px}
+.af-experience[data-layout=phone]:not(.simple) .intro h1{font-size:30px!important;margin-bottom:8px}
+.af-experience[data-layout=phone]:not(.simple) .flow-copy h2{font-size:22px!important;line-height:1.15;margin-bottom:8px}
+.af-experience[data-layout=phone]:not(.simple) .flow-finale h2{font-size:28px!important}
+.af-experience[data-layout=phone]:not(.simple) .intro-description,.af-experience[data-layout=phone]:not(.simple) .flow-description{font-size:13px;line-height:1.45;margin-bottom:10px}
+.af-experience[data-layout=phone]:not(.simple) .flow-copy li h3{font-size:12px}
+}
 .af-experience .finale-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .af-experience .primary.secondary{background:transparent;border:1px solid var(--border-strong,var(--af-border));color:var(--text-strong,var(--af-foreground))}
 .af-experience .primary.secondary:hover{background:transparent;border-color:var(--blue-400,var(--mint))}

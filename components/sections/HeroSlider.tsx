@@ -98,7 +98,7 @@ export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLa
                 aria-label={`${i + 1} dari ${count}`}
                 aria-hidden={active ? undefined : true}
                 className={cn(
-                  'absolute inset-0 bottom-5 grid grid-rows-[350px_minmax(0,1fr)] gap-5 md:grid-rows-[380px_minmax(0,1fr)] transition-[opacity,visibility,transform] duration-500 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:grid-rows-1 lg:gap-12',
+                  'absolute inset-0 bottom-5 grid grid-rows-[295px_minmax(0,1fr)] gap-5 md:grid-rows-[368px_minmax(0,1fr)] transition-[opacity,visibility,transform] duration-500 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:grid-rows-1 lg:gap-12',
                   active ? 'visible translate-y-0 opacity-100' : 'invisible translate-y-2 opacity-0',
                 )}
               >

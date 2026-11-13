@@ -2,14 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, BarChart3, Camera, Clock, Globe, HeartPulse, MessageCircle, ShieldCheck, Sparkles, Workflow, Zap, type LucideIcon } from 'lucide-react';
 import { site } from '@/lib/site';
+import { priceDisclaimer } from '@/lib/pricing';
 import { getProject } from '@/content/projects';
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
 import { Container, Eyebrow, Hl, Section } from '@/components/ui/Section';
-import { LaunchLogo } from '@/components/ui/LaunchLogo';
 import { StarfieldBackground } from '@/components/ui/StarfieldBackground';
 import { ClientLogos } from '@/components/sections/ClientLogos';
-import { ServicesScroll } from '@/components/sections/ServicesScroll';
+import { HeroMachine } from '@/components/sections/HeroMachine';
+import { PricingCards } from '@/components/sections/PricingCards';
+import { AuditBand } from '@/components/sections/AuditBand';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata: Metadata = {
@@ -141,28 +143,32 @@ export default function HomePage() {
     <>
       <header className="relative -mt-16 flex min-h-[100svh] flex-col overflow-hidden bg-page">
         <StarfieldBackground />
-        <div className="relative z-10 flex flex-1 items-center pb-10 pt-28">
-          <Container className="grid items-center gap-10 md:grid-cols-[1.3fr_1fr] md:gap-12">
-            <div className="flex flex-col gap-4">
-              <Eyebrow>{`${site.city} — Studio AI untuk bisnis`}</Eyebrow>
-              <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-strong md:text-[56px]">
-                Tiga cara AI <Hl>bekerja untuk bisnis</Hl> Anda.
-              </h1>
-              <p className="max-w-2xl text-lg leading-relaxed text-body">
-                AI Chat, Otomatisasi, dan Solusi Custom, dibangun di atas data dan alur kerja bisnis Anda sendiri, dengan manusia
-                tetap memegang keputusan.
-              </p>
-              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button href="/audit-gratis" arrow className="whitespace-nowrap">
-                  Minta Audit Gratis
-                </Button>
-                <Button variant="secondary" href="#layanan" className="whitespace-nowrap">
-                  Lihat Layanan
-                </Button>
+        <div className="relative z-10 flex flex-1 flex-col">
+          {/* The text lets pointer events through, so the machine behind it can be dragged and hovered. */}
+          <div className="pointer-events-none relative z-10 flex flex-1 items-center pb-2 pt-28 lg:pb-10">
+            <Container>
+              <div className="pointer-events-auto flex flex-col gap-4 lg:max-w-[42%] xl:max-w-[46%]">
+                <Eyebrow>{`${site.city} — Studio AI untuk bisnis`}</Eyebrow>
+                <h1 className="max-w-3xl font-display text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] text-strong md:text-[56px]">
+                  Tiga cara AI <Hl>bekerja untuk bisnis</Hl> Anda.
+                </h1>
+                <p className="max-w-2xl text-lg leading-relaxed text-body">
+                  AI Chat, Otomatisasi, dan Solusi Custom, dibangun di atas data dan alur kerja bisnis Anda sendiri, dengan
+                  manusia tetap memegang keputusan.
+                </p>
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <Button href="/audit-gratis" arrow className="whitespace-nowrap">
+                    Minta Audit Gratis
+                  </Button>
+                  <Button variant="secondary" href="#layanan" className="whitespace-nowrap">
+                    Lihat Layanan
+                  </Button>
+                </div>
               </div>
-            </div>
-            <LaunchLogo className="hidden justify-self-center md:flex" />
-          </Container>
+            </Container>
+          </div>
+          {/* How the studio works, as a 3D machine: under the text on small screens, beside it on wide ones. */}
+          <HeroMachine className="h-[600px] lg:absolute lg:inset-0 lg:h-auto" />
         </div>
 
         {/* Why choose us, along the bottom of the first screen. */}
@@ -188,15 +194,34 @@ export default function HomePage() {
 
       <ClientLogos />
 
-      <section id="layanan" aria-label="Layanan">
-        <ServicesScroll stars />
-      </section>
+      <Section
+        id="layanan"
+        tone="section"
+        eyebrow="01 — Layanan"
+        title={
+          <>
+            Mulai dari tes gratis, <Hl>lanjut saat siap</Hl>.
+          </>
+        }
+        description="Biaya bulanan menjaga sistem Anda tetap diperbarui dan dipantau oleh engineer yang membangunnya."
+      >
+        <div className="flex flex-col gap-5">
+          <AuditBand />
+          <PricingCards />
+          <p className="text-sm text-muted">
+            {priceDisclaimer}{' '}
+            <Link href="/layanan" className="font-semibold text-link hover:text-white">
+              Lihat detail layanan dan FAQ
+            </Link>
+          </p>
+        </div>
+      </Section>
 
       <Section
         eyebrow="02 — AI dalam praktik"
         title={
           <>
-            Dari bisnis kecil sampai <Hl>sistem enterprise</Hl>.
+            Dari bisnis kecil sampai <Hl>sistem perusahaan besar</Hl>.
           </>
         }
         description="Tiga layanan yang bisa Anda mulai hari ini, dan proyek nyata yang pernah kami bangun. Setiap sistem memakai data dan alur kerja Anda sendiri, dengan manusia tetap memegang keputusan."

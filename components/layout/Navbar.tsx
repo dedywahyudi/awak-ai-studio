@@ -38,7 +38,7 @@ export function Navbar() {
           : 'border-transparent bg-transparent',
       )}
     >
-      <div className="mx-auto flex h-16 w-full max-w-container items-center justify-between gap-6 px-5 md:px-8">
+      <div className="mx-auto flex h-16 w-full max-w-container items-center justify-between gap-3 px-5 sm:gap-6 md:px-8">
         <Link href="/" aria-label={`${site.name}, beranda`} className="flex shrink-0 items-center gap-2">
           <Image
             src="/images/logo-mark.png"
