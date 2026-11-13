@@ -145,7 +145,7 @@ export default function HomePage() {
         <StarfieldBackground />
         <div className="relative z-10 flex flex-1 flex-col">
           {/* The text lets pointer events through, so the machine behind it can be dragged and hovered. */}
-          <div className="pointer-events-none relative z-10 flex flex-1 items-center pb-2 pt-28 lg:pb-10">
+          <div className="pointer-events-none relative z-10 flex items-center pb-6 pt-2 lg:flex-1 lg:pb-10 lg:pt-28">
             <Container>
               <div className="pointer-events-auto flex flex-col gap-4 lg:max-w-[42%] xl:max-w-[46%]">
                 <Eyebrow>{`${site.city} — Studio AI untuk bisnis`}</Eyebrow>
@@ -168,7 +168,7 @@ export default function HomePage() {
             </Container>
           </div>
           {/* How the studio works, as a 3D machine: under the text on small screens, beside it on wide ones. */}
-          <HeroMachine className="h-[600px] lg:absolute lg:inset-0 lg:h-auto" />
+          <HeroMachine className="order-first mt-16 h-[540px] sm:h-[560px] lg:absolute lg:inset-0 lg:order-none lg:mt-0 lg:h-auto" />
         </div>
 
         {/* Why choose us, along the bottom of the first screen. */}
@@ -200,7 +200,7 @@ export default function HomePage() {
         eyebrow="01 — Layanan"
         title={
           <>
-            Mulai dari tes gratis, <Hl>lanjut saat siap</Hl>.
+            Mulai dari audit gratis, <Hl>lanjut saat siap</Hl>.
           </>
         }
         description="Biaya bulanan menjaga sistem Anda tetap diperbarui dan dipantau oleh engineer yang membangunnya."

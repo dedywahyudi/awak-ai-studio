@@ -2144,6 +2144,11 @@ const STYLES = String.raw`
 .studio-machine-3d #journey.visible {
   display: flex;
 }
+@media (max-width: 640px) {
+  .studio-machine-3d #journey.visible {
+    display: none;
+  }
+}
 .studio-machine-3d .journey-icon {
   flex-shrink: 0;
   width: 40px;
