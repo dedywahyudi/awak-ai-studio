@@ -2148,6 +2148,28 @@ const STYLES = String.raw`
   .studio-machine-3d #journey.visible {
     display: none;
   }
+  .studio-machine-3d .phase-bar {
+    background: transparent;
+    backdrop-filter: none;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 3px;
+    justify-content: space-between;
+  }
+  .studio-machine-3d.embed .phase-bar button {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 6px;
+    font-size: 11px;
+    letter-spacing: -0.01em;
+  }
+  .studio-machine-3d .phase-bar button span {
+    display: none;
+  }
 }
 .studio-machine-3d .journey-icon {
   flex-shrink: 0;

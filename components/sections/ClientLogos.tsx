@@ -62,7 +62,7 @@ export function LogoRows() {
 /** Proof band under the home hero. Data: content/. */
 export function ClientLogos() {
   return (
-    <section aria-label="Klien dan proyek" className="bg-page pb-12 md:pb-16">
+    <section aria-label="Klien dan proyek" className="border-t border-line bg-page pb-12 pt-10 md:pb-16 md:pt-12">
       <Container>
         <LogoRows />
       </Container>
