@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { site } from '@/lib/site';
 import { localBusinessJsonLd } from '@/lib/seo';
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <JsonLd data={localBusinessJsonLd()} />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
