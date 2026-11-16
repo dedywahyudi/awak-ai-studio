@@ -45,6 +45,8 @@ export interface Project {
   ai?: { title: string; body: string }[];
   stack: string[];
   gallery: ProjectImage[];
+  /** Showcase video. When set, the detail page plays it instead of the gallery (the gallery then only feeds the card cover). */
+  video?: { src: string; poster: string; alt: string };
   /** Index of the gallery image used on the list card (defaults to the first). */
   coverIndex?: number;
 }
@@ -281,11 +283,46 @@ const projectList: Project[] = [
     stack: ['ERP', 'Aplikasi web', 'Dasbor', 'Prakiraan AI'],
     gallery: [
       { src: '/images/projects/platform-erp-enterprise/01.jpg', alt: 'Dasbor direksi', width: 1400, height: 938 },
-      { src: '/images/projects/platform-erp-enterprise/02.jpg', alt: 'Anggaran kerja eksekutif', width: 1400, height: 933 },
-      { src: '/images/projects/platform-erp-enterprise/03.jpg', alt: 'Pipeline penjualan', width: 1400, height: 922 },
-      { src: '/images/projects/platform-erp-enterprise/04.jpg', alt: 'Model proyek', width: 1400, height: 941 },
-      { src: '/images/projects/platform-erp-enterprise/05.jpg', alt: 'Rantai pasok dan pengadaan', width: 1400, height: 936 },
     ],
+    video: { src: '/video/showcase-erp.mp4', poster: '/images/projects/platform-erp-enterprise/video-poster.jpg', alt: 'Video demo platform ERP: anggaran RKA dari draft sampai terkunci, Management Summary, dan arus kas' },
+  },
+  {
+    slug: 'platform-komunitas-liga-beyblade',
+    title: 'Platform komunitas dan liga Beyblade',
+    period: '2026',
+    summary:
+      'Pendaftaran anggota, kartu cetak, jadwal turnamen, hasil, dan peringkat poin, dikelola panitia lewat satu panel admin.',
+    tags: ['Komunitas', 'Liga', 'Panel admin'],
+    industry: 'Komunitas hobi dan esports',
+    aiUsed: { label: 'Prediksi dan tanya-jawab', detail: 'Prediksi performa anggota, ringkasan turnamen otomatis, dan tanya-jawab atas data liga.' },
+    platform: 'Aplikasi web',
+    intro:
+      'Pendaftaran anggota, kartu cetak, jadwal turnamen, hasil, dan peringkat poin, dikelola panitia lewat satu panel admin.',
+    points: [
+      'Pendaftaran anggota dan kartu dengan QR.',
+      'Peringkat poin dan riwayat tiap anggota.',
+      'Turnamen berjenjang dan arsip hasil.',
+      'Panel admin untuk anggota, hasil, dan sponsor.',
+    ],
+    process: [
+      { icon: 'users', title: 'Pendaftaran', body: 'Formulir, bukti bayar, verifikasi panitia, lalu ID anggota (BOM-xxx).' },
+      { icon: 'file', title: 'Kartu anggota', body: 'Kartu 85,60 × 53,98 mm dengan QR, bisa diunduh resolusi tinggi.' },
+      { icon: 'award', title: 'Turnamen', body: 'Jenjang Ranked, Cup, Championship, tiket level, dan tautan bracket.' },
+      { icon: 'list', title: 'Hasil', body: 'Panitia menempel daftar peringkat, sistem membacanya jadi data.' },
+      { icon: 'trending', title: 'Poin dan peringkat', body: 'Poin dihitung otomatis dengan bobot jenis turnamen.' },
+      { icon: 'history', title: 'Arsip', body: 'Podium, delapan besar, dan combo pemenang tiap turnamen.' },
+    ],
+    ai: [
+      { title: 'Prediksi performa', body: 'Memperkirakan peluang menang dan tren poin tiap anggota dari riwayat turnamen.' },
+      { title: 'Ringkasan turnamen', body: 'Membuat ringkasan hasil otomatis untuk dibagikan di WhatsApp dan media sosial.' },
+      { title: 'Tanya-jawab data liga', body: 'Anggota bertanya dalam bahasa biasa, misalnya "siapa juara terbanyak bulan ini", dan dijawab dari data liga.' },
+      { title: 'Rekomendasi combo', body: 'Menyarankan combo dari pola combo pemenang sebelumnya.' },
+    ],
+    stack: ['Aplikasi web', 'Next.js', 'Supabase', 'Dasbor admin'],
+    gallery: [
+      { src: '/images/projects/platform-komunitas-liga-beyblade/video-poster.jpg', alt: 'Beranda komunitas Beyblade of Medan', width: 1400, height: 788 },
+    ],
+    video: { src: '/video/showcase-bom.mp4', poster: '/images/projects/platform-komunitas-liga-beyblade/video-poster.jpg', alt: 'Video demo platform komunitas dan liga Beyblade: situs publik, peringkat, dan panel admin' },
   },
   {
     slug: 'marketplace-bisnis-skala-kecil',

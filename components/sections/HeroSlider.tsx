@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { useRef, useState, type KeyboardEvent, type TouchEvent } from 'react';
-import { ChevronLeft, ChevronRight, Clock, Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import { ChevronLeft, ChevronRight, Clock, Play, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Section';
@@ -27,6 +28,8 @@ export interface HeroSlide {
   image?: { src: string; alt: string; width: number; height: number };
   /** website: browser frame. phone: device frame. cover: square cover image. */
   kind: 'website' | 'phone' | 'cover';
+  /** Shows a play button over the image that opens `href` (the detail page with the video). */
+  hasVideo?: boolean;
 }
 
 interface HeroSliderProps {
@@ -148,9 +151,9 @@ export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLa
 
                 {/* Screenshot: same height for website and phone projects, vertically centred, top part shown.
                     Below the text on tablet and mobile, on the right on desktop. */}
-                <div aria-hidden="true" className="relative min-h-0">
+                <div className="relative min-h-0">
                   {near && (
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
                       {slide.image && slide.kind === 'phone' && (
                         // One phone in a device frame, same height as the website frame.
                         <span className="block aspect-[9/19] h-[min(100%,480px)] rounded-[26px] border border-line-strong bg-black p-1.5">
@@ -208,6 +211,16 @@ export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLa
                         </span>
                       )}
                     </div>
+                  )}
+                  {slide.hasVideo && near && (
+                    <Link
+                      href={slide.href}
+                      tabIndex={active ? undefined : -1}
+                      aria-label={`Tonton video: ${slide.title}`}
+                      className="absolute left-1/2 top-[calc(50%-52px)] z-10 inline-flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-[0_6px_20px_rgba(19,144,251,.5)] ring-4 ring-[rgba(19,144,251,.3)] transition hover:scale-105 md:size-12"
+                    >
+                      <Play size={18} fill="currentColor" aria-hidden="true" className="ml-0.5" />
+                    </Link>
                   )}
                 </div>
               </div>

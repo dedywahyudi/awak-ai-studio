@@ -26,6 +26,7 @@ const slides: HeroSlide[] = projects.map((p) => {
     tags: p.tags,
     kind: phone ? 'phone' : 'website',
     image: cover,
+    hasVideo: !!p.video,
   };
 });
 

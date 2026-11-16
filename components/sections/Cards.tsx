@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, BarChart3, Lightbulb, MessageCircle, Sparkles, type LucideIcon } from 'lucide-react';
+import { ArrowRight, BarChart3, Lightbulb, MessageCircle, Play, Sparkles, type LucideIcon } from 'lucide-react';
 import type { Project } from '@/content/projects';
 import { Badge } from '@/components/ui/Badge';
 import { processIcons } from '@/components/sections/ProcessFlow';
@@ -24,6 +24,14 @@ export function ProjectCard({ project }: { project: Project }) {
             sizes="(min-width: 1024px) 380px, (min-width: 768px) 45vw, 90vw"
             className="size-full object-cover object-top transition duration-300 group-hover:scale-[1.03]"
           />
+          {project.video && (
+            <span
+              aria-hidden="true"
+              className="absolute left-1/2 top-[calc(50%-40px)] inline-flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-[0_8px_30px_rgba(19,144,251,.5)] ring-4 ring-[rgba(19,144,251,.3)]"
+            >
+              <Play size={16} fill="currentColor" className="ml-0.5" />
+            </span>
+          )}
         </span>
       )}
       {!cover && (

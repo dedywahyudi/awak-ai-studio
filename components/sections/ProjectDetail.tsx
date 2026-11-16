@@ -27,7 +27,22 @@ export function ProjectDetail({
 
   return (
     <>
-      <ProjectShowcase gallery={project.gallery} />
+      {project.video ? (
+        <figure className="overflow-hidden rounded-card border border-line-strong bg-card">
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            poster={project.video.poster}
+            aria-label={project.video.alt}
+            className="aspect-video w-full bg-section"
+          >
+            <source src={project.video.src} type="video/mp4" />
+          </video>
+        </figure>
+      ) : (
+        <ProjectShowcase gallery={project.gallery} />
+      )}
 
       <section aria-labelledby={id('alur')} className="flex flex-col gap-4">
         <Sub id={id('alur')} className={sectionTitle}>
