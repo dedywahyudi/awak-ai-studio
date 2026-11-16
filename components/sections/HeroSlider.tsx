@@ -41,6 +41,8 @@ interface HeroSliderProps {
   prevLabel: string;
   nextLabel: string;
   ctaLabel?: string;
+  /** Small line above the pagination bar, for example to say the list is a selection. */
+  note?: string;
 }
 
 /**
@@ -48,7 +50,7 @@ interface HeroSliderProps {
  * pagination and dots along the bottom, a starry sky behind. Used by /studi-kasus and /blog.
  * All slide text stays in the DOM (hidden slides use visibility), so crawlers and screen readers can read it.
  */
-export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLabel = 'Baca Selengkapnya' }: HeroSliderProps) {
+export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLabel = 'Baca Selengkapnya', note }: HeroSliderProps) {
   const [index, setIndex] = useState(0);
   const touchX = useRef<number | null>(null);
   const count = slides.length;
@@ -228,6 +230,12 @@ export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLa
           })}
         </div>
       </Container>
+
+      {note && (
+        <Container className="relative pb-3">
+          <p className="text-xs leading-relaxed text-muted">{note}</p>
+        </Container>
+      )}
 
       {/* Pagination and dots along the bottom. */}
       <div className="relative border-t border-line">
