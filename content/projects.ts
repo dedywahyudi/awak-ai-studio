@@ -85,10 +85,8 @@ const projectList: Project[] = [
     stack: ['React', 'PostgreSQL'],
     gallery: [
       { src: '/images/projects/aplikasi-web-ai-bidang-medis/01.jpg', alt: 'Memilih berkas DICOM tampak lateral dan frontal', width: 1400, height: 995 },
-      { src: '/images/projects/aplikasi-web-ai-bidang-medis/02.jpg', alt: 'Lokalisasi titik masuk pembuluh darah', width: 1400, height: 995 },
-      { src: '/images/projects/aplikasi-web-ai-bidang-medis/03.jpg', alt: 'Hasil analisis berupa probabilitas skor mTICI', width: 1400, height: 1426 },
-      { src: '/images/projects/aplikasi-web-ai-bidang-medis/04.jpg', alt: 'Peta peak height', width: 1400, height: 1050 },
     ],
+    video: { src: '/video/showcase-qas.mp4', poster: '/images/projects/aplikasi-web-ai-bidang-medis/video-poster.jpg', alt: 'Video demo aplikasi web AI untuk bidang medis: mengunggah citra DICOM, lokalisasi titik masuk, dan skor mTICI beserta peta PH, AUC, dan TTP' },
   },
   {
     slug: 'platform-personalisasi-kondisi-diri',
