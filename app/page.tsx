@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, BarChart3, Camera, Clock, Globe, HeartPulse, MessageCircle, ShieldCheck, Sparkles, Workflow, Zap, type LucideIcon } from 'lucide-react';
+import { ArrowRight, BarChart3, Clock, Globe, HeartPulse, MessageCircle, ShieldCheck, Sparkles, Workflow, Zap, type LucideIcon } from 'lucide-react';
 import { site } from '@/lib/site';
 import { priceDisclaimer } from '@/lib/pricing';
 import { getProject } from '@/content/projects';
@@ -76,8 +76,8 @@ const forSmallBusiness: UseCase[] = [
 /** Real projects, read from content/projects.ts so the titles, AI labels and links never go stale. */
 const showcaseProjects: { slug: string; icon: LucideIcon }[] = [
   { slug: 'aplikasi-web-ai-bidang-medis', icon: HeartPulse },
-  { slug: 'analisis-sentimen-media-sosial', icon: BarChart3 },
-  { slug: 'dashboard-smart-city', icon: Camera },
+  { slug: 'dashboard-command-center', icon: BarChart3 },
+  { slug: 'platform-personalisasi-kondisi-diri', icon: Sparkles },
 ];
 
 const forEnterprise: UseCase[] = showcaseProjects.flatMap(({ slug, icon }) => {

@@ -119,44 +119,9 @@ const projectList: Project[] = [
     ],
     stack: ['Personalisasi', 'Rekomendasi sesi'],
     gallery: [
-      { src: '/images/projects/platform-personalisasi-kondisi-diri/01.jpg', alt: 'Obrolan untuk menceritakan momen', width: 1400, height: 787 },
-      { src: '/images/projects/platform-personalisasi-kondisi-diri/02.jpg', alt: 'Sistem menyusun pengalaman', width: 1400, height: 787 },
-      { src: '/images/projects/platform-personalisasi-kondisi-diri/03.jpg', alt: 'Memilih segmen sesi', width: 1400, height: 787 },
-      { src: '/images/projects/platform-personalisasi-kondisi-diri/04.jpg', alt: 'Memutar sesi', width: 1400, height: 787 },
+      { src: '/images/projects/platform-personalisasi-kondisi-diri/video-poster.jpg', alt: 'Obrolan untuk menceritakan momen dan kondisi yang diinginkan', width: 1400, height: 788 },
     ],
-  },
-  {
-    slug: 'analisis-sentimen-media-sosial',
-    title: 'Analisis sentimen media sosial',
-    period: '2023',
-    summary:
-      'Aplikasi web yang menyatukan media sosial online dan offline dalam satu sistem sentimen, dengan dasbor, laporan, dan peringatan.',
-    tags: ['UI/UX', 'Dasbor', 'Laporan'],
-    industry: 'Media dan pemasaran',
-    aiUsed: { label: 'NLP sentimen', detail: 'Pemrosesan bahasa alami (NLP) untuk analisis sentimen teks dari berbagai media sosial.' },
-    platform: 'Aplikasi web',
-    intro:
-      'Aplikasi web untuk menganalisis sentimen media sosial secara real-time, supaya bisnis bisa mengelola reputasi online dan menyusun strategi pemasaran.',
-    points: [
-      'Memimpin pengembangan aplikasi web analisis sentimen secara real-time.',
-      'Integrasi berbagai media sosial, online maupun offline, dalam satu sistem sentimen.',
-      'Membangun dasbor, laporan, dan peringatan.',
-      'Membantu bisnis mengelola reputasi online dan mengoptimalkan strategi pemasaran.',
-    ],
-    process: [
-      { icon: 'link', title: 'Hubungkan kanal', body: 'Berbagai media sosial, online dan offline, serta kata kunci yang dipantau dihubungkan ke satu aplikasi.' },
-      { icon: 'rss', title: 'Satukan percakapan', body: 'Percakapan dari semua kanal dikumpulkan dan disatukan dalam satu sistem.' },
-      { icon: 'message', title: 'Analisis sentimen', body: 'Percakapan dinilai sentimennya dan dikelompokkan per topik.' },
-      { icon: 'chart', title: 'Dasbor, laporan, peringatan', body: 'Hasil tampil di dasbor, dikirim sebagai laporan, dan memicu peringatan.' },
-    ],
-    ai: [
-      { title: 'Satu sistem sentimen', body: 'Percakapan dari berbagai kanal online dan offline dinilai dengan satu sistem yang sama, sehingga hasilnya bisa dibandingkan.' },
-      { title: 'Analisis sentimen', body: 'Menilai sentimen percakapan media sosial secara real-time, lalu merangkumnya dalam dasbor, laporan, dan peringatan.' },
-    ],
-    stack: ['UI/UX', 'Desain aplikasi web'],
-    gallery: [
-      { src: '/images/projects/analisis-sentimen-media-sosial/01.jpg', alt: 'Dasbor analisis sentimen media sosial', width: 1400, height: 905 },
-    ],
+    video: { src: '/video/showcase-soul-sanctuary.mp4', poster: '/images/projects/platform-personalisasi-kondisi-diri/video-poster.jpg', alt: 'Video demo platform personalisasi kondisi diri dan performa: check-in singkat, obrolan dengan AI, memilih segmen sesi, menjalankan sesi, dan memantau perkembangan' },
   },
   {
     slug: 'dashboard-command-center',
@@ -200,47 +165,7 @@ const projectList: Project[] = [
       { src: '/images/projects/dashboard-command-center/06.jpg', alt: 'Rincian penugasan di peta', width: 1400, height: 787 },
       { src: '/images/projects/dashboard-command-center/07.jpg', alt: 'Simulasi lalu lintas', width: 1400, height: 787 },
     ],
-  },
-  {
-    slug: 'dashboard-smart-city',
-    title: 'Dashboard Smart City',
-    period: '2024 – 2025',
-    summary:
-      'Dasbor kota cerdas yang menggabungkan peta, kamera, dan statistik untuk memantau kondisi lalu lintas secara real-time.',
-    tags: ['React', 'IoT', 'Analitik data'],
-    industry: 'Kota cerdas dan transportasi',
-    aiUsed: { label: 'Computer vision', detail: 'Computer vision: pengenalan plat nomor, pengenalan wajah, dan deteksi kepadatan orang, plus prediksi pergerakan kendaraan.' },
-    platform: 'Dasbor web',
-    intro:
-      'Platform Smart City yang menggabungkan data dari kamera dan sensor dengan analitik, supaya layanan kota lebih responsif dan efisien.',
-    points: [
-      'Memimpin pengembangan platform Smart City dengan IoT dan analitik data.',
-      'Peta menampilkan status tiap titik dengan warna.',
-      'Tampilan kamera, statistik, dan indikator ringkas dalam satu layar.',
-      'Prediksi pergerakan kendaraan berdasarkan plat nomor.',
-      'Pencarian wajah orang dalam daftar pencarian orang (DPO) dari rekaman CCTV.',
-      'Titik keramaian saat ada acara, ditampilkan di peta.',
-    ],
-    process: [
-      { icon: 'camera', title: 'Kamera dan sensor mengirim data', body: 'Titik pemantauan di kota mengirim data secara terus-menerus.' },
-      { icon: 'map-pin', title: 'Peta menampilkan status', body: 'Setiap titik diberi warna sesuai kondisinya.' },
-      { icon: 'chart', title: 'Statistik dan tren', body: 'Grafik menunjukkan perubahan dari waktu ke waktu.' },
-      { icon: 'car', title: 'Prediksi pergerakan kendaraan', body: 'Plat nomor yang terbaca di beberapa titik dipakai untuk memperkirakan arah pergerakan kendaraan.' },
-      { icon: 'search', title: 'Pencarian wajah DPO', body: 'Wajah dari rekaman CCTV dicocokkan dengan daftar DPO, lalu petugas meninjau hasilnya.' },
-      { icon: 'users', title: 'Titik keramaian saat acara', body: 'Kepadatan orang di sekitar lokasi acara ditandai di peta supaya petugas bisa bersiap.' },
-      { icon: 'bell', title: 'Detail titik', body: 'Operator membuka satu titik untuk melihat kamera dan rincian datanya.' },
-    ],
-    ai: [
-      { title: 'Prediksi pergerakan kendaraan', body: 'Pola perjalanan dari plat nomor yang terbaca kamera dipakai untuk memperkirakan ke mana kendaraan bergerak.' },
-      { title: 'Pencarian wajah DPO', body: 'Pengenalan wajah mencari kecocokan dengan daftar DPO. Hasilnya berupa kandidat untuk ditinjau petugas, bukan keputusan otomatis.' },
-      { title: 'Deteksi keramaian', body: 'Kepadatan orang dari kamera dipetakan untuk menemukan titik keramaian ketika ada acara.' },
-    ],
-    stack: ['React', 'IoT', 'Analitik data', 'Computer vision'],
-    gallery: [
-      { src: '/images/projects/dashboard-smart-city/01.jpg', alt: 'Detail satu titik dengan tampilan kamera', width: 1400, height: 905 },
-      { src: '/images/projects/dashboard-smart-city/02.jpg', alt: 'Statistik pada dasbor', width: 1400, height: 905 },
-      { src: '/images/projects/dashboard-smart-city/03.jpg', alt: 'Peta status seluruh titik', width: 1400, height: 905 },
-    ],
+    video: { src: '/video/showcase-command-center.mp4', poster: '/images/projects/dashboard-command-center/video-poster.jpg', alt: 'Video demo dashboard command center: masuk, memilih proyek dan simulasi, peta 2D dengan rute dan area pengawasan, lalu simulasi lalu lintas di peta 3D' },
   },
   {
     slug: 'platform-erp-enterprise',
@@ -355,6 +280,7 @@ const projectList: Project[] = [
       { src: '/images/projects/marketplace-bisnis-skala-kecil/05.jpg', alt: 'Formulir penilaian bisnis', width: 1400, height: 2457 },
       { src: '/images/projects/marketplace-bisnis-skala-kecil/06.jpg', alt: 'Riwayat valuasi dengan grafik radar', width: 1400, height: 1579 },
     ],
+    video: { src: '/video/showcase-marketplace.mp4', poster: '/images/projects/marketplace-bisnis-skala-kecil/video-poster.jpg', alt: 'Video demo marketplace jual beli bisnis skala kecil: mencari perusahaan, membuka profil, verifikasi pemilik, dan menilai bisnis sampai hasil valuasi' },
   },
   {
     slug: 'aplikasi-mobile-panen-kelapa-sawit',

@@ -3,7 +3,7 @@ import type { Project } from '@/content/projects';
 import { Badge } from '@/components/ui/Badge';
 import { Hl } from '@/components/ui/Section';
 import { ProcessFlow } from '@/components/sections/ProcessFlow';
-import { ProjectShowcase } from '@/components/sections/ProjectShowcase';
+import { ProjectShowcase, Watermark } from '@/components/sections/ProjectShowcase';
 
 const sectionTitle = 'font-display text-xl font-bold text-strong md:text-2xl';
 
@@ -35,16 +35,19 @@ export function ProjectDetail({
               : 'overflow-hidden rounded-card border border-line-strong bg-card'
           }
         >
-          <video
-            controls
-            playsInline
-            preload="metadata"
-            poster={project.video.poster}
-            aria-label={project.video.alt}
-            className={project.video.portrait ? 'aspect-[9/20] w-full rounded-[20px] bg-section' : 'aspect-video w-full bg-section'}
-          >
-            <source src={project.video.src} type="video/mp4" />
-          </video>
+          <div className="relative">
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster={project.video.poster}
+              aria-label={project.video.alt}
+              className={project.video.portrait ? 'aspect-[9/20] w-full rounded-[20px] bg-section' : 'aspect-video w-full bg-section'}
+            >
+              <source src={project.video.src} type="video/mp4" />
+            </video>
+            <Watermark logoClass={project.video.portrait ? 'h-[5%]' : undefined} />
+          </div>
         </figure>
       ) : (
         <ProjectShowcase gallery={project.gallery} />

@@ -55,7 +55,7 @@ export default function StudiKasusPage() {
         label="Studi kasus pilihan"
         prevLabel="Studi kasus sebelumnya"
         nextLabel="Studi kasus berikutnya"
-        note="Menampilkan karya terbaru dan pilihan. Proyek lain tidak ditampilkan."
+        note="Menampilkan studi kasus terbaru dan pilihan. Studi kasus lain tidak ditampilkan."
       />
 
       <ClosingCta

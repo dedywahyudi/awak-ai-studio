@@ -242,7 +242,7 @@ export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLa
                       href={slide.href}
                       tabIndex={active ? undefined : -1}
                       aria-label={`Tonton video: ${slide.title}`}
-                      className="absolute left-1/2 top-[calc(50%-52px)] z-10 inline-flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-[0_6px_20px_rgba(19,144,251,.5)] ring-4 ring-[rgba(19,144,251,.3)] transition hover:scale-105 md:size-12"
+                      className="absolute left-1/2 top-[calc(50%-72px)] z-10 inline-flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-[0_6px_20px_rgba(19,144,251,.5)] ring-4 ring-[rgba(19,144,251,.3)] transition hover:scale-105 md:size-12"
                     >
                       <Play size={18} fill="currentColor" aria-hidden="true" className="ml-0.5" />
                     </Link>
