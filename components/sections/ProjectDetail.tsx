@@ -28,14 +28,20 @@ export function ProjectDetail({
   return (
     <>
       {project.video ? (
-        <figure className="overflow-hidden rounded-card border border-line-strong bg-card">
+        <figure
+          className={
+            project.video.portrait
+              ? 'mx-auto w-full max-w-[300px] overflow-hidden rounded-[26px] border border-line-strong bg-black p-1.5'
+              : 'overflow-hidden rounded-card border border-line-strong bg-card'
+          }
+        >
           <video
             controls
             playsInline
             preload="metadata"
             poster={project.video.poster}
             aria-label={project.video.alt}
-            className="aspect-video w-full bg-section"
+            className={project.video.portrait ? 'aspect-[9/20] w-full rounded-[20px] bg-section' : 'aspect-video w-full bg-section'}
           >
             <source src={project.video.src} type="video/mp4" />
           </video>

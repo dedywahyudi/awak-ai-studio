@@ -46,7 +46,7 @@ export interface Project {
   stack: string[];
   gallery: ProjectImage[];
   /** Showcase video. When set, the detail page plays it instead of the gallery (the gallery then only feeds the card cover). */
-  video?: { src: string; poster: string; alt: string };
+  video?: { src: string; poster: string; alt: string; /** Phone recording: shown in a narrow device frame. */ portrait?: boolean };
   /** Index of the gallery image used on the list card (defaults to the first). */
   coverIndex?: number;
 }
@@ -399,11 +399,9 @@ const projectList: Project[] = [
     ],
     stack: ['Aplikasi mobile', 'Peta GPS', 'Computer vision', 'Prediksi', 'Multi-peran', 'Mode offline'],
     gallery: [
-      { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/03.jpg', alt: 'Absensi pekerja panen', width: 360, height: 1112 },
-      { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/05.jpg', alt: 'Merekam hasil panen', width: 360, height: 1414 },
-      { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/06.jpg', alt: 'Detail mutu ancak', width: 360, height: 760 },
-      { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/07.jpg', alt: 'Konfirmasi dokumen potong buah', width: 360, height: 1099 },
+      { src: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/video-poster.jpg', alt: 'Menu kerja mandor di aplikasi panen', width: 540, height: 1200 },
     ],
+    video: { src: '/video/showcase-harvest.mp4', poster: '/images/projects/aplikasi-mobile-panen-kelapa-sawit/video-poster.jpg', alt: 'Video demo aplikasi mobile panen kelapa sawit: masuk, menu kerja, dan peta TPH', portrait: true },
   },
 ];
 
