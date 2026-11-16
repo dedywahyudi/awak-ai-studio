@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useState, type KeyboardEvent, type TouchEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Clock, Play, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
@@ -45,18 +45,37 @@ interface HeroSliderProps {
   note?: string;
 }
 
+/** Time each slide stays up before the slider moves on by itself. */
+const AUTOPLAY_MS = 8000;
+
 /**
  * Full-viewport slider. Text on the left, an image on the right (stacked on tablet and mobile),
  * pagination and dots along the bottom, a starry sky behind. Used by /studi-kasus and /blog.
+ * Advances by itself every few seconds until the visitor interacts (see AUTOPLAY_MS).
  * All slide text stays in the DOM (hidden slides use visibility), so crawlers and screen readers can read it.
  */
 export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLabel = 'Baca Selengkapnya', note }: HeroSliderProps) {
   const [index, setIndex] = useState(0);
   const touchX = useRef<number | null>(null);
+  // Autoplay: pauses while hovered or focused, stops for good after the first manual move, and never runs
+  // for visitors who prefer reduced motion.
+  const [paused, setPaused] = useState(false);
+  const [autoplay, setAutoplay] = useState(true);
   const count = slides.length;
+
+  useEffect(() => {
+    if (!autoplay || paused || count < 2) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer = window.setTimeout(() => setIndex((i) => (i + 1) % count), AUTOPLAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [autoplay, paused, count, index]);
+
   if (count === 0) return null;
 
-  const go = (to: number) => setIndex(((to % count) + count) % count);
+  const go = (to: number) => {
+    setAutoplay(false);
+    setIndex(((to % count) + count) % count);
+  };
 
   const onKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     if (e.key === 'ArrowLeft') go(index - 1);
@@ -81,6 +100,10 @@ export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLa
       onKeyDown={onKeyDown}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
       className="relative -mt-16 flex h-[100svh] min-h-[640px] flex-col overflow-hidden bg-page"
     >
       <StarfieldBackground />
