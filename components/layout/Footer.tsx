@@ -41,7 +41,7 @@ export function Footer() {
           </div>
 
           <FooterColumn title="Layanan" links={footerLinks.layanan} />
-          <FooterColumn title="Perusahaan" links={footerLinks.perusahaan} />
+          <FooterColumn title="Studio" links={footerLinks.perusahaan} />
 
           <div className="flex flex-col gap-3">
             <h3 className="font-mono text-xs font-medium uppercase tracking-[0.1em] text-eyebrow">Kontak</h3>
