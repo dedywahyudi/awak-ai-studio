@@ -9,7 +9,7 @@ const sectionTitle = 'font-display text-xl font-bold text-strong md:text-2xl';
 
 /**
  * Body of a case study: screenshots, workflow, AI usage, features and stack.
- * Shared by /studi-kasus (inline, sub-headings are h3) and /studi-kasus/[slug] (sub-headings are h2).
+ * Shared by /proyek (inline, sub-headings are h3) and /proyek/[slug] (sub-headings are h2).
  * `idPrefix` keeps heading ids unique when several projects share one page.
  */
 export function ProjectDetail({

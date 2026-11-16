@@ -1,5 +1,5 @@
 /**
- * Selected projects for /studi-kasus and the detail pages. Facts only: what the screens show and what the
+ * Selected projects for /proyek and the detail pages. Facts only: what the screens show and what the
  * founder's profile states. No invented results or numbers. The AI block appears only where AI use is evident.
  * Screenshots: public/images/projects/<slug>/NN.jpg (optimised copies; originals stay local in public/projects/).
  */
@@ -245,7 +245,7 @@ const projectList: Project[] = [
     gallery: [
       { src: '/images/projects/platform-komunitas-liga-beyblade/video-poster.jpg', alt: 'Beranda komunitas Beyblade of Medan', width: 1400, height: 788 },
     ],
-    video: { src: '/video/showcase-bom.mp4', poster: '/images/projects/platform-komunitas-liga-beyblade/video-poster.jpg', alt: 'Video demo platform komunitas dan liga Beyblade X: situs publik, peringkat, dan panel admin' },
+    video: { src: '/video/showcase-bom-flow.mp4', poster: '/images/projects/platform-komunitas-liga-beyblade/video-poster.jpg', alt: 'Video demo platform komunitas dan liga Beyblade X: situs publik, peringkat, dan panel admin' },
   },
   {
     slug: 'marketplace-bisnis-skala-kecil',

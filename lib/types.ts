@@ -1,4 +1,4 @@
-export const postCategories = ['AI untuk UMKM', 'Studi Kasus', 'Tips Digital'] as const;
+export const postCategories = ['AI untuk UMKM', 'Proyek', 'Tips Digital'] as const;
 export type PostCategory = (typeof postCategories)[number];
 
 /** The stored value 'AI untuk UMKM' is kept (DB check constraint); this is what visitors read. */

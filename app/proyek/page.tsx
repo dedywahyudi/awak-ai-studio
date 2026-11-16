@@ -6,9 +6,9 @@ import { HeroSlider, type HeroSlide } from '@/components/sections/HeroSlider';
 import { ClosingCta } from '@/components/sections/ClosingCta';
 
 export const metadata = pageMeta({
-  title: 'Studi Kasus',
+  title: 'Proyek',
   description: 'Proyek AI dan sistem yang pernah kami bangun untuk bisnis dan organisasi, lengkap dengan alur kerja, peran AI, dan tangkapan layar.',
-  path: '/studi-kasus',
+  path: '/proyek',
 });
 
 const slides: HeroSlide[] = projects.map((p) => {
@@ -16,7 +16,7 @@ const slides: HeroSlide[] = projects.map((p) => {
   const phone = p.gallery.length > 0 && p.gallery.every((s) => s.width <= 600 && s.height > s.width);
   return {
     id: p.slug,
-    href: `/studi-kasus/${p.slug}`,
+    href: `/proyek/${p.slug}`,
     eyebrow: p.period,
     beta: p.beta,
     title: p.title,
@@ -33,15 +33,15 @@ const slides: HeroSlide[] = projects.map((p) => {
 const collectionJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'Studi kasus',
-  url: `${site.url}/studi-kasus`,
+  name: 'Proyek',
+  url: `${site.url}/proyek`,
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: projects.map((p, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: p.title,
-      url: `${site.url}/studi-kasus/${p.slug}`,
+      url: `${site.url}/proyek/${p.slug}`,
     })),
   },
 };
@@ -51,11 +51,11 @@ export default function StudiKasusPage() {
     <>
       <HeroSlider
         slides={slides}
-        heading="Studi Kasus"
-        label="Studi kasus pilihan"
-        prevLabel="Studi kasus sebelumnya"
-        nextLabel="Studi kasus berikutnya"
-        note="Menampilkan studi kasus terbaru dan pilihan. Studi kasus lain tidak ditampilkan."
+        heading="Proyek"
+        label="Proyek pilihan"
+        prevLabel="Proyek sebelumnya"
+        nextLabel="Proyek berikutnya"
+        note="Menampilkan proyek terbaru dan pilihan. Proyek lain tidak ditampilkan."
       />
 
       <ClosingCta

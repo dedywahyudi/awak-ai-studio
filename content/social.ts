@@ -25,7 +25,7 @@ export const socialConfig: SocialConfig = {
   baseHashtags: ['#AwakAIStudio', '#AIuntukBisnis'],
   categoryHashtags: {
     'AI untuk UMKM': ['#AIChat', '#BisnisDigital'],
-    'Studi Kasus': ['#StudiKasus', '#TransformasiDigital'],
+    'Proyek': ['#Proyek', '#TransformasiDigital'],
     'Tips Digital': ['#TipsBisnis', '#OtomatisasiBisnis'],
   },
   keywordHashtags: [
@@ -39,7 +39,7 @@ export const socialConfig: SocialConfig = {
   maxHashtags: 7,
   callToAction: {
     'AI untuk UMKM': 'Ingin tahu apa yang cocok untuk bisnis Anda? Baca selengkapnya, link di bio.',
-    'Studi Kasus': 'Baca cerita lengkap proyeknya, link di bio.',
+    'Proyek': 'Baca cerita lengkap proyeknya, link di bio.',
     'Tips Digital': 'Baca tipsnya selengkapnya, link di bio.',
   },
   defaultCallToAction: 'Baca selengkapnya, link di bio.',

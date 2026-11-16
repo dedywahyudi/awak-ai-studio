@@ -50,7 +50,7 @@ const AUTOPLAY_MS = 8000;
 
 /**
  * Full-viewport slider. Text on the left, an image on the right (stacked on tablet and mobile),
- * pagination and dots along the bottom, a starry sky behind. Used by /studi-kasus and /blog.
+ * pagination and dots along the bottom, a starry sky behind. Used by /proyek and /blog.
  * Advances by itself every few seconds until the visitor interacts (see AUTOPLAY_MS).
  * All slide text stays in the DOM (hidden slides use visibility), so crawlers and screen readers can read it.
  */
@@ -242,7 +242,10 @@ export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLa
                       href={slide.href}
                       tabIndex={active ? undefined : -1}
                       aria-label={`Tonton video: ${slide.title}`}
-                      className="absolute left-1/2 top-[calc(50%-72px)] z-10 inline-flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-[0_6px_20px_rgba(19,144,251,.5)] ring-4 ring-[rgba(19,144,251,.3)] transition hover:scale-105 md:size-12"
+                      className={cn('absolute left-1/2 z-10 inline-flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-accent text-white shadow-[0_6px_20px_rgba(19,144,251,.5)] ring-4 ring-[rgba(19,144,251,.3)] transition hover:scale-105 md:size-12',
+                        // Centred on the watermark: the website frame has a title bar, so its image area sits lower.
+                        slide.kind === 'website' ? 'top-[calc(50%+22px)]' : 'top-1/2',
+                      )}
                     >
                       <Play size={18} fill="currentColor" aria-hidden="true" className="ml-0.5" />
                     </Link>

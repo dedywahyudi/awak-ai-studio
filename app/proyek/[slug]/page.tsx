@@ -18,7 +18,7 @@ export function generateStaticParams(): Params[] {
 export function generateMetadata({ params }: { params: Params }): Metadata {
   const project = getProject(params.slug);
   if (!project) return {};
-  return pageMeta({ title: project.title, description: project.intro, path: `/studi-kasus/${project.slug}` });
+  return pageMeta({ title: project.title, description: project.intro, path: `/proyek/${project.slug}` });
 }
 
 export default function ProjectPage({ params }: { params: Params }) {
@@ -38,8 +38,8 @@ export default function ProjectPage({ params }: { params: Params }) {
       <article className="bg-page pb-12 pt-10 md:pb-20 md:pt-14">
         <Container className="flex max-w-4xl flex-col gap-8 md:gap-10">
           <header className="flex flex-col gap-3">
-            <Link href="/studi-kasus" className="inline-flex items-center gap-1.5 text-sm text-link hover:text-white">
-              <ArrowLeft size={16} aria-hidden="true" /> Semua studi kasus
+            <Link href="/proyek" className="inline-flex items-center gap-1.5 text-sm text-link hover:text-white">
+              <ArrowLeft size={16} aria-hidden="true" /> Semua proyek
             </Link>
             <div className="flex flex-wrap items-center gap-3">
               <Eyebrow>{project.period}</Eyebrow>
@@ -62,7 +62,7 @@ export default function ProjectPage({ params }: { params: Params }) {
           <ProjectDetail project={project} />
 
           <Link
-            href={`/studi-kasus/${next.slug}`}
+            href={`/proyek/${next.slug}`}
             className="group flex items-center justify-between gap-4 rounded-card border border-line bg-card px-5 py-4 transition duration-200 hover:border-accent-ring"
           >
             <span className="flex flex-col gap-1">

@@ -8,7 +8,7 @@ export const revalidate = 3600;
 const staticRoutes = [
   '',
   '/layanan',
-  '/studi-kasus',
+  '/proyek',
   '/tentang',
   '/blog',
   '/audit-gratis',
@@ -29,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: path === '' ? 1 : 0.7,
     })),
     ...projects.map((c) => ({
-      url: `${site.url}/studi-kasus/${c.slug}`,
+      url: `${site.url}/proyek/${c.slug}`,
       lastModified: now,
       changeFrequency: 'yearly' as const,
       priority: 0.6,

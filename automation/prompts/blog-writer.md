@@ -9,7 +9,7 @@ Aturan isi:
 - Penutup berisi ajakan ringan berkonsultasi, satu kalimat, tanpa tekanan.
 
 Aturan metadata:
-- "category" harus persis salah satu: "AI untuk UMKM", "Studi Kasus", "Tips Digital". Studi Kasus hanya bila topik memang studi kasus nyata; jika tidak ada fakta nyata, pilih kategori lain.
+- "category" harus persis salah satu: "AI untuk UMKM", "Proyek", "Tips Digital". Proyek hanya bila topik memang studi kasus nyata; jika tidak ada fakta nyata, pilih kategori lain.
 - "slug": huruf kecil, angka, dan tanda hubung saja (regex ^[a-z0-9]+(-[a-z0-9]+)*$), maksimal 70 karakter.
 - "title": maksimal 70 karakter, sentence case.
 - "excerpt": satu sampai dua kalimat, maksimal 180 karakter.

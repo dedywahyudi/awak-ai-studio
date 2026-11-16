@@ -89,7 +89,7 @@ const forEnterprise: UseCase[] = showcaseProjects.flatMap(({ slug, icon }) => {
       kind: project.period,
       title: project.title,
       body: project.summary,
-      href: `/studi-kasus/${project.slug}`,
+      href: `/proyek/${project.slug}`,
       meta: project.aiUsed.none ? project.aiUsed.label : `AI: ${project.aiUsed.label}`,
     },
   ];
@@ -235,8 +235,8 @@ export default function HomePage() {
           />
         </div>
         <div className="mt-8">
-          <Button variant="secondary" href="/studi-kasus" arrow>
-            Lihat Studi Kasus
+          <Button variant="secondary" href="/proyek" arrow>
+            Lihat Proyek
           </Button>
         </div>
       </Section>

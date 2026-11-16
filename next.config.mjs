@@ -31,12 +31,17 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/harga', destination: '/layanan', permanent: true },
-      { source: '/demo', destination: '/studi-kasus', permanent: true },
-      { source: '/studi-kasus/membangun-awak-ai-studio', destination: '/studi-kasus', permanent: true },
-      { source: '/studi-kasus/platform-tantangan-coding-ai', destination: '/studi-kasus', permanent: true },
+      { source: '/demo', destination: '/proyek', permanent: true },
+      // Removed case studies, and the old section name: /studi-kasus is now /proyek.
+      { source: '/studi-kasus/analisis-sentimen-media-sosial', destination: '/proyek', permanent: true },
+      { source: '/studi-kasus/dashboard-smart-city', destination: '/proyek', permanent: true },
+      { source: '/studi-kasus/membangun-awak-ai-studio', destination: '/proyek', permanent: true },
+      { source: '/studi-kasus/platform-tantangan-coding-ai', destination: '/proyek', permanent: true },
       { source: '/blog/menambahkan-openai-ke-platform-berjalan', destination: '/blog/menambahkan-ai-ke-sistem-berjalan', permanent: true },
       { source: '/solusi-custom', destination: '/layanan#custom', permanent: true },
-      { source: '/studi-kasus/sistem-anggaran-ai', destination: '/studi-kasus', permanent: true },
+      { source: '/studi-kasus/sistem-anggaran-ai', destination: '/proyek', permanent: true },
+      { source: '/studi-kasus', destination: '/proyek', permanent: true },
+      { source: '/studi-kasus/:slug', destination: '/proyek/:slug', permanent: true },
       // Old audit link (the contact form with ?kebutuhan=audit) now has its own page.
       { source: '/kontak', destination: '/audit-gratis', permanent: true },
     ];

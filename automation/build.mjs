@@ -319,7 +319,7 @@ return [{ json: { request: { model: ${MODEL}, max_tokens: 4096, system: PROMPT +
     PARSE_JSON +
       String.raw`
 const o = parseModelJson($input.first().json);
-const CATS = ['AI untuk UMKM', 'Studi Kasus', 'Tips Digital'];
+const CATS = ['AI untuk UMKM', 'Proyek', 'Tips Digital'];
 function slugify(s) {
   return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 70).replace(/-+$/, '');
 }

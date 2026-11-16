@@ -30,7 +30,7 @@ export const site = {
 
 export const nav = [
   { href: '/layanan', label: 'Layanan' },
-  { href: '/studi-kasus', label: 'Studi Kasus' },
+  { href: '/proyek', label: 'Proyek' },
   { href: '/audit-gratis', label: 'Audit Gratis' },
   { href: '/blog', label: 'Blog' },
   { href: '/tentang', label: 'Tentang' },
@@ -45,7 +45,7 @@ export const footerLinks = {
   ],
   perusahaan: [
     { href: '/tentang', label: 'Tentang' },
-    { href: '/studi-kasus', label: 'Studi Kasus' },
+    { href: '/proyek', label: 'Proyek' },
     { href: '/blog', label: 'Blog' },
   ],
 } as const;

@@ -11,7 +11,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const cover = project.gallery[project.coverIndex ?? 0];
   return (
     <Link
-      href={`/studi-kasus/${project.slug}`}
+      href={`/proyek/${project.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-card border border-line bg-card transition duration-200 hover:-translate-y-0.5 hover:border-accent-ring"
     >
       {cover && (
@@ -80,7 +80,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
 const coverIcons: Record<string, LucideIcon> = {
   'AI untuk UMKM': MessageCircle,
-  'Studi Kasus': BarChart3,
+  'Proyek': BarChart3,
   'Tips Digital': Lightbulb,
 };
 
