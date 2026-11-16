@@ -117,7 +117,7 @@ export function HeroSlider({ slides, heading, label, prevLabel, nextLabel, ctaLa
                     <span className="font-mono text-xs font-medium uppercase tracking-[0.1em] text-muted">{slide.eyebrow}</span>
                     {slide.beta && <Badge size="sm">Beta</Badge>}
                   </div>
-                  <h2 className="line-clamp-3 font-display text-[26px] font-extrabold leading-[1.1] tracking-[-0.03em] text-strong sm:text-[32px] md:text-4xl lg:line-clamp-4 lg:text-[40px] xl:text-[44px]">
+                  <h2 className="line-clamp-3 pb-1 font-display text-[26px] font-extrabold !leading-[1.2] tracking-[-0.03em] text-strong sm:text-[32px] md:text-4xl lg:line-clamp-4 lg:text-[40px] xl:text-[44px]">
                     {slide.title}
                   </h2>
                   <p className="line-clamp-2 text-base leading-relaxed text-body md:line-clamp-3 md:text-lg">{slide.summary}</p>

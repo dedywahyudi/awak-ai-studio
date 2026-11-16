@@ -286,7 +286,7 @@ const projectList: Project[] = [
   },
   {
     slug: 'platform-komunitas-liga-beyblade',
-    title: 'Platform komunitas dan liga Beyblade',
+    title: 'Platform komunitas dan liga Beyblade X',
     period: '2026',
     summary:
       'Pendaftaran anggota, kartu cetak, jadwal turnamen, hasil, dan peringkat poin, dikelola panitia lewat satu panel admin.',
@@ -320,7 +320,7 @@ const projectList: Project[] = [
     gallery: [
       { src: '/images/projects/platform-komunitas-liga-beyblade/video-poster.jpg', alt: 'Beranda komunitas Beyblade of Medan', width: 1400, height: 788 },
     ],
-    video: { src: '/video/showcase-bom.mp4', poster: '/images/projects/platform-komunitas-liga-beyblade/video-poster.jpg', alt: 'Video demo platform komunitas dan liga Beyblade: situs publik, peringkat, dan panel admin' },
+    video: { src: '/video/showcase-bom.mp4', poster: '/images/projects/platform-komunitas-liga-beyblade/video-poster.jpg', alt: 'Video demo platform komunitas dan liga Beyblade X: situs publik, peringkat, dan panel admin' },
   },
   {
     slug: 'marketplace-bisnis-skala-kecil',
