@@ -24,7 +24,7 @@ export const site = {
   },
   founder: {
     name: 'Dedy Wahyudi',
-    role: 'Founder & Senior Product Engineer',
+    role: 'Founder & Senior Engineer',
   },
 } as const;
 

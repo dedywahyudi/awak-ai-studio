@@ -24,7 +24,7 @@ const trust = [
   {
     icon: Clock,
     title: '15+ tahun pengalaman',
-    body: 'Senior Product Engineer. Proyek untuk klien lokal dan enterprise di seluruh dunia, termasuk lewat Topcoder dan Distributed.',
+    body: 'Senior Engineer. Proyek untuk klien lokal dan enterprise di seluruh dunia, termasuk lewat Topcoder dan Distributed.',
   },
   {
     icon: ShieldCheck,
